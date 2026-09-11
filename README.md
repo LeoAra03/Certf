@@ -17,6 +17,11 @@ Dos formatos con **una sola base de código** (la PWA de `web/`):
    - En la **web**: notificaciones mientras la app está abierta.
    - En la **app Android**: alarma diaria nativa (09:00) que avisa de todo lo que vence en los próximos 7 días, aunque la app esté cerrada.
 4. **Guías**: cómo pedir la beca de Coursera/edX paso a paso y lista de *descartes* (cosas que ya no son gratis o no suman en el ATS).
+5. **Rastreador diario** 🛰️: un workflow de GitHub Actions (`Rastreador diario de certificaciones`) revisa **una vez al día, solo, las 16 fuentes oficiales** del catálogo (Pearson VUE/AWS, Builder Center, aws.amazon.com, Microsoft Certification Week y Applied Skills, IBM SkillsBuild, Oracle, edX, GitHub Student Pack, Cisco NetAcad, ISC2, Helsinki ×2, freeCodeCamp, Skillshop y Coursera) buscando vouchers, descuentos y cambios:
+   - Lo nuevo (frases con *voucher*, *50% off*, *free*, *financial aid*…) se publica automáticamente con un **commit** en `web/novedades.js` → aparece en la pestaña **Novedades** de la app con el sello “última revisión: hace X h”. Pages se redespliega solo.
+   - Si una página cambió **sin** señales claras (o una fuente que funcionaba empieza a fallar), abre/actualiza un **PR de revisión** (`crawler/reporte`) con el detalle, sin ensuciar el catálogo.
+   - Lo ya visto queda memorizado en `data/crawler-state.json` para no repetir novedades. Las señales tienen tope (máx. 3 por fuente y día) y caducan a los 45 días.
+   - La APK no se recompila por novedades (solo con cambios reales del catálogo).
 
 ## Usar la PWA
 
@@ -46,24 +51,37 @@ cd android && gradle :app:assembleDebug
 ## Pruebas
 
 ```bash
-node tools/smoke_test.js     # 12 verificaciones sobre catálogo, alertas y guías
-python3 tools/build_data.py  # valida data.js y genera data.json
+node tools/smoke_test.js          # 16 verificaciones sobre catálogo, alertas, guías y novedades
+python3 tools/build_data.py       # valida data.js y genera data.json
+python3 tools/crawler.py --selftest   # 16 pruebas del rastreador, sin red
+python3 tools/crawler.py --offline tools/fixtures   # corrida completa con HTML local
 ```
 
-El workflow de la APK ejecuta ambas antes de compilar.
+El workflow de la APK ejecuta las dos primeras antes de compilar; el del rastreador ejecuta el crawler + ambas.
 
 ## Estructura
 
 ```
-web/      PWA: index.html, app.js, styles.css, data.js (fuente de datos), sw.js, manifest
+web/      PWA: index.html, app.js, styles.css, data.js (fuente de datos),
+          novedades.js (generado por el rastreador), sw.js, manifest
 android/  Proyecto Android (Kotlin + WebView) que empaqueta web/ como assets
-tools/    build_data.py (data.js → data.json), gen_icons.py (íconos PNG), smoke_test.js
-.github/  Workflows: android-apk.yml (compila la APK) y pages.yml (publica la PWA)
+tools/    build_data.py (data.js → data.json), crawler.py (rastreador diario),
+          fixtures/*.html (HTML de prueba del crawler), gen_icons.py, smoke_test.js
+data/     crawler-state.json (memoria de lo ya rastreado; lo commit-ea el workflow)
+.github/  Workflows: android-apk.yml (compila la APK), pages.yml (publica la PWA),
+          crawler.yml (rastreo diario con commit automático + PR de revisión)
 certificaciones-alto-valor-2026.md   Informe con las fuentes y el detalle de cada certificación
 ```
+
+## Rastreador: cómo operarlo
+
+- **Corrido manual**: GitHub → Actions → *Rastreador diario de certificaciones* → **Run workflow**. O en local con red: `python3 tools/crawler.py` (escribe `web/novedades.js` y `data/crawler-state.json`).
+- **Añadir una fuente**: agrega una entrada a `SOURCES` en `tools/crawler.py` (id, nombre, URL oficial). El diff se hace con el hash normalizado de la página; no hace falta nada más.
+- **PR de revisión**: si el informe dice *“requiere revisión”*, el workflow fuerza la rama `crawler/reporte` con `data/last-report.md` y abre/actualiza el PR. Confirma la oferta a mano en `web/data.js` y corre `python3 tools/build_data.py`.
+- El sello visible en la app (“🛰️ revisión: hace X h”) refleja el campo `checked` de `novedades.js`.
 
 ## Notas
 
 - `web/data.js` es la **fuente única**: edítala y corre `python3 tools/build_data.py` para regenerar `web/data.json` (lo consume el lado nativo Android). El CI falla si quedan desincronizados.
 - La APK es *debug* (instalable, no apta para Play Store). Para publicar: crea un keystore y compila `assembleRelease` con firma.
-- Datos verificados el **10-sep-2026**. Revisa siempre la fuente oficial antes de postular o pagar.
+- Datos verificados el **10-sep-2026** (y de ahora en adelante, a diario por el rastreador). Revisa siempre la fuente oficial antes de postular o pagar.

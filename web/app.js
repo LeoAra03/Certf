@@ -3,6 +3,8 @@
   "use strict";
 
   var DATA = window.__CERTF__ || { certs: [], deadlines: [], tips: [], updated: "" };
+  var NOV = window.__CERTF_NOVEDADES__ || { checked: "", items: [] };
+  if (!Array.isArray(NOV.items)) NOV.items = [];
   var STORE_KEY = "certf.mias.v1";
   var PREFS_KEY = "certf.prefs.v1";
 
@@ -47,6 +49,17 @@
     if (n === 0) return "HOY";
     if (n === 1) return "mañana";
     return "en " + n + " días";
+  }
+  function haceCuando(iso) {
+    if (!iso) return "pendiente";
+    var t = new Date(iso).getTime();
+    if (isNaN(t)) return "fecha inválida";
+    var min = Math.round((Date.now() - t) / 60000);
+    if (min < 1) return "recién";
+    if (min < 60) return "hace " + min + " min";
+    var h = Math.round(min / 60);
+    if (h < 48) return "hace " + h + " h";
+    return "hace " + Math.round(h / 24) + " días";
   }
   function load(key, def) {
     try {
@@ -217,6 +230,35 @@
     $("#btn-permiso").classList.toggle("hidden", perm === "granted" || perm === "unsupported");
   }
 
+  /* ---------- novedades (rastreador diario) ---------- */
+  function cardNovedad(v) {
+    var chip = v.review
+      ? '<span class="tipo t-descuento">⚠ Revisar</span> La página cambió sin señales claras'
+      : '<span class="tipo t-gratis">🛰️ Señal</span> Oferta detectada en la fuente';
+    var html = "";
+    html += '<article class="card nov' + (v.review ? " nov-review" : "") + '" data-nov="' + esc(v.id) + '">';
+    html += '<div class="card-top"><div><h3>' + esc(v.name) + '</h3><div class="inst">' + esc(fmtFecha(v.found)) + " · " + esc(haceCuando(v.found)) + "</div></div></div>";
+    html += '<p class="cond">' + chip + "</p>";
+    html += '<p class="note">“' + esc(v.text) + "”</p>";
+    html += '<div class="row"><a class="btn btn-small" target="_blank" rel="noopener" href="' + esc(v.url) + '">Ver fuente oficial</a></div>';
+    html += "</article>";
+    return html;
+  }
+
+  function renderNovedades() {
+    var items = NOV.items.slice().sort(function (a, b) { return (String(b.found) + String(b.id)).localeCompare(String(a.found) + String(a.id)); });
+    $("#lista-novedades").innerHTML = items.map(cardNovedad).join("");
+    $("#novedades-vacio").classList.toggle("hidden", items.length > 0);
+    var badge = $("#badge-nov");
+    badge.textContent = items.length;
+    badge.classList.toggle("hidden", items.length === 0);
+    var pend = items.filter(function (v) { return v.review; }).length;
+    $("#nov-estado").innerHTML =
+      "Última revisión automática: <b>" + esc(haceCuando(NOV.checked)) + "</b>" +
+      (pend ? ' · <b class="d-warn">' + pend + " cambio(s) por revisar</b>" : " · sin cambios pendientes de revisión");
+    $("#last-check").textContent = " · 🛰️ revisión: " + haceCuando(NOV.checked);
+  }
+
   function renderGuias() {
     $("#guias-lista").innerHTML = DATA.tips.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("");
     $("#descartes").innerHTML = [
@@ -231,7 +273,7 @@
     ].map(function (x) { return "<li>" + x + "</li>"; }).join("");
   }
 
-  function renderAll() { renderCatalogo(); renderMias(); renderAlertas(); renderGuias(); }
+  function renderAll() { renderCatalogo(); renderMias(); renderAlertas(); renderNovedades(); renderGuias(); }
 
   /* ---------- notificaciones ---------- */
   function pedirPermiso() {
