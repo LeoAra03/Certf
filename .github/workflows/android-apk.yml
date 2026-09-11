@@ -1,0 +1,65 @@
+name: Build Android APK
+
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - "android/**"
+      - "web/**"
+      - "tools/**"
+      - ".github/workflows/android-apk.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Compilar APK (debug)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validar datos (data.js -> data.json)
+        run: |
+          python3 tools/build_data.py
+          if ! git diff --quiet -- web/data.json; then
+            echo "::error::web/data.json estaba desactualizado; se regeneró. Haz commit del archivo generado."
+            exit 1
+          fi
+
+      - name: Prueba de humo de la PWA
+        run: node tools/smoke_test.js
+
+      - name: JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+
+      - name: Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Instalar Gradle 8.7
+        run: |
+          curl -sSLO https://services.gradle.org/distributions/gradle-8.7-bin.zip
+          unzip -q gradle-8.7-bin.zip -d "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/gradle-8.7/bin" >> "$GITHUB_PATH"
+
+      - name: Compilar
+        working-directory: android
+        run: gradle :app:assembleDebug --no-daemon --stacktrace
+
+      - name: Subir APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: certf-debug-apk
+          path: android/app/build/outputs/apk/debug/*.apk
+          retention-days: 90
+
+      - name: Resumen
+        run: |
+          APK=$(ls android/app/build/outputs/apk/debug/*.apk | head -1)
+          SIZE=$(du -h "$APK" | cut -f1)
+          echo "### ✅ APK lista" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Archivo: \`$(basename "$APK")\` ($SIZE)" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Descárgala desde el recuadro **Artifacts** de esta ejecución." >> "$GITHUB_STEP_SUMMARY"

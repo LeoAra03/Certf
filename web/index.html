@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Certf — Certificaciones con peso real en el CV</title>
+<meta name="description" content="Catálogo de certificaciones gratuitas, becadas y con descuento estudiantil, con seguimiento personal y alertas de vencimiento." />
+<meta name="theme-color" content="#0b1220" />
+<link rel="manifest" href="manifest.webmanifest" />
+<link rel="icon" href="icon-192.png" />
+<link rel="apple-touch-icon" href="icon-192.png" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <span class="logo">C</span>
+    <div>
+      <h1>Certf</h1>
+      <p class="sub">Certificaciones con peso real en el CV</p>
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <button id="btn-install" class="btn btn-ghost hidden">Instalar</button>
+    <button id="btn-notify" class="btn btn-ghost">🔔 Alertas</button>
+  </div>
+</header>
+
+<p class="updated">Datos verificados al <strong id="updated"></strong> · <span id="counts"></span></p>
+
+<nav class="tabs" role="tablist">
+  <button class="tab active" data-view="catalogo">Catálogo</button>
+  <button class="tab" data-view="mias">Mis certificaciones <span id="badge-mias" class="badge hidden">0</span></button>
+  <button class="tab" data-view="alertas">Alertas <span id="badge-alertas" class="badge hidden">0</span></button>
+  <button class="tab" data-view="guias">Guías</button>
+</nav>
+
+<!-- CATÁLOGO -->
+<main id="view-catalogo" class="view">
+  <div class="controls">
+    <input id="q" type="search" placeholder="Buscar curso, institución o tecnología…" autocomplete="off" />
+    <div class="chips" id="filtro-tipo">
+      <button class="chip active" data-tipo="all">Todas</button>
+      <button class="chip" data-tipo="gratis">🟢 Todo gratis</button>
+      <button class="chip" data-tipo="beca">🎓 Beca</button>
+      <button class="chip" data-tipo="descuento">🏷️ Descuento</button>
+      <button class="chip" data-tipo="estudiante">🪪 Estudiante</button>
+    </div>
+    <div class="chips" id="filtro-cat">
+      <button class="chip active" data-cat="all">Todas las áreas</button>
+      <button class="chip" data-cat="Cloud">Cloud</button>
+      <button class="chip" data-cat="Datos">Datos</button>
+      <button class="chip" data-cat="IA">IA</button>
+      <button class="chip" data-cat="Seguridad">Seguridad</button>
+      <button class="chip" data-cat="Desarrollo">Desarrollo</button>
+      <button class="chip" data-cat="Gestión">Gestión</button>
+      <button class="chip" data-cat="Marketing">Marketing</button>
+    </div>
+    <label class="sort">Ordenar
+      <select id="sort">
+        <option value="peso">Peso en el CV (mayor primero)</option>
+        <option value="nombre">Nombre (A-Z)</option>
+        <option value="institucion">Institución</option>
+        <option value="urgencia">Fecha límite más próxima</option>
+      </select>
+    </label>
+  </div>
+  <div id="lista" class="lista"></div>
+</main>
+
+<!-- MIS CERTIFICACIONES -->
+<section id="view-mias" class="view hidden">
+  <div class="resumen" id="resumen"></div>
+  <div id="lista-mias" class="lista"></div>
+  <p id="mias-vacio" class="empty hidden">Aún no agregaste certificaciones. Entra al <strong>Catálogo</strong> y pulsa <em>“Seguir”</em> en las que te interesen.</p>
+</section>
+
+<!-- ALERTAS -->
+<section id="view-alertas" class="view hidden">
+  <div class="panel">
+    <h2>Fechas críticas y vencimientos</h2>
+    <p class="muted">Días restantes calculados desde hoy. Las fechas marcadas <em>aprox.</em> deben confirmarse en la fuente oficial.</p>
+    <div id="lista-alertas" class="lista"></div>
+  </div>
+  <div class="panel">
+    <h2>Mis fechas límite personales</h2>
+    <div id="lista-alertas-personales" class="lista"></div>
+    <p id="alertas-personales-vacio" class="empty hidden">Sin fechas propias. Marca una certificación como “En curso” y ponle fecha objetivo.</p>
+  </div>
+  <div class="panel">
+    <h2>Notificaciones</h2>
+    <p class="muted" id="estado-notif"></p>
+    <div class="row">
+      <button id="btn-permiso" class="btn">Activar notificaciones</button>
+      <button id="btn-prueba" class="btn btn-ghost">Probar aviso</button>
+    </div>
+    <p class="muted small">En la versión web los avisos se disparan mientras la app está abierta. En la <strong>app Android</strong> se programan como alarma diaria nativa (09:00) y llegan aunque cierres la app.</p>
+  </div>
+</section>
+
+<!-- GUÍAS -->
+<section id="view-guias" class="view hidden">
+  <div class="panel">
+    <h2>Cómo conseguir la beca (paso a paso)</h2>
+    <ol class="steps" id="guias-lista"></ol>
+  </div>
+  <div class="panel">
+    <h2>Descartados (no pierdas tiempo)</h2>
+    <ul class="steps" id="descartes"></ul>
+  </div>
+</section>
+
+<footer>
+  <p class="muted small">Certf · Datos verificados el 10-sep-2026 · Revisa siempre la fuente oficial antes de pagar o postular.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
