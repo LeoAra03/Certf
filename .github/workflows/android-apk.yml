@@ -8,10 +8,9 @@ on:
       - "web/**"
       - "tools/**"
       - ".github/workflows/android-apk.yml"
-    paths-ignore:
       # Las novedades del rastreador diario no requieren recompilar la APK:
       # el WebView ya las sirve desde assets en el próximo build real.
-      - "web/novedades.js"
+      - "!web/novedades.js"
   workflow_dispatch:
 
 jobs:
