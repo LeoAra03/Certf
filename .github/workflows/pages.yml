@@ -1,7 +1,8 @@
 name: Publicar PWA en GitHub Pages
 
-# Requiere Pages activado en Settings > Pages > Source: GitHub Actions.
-# Es opcional: la PWA también funciona instalándola desde la vista previa local.
+# Publica la PWA en GitHub Pages. Requiere activar Pages UNA sola vez:
+#   Settings → Pages → Build and deployment → Source: GitHub Actions
+# Mientras no esté activado, este workflow avisa y termina sin error.
 on:
   push:
     branches: ["main"]
@@ -12,8 +13,6 @@ permissions:
   contents: read
   pages: write
   id-token: write
-  # Necesario para que configure-pages pueda activar Pages solo la primera vez
-  administration: write
 
 concurrency:
   group: "pages"
@@ -28,13 +27,36 @@ jobs:
       - uses: actions/checkout@v4
       - name: Regenerar data.json
         run: python3 tools/build_data.py
+
+      - name: ¿Pages está activado?
+        id: estado
+        run: |
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/pages)
+          echo "code=$CODE" >> "$GITHUB_OUTPUT"
+          if [ "$CODE" = "200" ]; then
+            echo "activado=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "activado=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::GitHub Pages no está activado. Ve a Settings → Pages → Build and deployment → Source: GitHub Actions (una sola vez) y vuelve a ejecutar este workflow."
+          fi
+
+      - name: Saltar despliegue (Pages sin activar)
+        if: steps.estado.outputs.activado == 'false'
+        run: |
+          echo "### PWA lista, pero Pages aún no está activado" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "La app funciona igual: local con \`python3 -m http.server 8000 --directory web\` o instalándola desde la vista previa." >> "$GITHUB_STEP_SUMMARY"
+          echo "Para publicarla: **Settings → Pages → Build and deployment → Source: GitHub Actions** y re-ejecuta este workflow." >> "$GITHUB_STEP_SUMMARY"
+
       - uses: actions/configure-pages@v5
-        with:
-          # Habilita Pages automáticamente si aún no está activado
-          # (Settings > Pages > Source: GitHub Actions).
-          enablement: true
+        if: steps.estado.outputs.activado == 'true'
       - uses: actions/upload-pages-artifact@v3
+        if: steps.estado.outputs.activado == 'true'
         with:
           path: web
       - id: deployment
         uses: actions/deploy-pages@v4
+        if: steps.estado.outputs.activado == 'true'
