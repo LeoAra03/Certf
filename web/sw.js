@@ -1,11 +1,12 @@
 /* Service worker: cache-first del app shell para uso offline */
-const CACHE = "certf-v1";
+const CACHE = "certf-v2";
 const ASSETS = [
   "./",
   "./index.html",
   "./styles.css",
   "./app.js",
   "./data.js",
+  "./novedades.js",
   "./manifest.webmanifest",
   "./icon-192.png",
   "./icon-512.png"

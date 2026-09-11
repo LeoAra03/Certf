@@ -43,6 +43,7 @@ tasks.register('copyWebAssets', Copy) {
         include 'styles.css'
         include 'app.js'
         include 'data.js'
+        include 'novedades.js'
         include 'data.json'
         include 'manifest.webmanifest'
         include 'sw.js'

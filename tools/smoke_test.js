@@ -68,6 +68,9 @@ sandbox.globalThis = sandbox;
 
 const ctx = vm.createContext(sandbox);
 vm.runInContext(read("web/data.js"), ctx, { filename: "data.js" });
+let novCargado = true;
+try { vm.runInContext(read("web/novedades.js"), ctx, { filename: "novedades.js" }); }
+catch (e) { novCargado = false; }
 vm.runInContext(read("web/app.js"), ctx, { filename: "app.js" });
 
 // Disparamos DOMContentLoaded (el listener quedó guardado en document._ready)
@@ -101,6 +104,20 @@ check("Guías renderizadas", ((els["#guias-lista"] || {}).innerHTML || "").inclu
 check("Descartes renderizados", ((els["#descartes"] || {}).innerHTML || "").includes("ISC2"));
 check("Estado de notificaciones informado", (((els["#estado-notif"] || {}).textContent) || "").length > 0,
   (els["#estado-notif"] || {}).textContent);
+
+/* ---------- novedades del rastreador ---------- */
+const nov = sandbox.window.__CERTF_NOVEDADES__;
+const novedades = els["#lista-novedades"] ? els["#lista-novedades"].innerHTML : "";
+check("Datos de novedades cargados", novCargado && nov && Array.isArray(nov.items),
+  nov && nov.items ? nov.items.length + " hallazgos" : "novedades.js ausente o inválido");
+check("Sello de última revisión visible", ((els["#last-check"] || {}).textContent || "").includes("revisión:"),
+  (els["#last-check"] || {}).textContent);
+check("Lista de novedades renderizada", nov && nov.items.length > 0
+  ? novedades.includes("card nov") && novedades.includes("50% off")
+  : novedades.length === 0,
+  "novedades: " + (nov ? nov.items.length : "?"));
+check("Estado del rastreador informado", ((els["#nov-estado"] || {}).innerHTML || "").includes("Última revisión automática"),
+  (els["#nov-estado"] || {}).innerHTML);
 
 console.log("────────────────────────────────────────");
 if (fallos) {

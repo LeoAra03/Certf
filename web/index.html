@@ -26,12 +26,13 @@
   </div>
 </header>
 
-<p class="updated">Datos verificados al <strong id="updated"></strong> · <span id="counts"></span></p>
+<p class="updated">Datos verificados al <strong id="updated"></strong> · <span id="counts"></span><span id="last-check"></span></p>
 
 <nav class="tabs" role="tablist">
   <button class="tab active" data-view="catalogo">Catálogo</button>
   <button class="tab" data-view="mias">Mis certificaciones <span id="badge-mias" class="badge hidden">0</span></button>
   <button class="tab" data-view="alertas">Alertas <span id="badge-alertas" class="badge hidden">0</span></button>
+  <button class="tab" data-view="novedades">🛰️ Novedades <span id="badge-nov" class="badge hidden">0</span></button>
   <button class="tab" data-view="guias">Guías</button>
 </nav>
 
@@ -98,6 +99,17 @@
   </div>
 </section>
 
+<!-- NOVEDADES (rastreador diario) -->
+<section id="view-novedades" class="view hidden">
+  <div class="panel">
+    <h2>Lo que encontró el rastreador</h2>
+    <p class="muted">Todos los días un robot revisa las páginas oficiales del catálogo (AWS, Microsoft, IBM, Oracle, edX, GitHub, Cisco, ISC2, Google, Helsinki, freeCodeCamp, Coursera) buscando vouchers, descuentos y cambios. Lo nuevo aparece aquí; confirma siempre en la fuente oficial antes de postular o pagar.</p>
+    <p class="meta" id="nov-estado"></p>
+  </div>
+  <div id="lista-novedades" class="lista"></div>
+  <p id="novedades-vacio" class="empty hidden">Sin novedades por ahora. La revisión corre a diario; aquí verás cualquier oferta nueva apenas aparezca en internet.</p>
+</section>
+
 <!-- GUÍAS -->
 <section id="view-guias" class="view hidden">
   <div class="panel">
@@ -115,6 +127,7 @@
 </footer>
 
 <script src="data.js"></script>
+<script src="novedades.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

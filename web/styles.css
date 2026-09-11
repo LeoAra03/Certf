@@ -117,6 +117,11 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--acc);outline-off
 }
 .alerta.urgente{border-left-color:var(--bad)}
 .alerta.proxima{border-left-color:var(--warn)}
+
+/* Novedades del rastreador diario */
+.nov{border-left:4px solid var(--ok)}
+.nov-review{border-left-color:var(--warn)}
+.nov-review .inst{color:var(--warn)}
 .alerta .cuando{flex:0 0 auto;text-align:center;min-width:58px}
 .alerta .cuando b{display:block;font-size:20px;line-height:1.1}
 .alerta .cuando span{font-size:10.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}

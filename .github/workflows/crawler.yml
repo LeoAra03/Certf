@@ -1,0 +1,71 @@
+name: Rastreador diario de certificaciones
+
+# Busca ofertas y cambios en las fuentes oficiales del catálogo una vez al día
+# (13:37 UTC ≈ 09:37-10:37 en Chile). Publica lo nuevo con commit automático;
+# si una página cambió sin señales claras, abre/actualiza un PR para revisar.
+on:
+  schedule:
+    - cron: "37 13 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: crawler-certf
+  cancel-in-progress: false
+
+jobs:
+  rastrear:
+    name: Rastrear fuentes oficiales
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Rastrear (16 fuentes oficiales)
+        run: python3 tools/crawler.py --report data/last-report.md
+
+      - name: Validar datos y prueba de humo
+        run: |
+          python3 tools/build_data.py
+          node tools/smoke_test.js
+
+      - name: Publicar novedades (commit automático)
+        id: publicar
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- web/novedades.js data/crawler-state.json; then
+            echo "cambios=false" >> "$GITHUB_OUTPUT"
+            echo "Sin cambios desde la última revisión."
+          else
+            git add web/novedades.js data/crawler-state.json
+            git commit -m "🛰️ Revisión automática $(date -u +%F): novedades del rastreador"
+            git push
+            echo "cambios=true" >> "$GITHUB_OUTPUT"
+          fi
+          if grep -q "requiere revisión" data/last-report.md 2>/dev/null; then
+            echo "review=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "review=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Abrir PR de revisión (cambios dudosos)
+        if: steps.publicar.outputs.review == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          FECHA=$(date -u +%F)
+          git fetch origin crawler/reporte 2>/dev/null || true
+          git checkout -B crawler/reporte
+          git reset --hard origin/main
+          git add -f data/last-report.md
+          git commit -m "Informe de revisión del rastreador ($FECHA)" || true
+          git push -f origin crawler/reporte
+          TITULO="🛰️ Rastreador $FECHA: páginas cambiaron sin señales claras"
+          gh pr create --base main --head crawler/reporte \
+            --title "$TITULO" --body-file data/last-report.md \
+            || gh pr edit crawler/reporte --title "$TITULO" --body-file data/last-report.md
