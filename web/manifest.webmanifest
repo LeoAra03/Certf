@@ -1,0 +1,17 @@
+{
+  "name": "Certf — Certificaciones con peso en el CV",
+  "short_name": "Certf",
+  "description": "Catálogo de certificaciones gratuitas, becadas y con descuento estudiantil, con seguimiento personal y alertas de vencimiento.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "lang": "es",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

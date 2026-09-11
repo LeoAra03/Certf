@@ -1,0 +1,59 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'cl.certf.app'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId 'cl.certf.app'
+        minSdk 24
+        targetSdk 34
+        versionCode 1
+        versionName '1.0'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt')
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions { jvmTarget = '17' }
+
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+}
+
+// Copia la PWA (web/) a los assets de la app: una sola fuente de datos para web y Android.
+def webDir = file("${rootProject.projectDir}/../web")
+
+tasks.register('copyWebAssets', Copy) {
+    from(webDir) {
+        include 'index.html'
+        include 'styles.css'
+        include 'app.js'
+        include 'data.js'
+        include 'data.json'
+        include 'manifest.webmanifest'
+        include 'sw.js'
+        include 'icon-192.png'
+        include 'icon-512.png'
+    }
+    into file('src/main/assets/www')
+}
+
+tasks.named('preBuild') { dependsOn 'copyWebAssets' }
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.13.1'
+}
