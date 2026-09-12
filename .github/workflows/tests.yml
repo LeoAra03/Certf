@@ -1,0 +1,64 @@
+name: Pruebas automáticas
+
+# Se ejecuta en cada push (cualquier rama). Todo corre SIN red, así que es rápido
+# y determinista: si algo se rompe, se ve en menos de un minuto y no llega a la app.
+on:
+  push:
+    branches: ["**"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pruebas-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pruebas:
+    name: Datos, app, buscador y rastreador
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Python 3
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Los workflows son YAML válido
+        run: |
+          python3 - <<'PY'
+          import glob, yaml
+          for f in sorted(glob.glob(".github/workflows/*.yml")):
+              d = yaml.safe_load(open(f, encoding="utf-8"))
+              assert d.get("name"), f + ": falta el nombre"
+              assert d.get("jobs"), f + ": no tiene jobs"
+              print("OK", f, "-", d["name"])
+          PY
+
+      - name: data.js y data.json están sincronizados
+        run: |
+          python3 tools/build_data.py
+          git diff --exit-code web/data.js web/data.json
+
+      - name: Prueba de humo de la PWA
+        run: node tools/smoke_test.js
+
+      - name: Prueba del buscador en vivo (botón Buscar páginas)
+        run: node tools/scanner_test.js
+
+      - name: Pruebas del rastreador diario
+        run: python3 tools/crawler.py --selftest
+
+      - name: El rastreador funciona de punta a punta (fixtures, sin red)
+        run: |
+          python3 tools/crawler.py --offline tools/fixtures --dry-run \
+            --novedades /tmp/novedades.js --state /tmp/crawler-state.json
+          test -s /tmp/novedades.js
