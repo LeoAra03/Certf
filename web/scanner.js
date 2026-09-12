@@ -44,7 +44,7 @@
     { id: "ms-certweek", name: "Microsoft · Certification Week", url: "https://certweeks.fastlane.net/amer/az-sec-en", lang: "EN", grupo: "oficial" },
     { id: "ms-applied", name: "Microsoft · Applied Skills", url: "https://learn.microsoft.com/en-us/credentials/applied-skills/", lang: "EN", grupo: "oficial" },
     { id: "ms-events", name: "Microsoft · Eventos y Cloud Skills Challenges", url: "https://learn.microsoft.com/en-us/training/events/", lang: "EN", grupo: "oficial" },
-    { id: "ibm-uopeople", name: "IBM SkillsBuild · Certificados con UoPeople", url: "https://skillsbuild.org/college-students/college-certificates", lang: "EN", grupo: "oficial" },
+    { id: "ibm-uopeople", name: "IBM + UoPeople · Certificados SkillsBuild gratis (Apply Now)", url: "https://www.uopeople.edu/programs/certificate/", lang: "EN", grupo: "oficial" },
     { id: "oracle-free", name: "Oracle · Free training & certification", url: "https://mylearn.oracle.com/ou/story/163512", lang: "EN", grupo: "oficial" },
     { id: "edx-aid", name: "edX · Asistencia financiera", url: "https://courses.edx.org/financial-assistance/", lang: "EN", grupo: "oficial" },
     { id: "github-pack", name: "GitHub · Student Developer Pack", url: "https://education.github.com/pack", lang: "EN", grupo: "oficial" },
@@ -65,7 +65,7 @@
     /* --- badges / credenciales digitales (suman en el CV y LinkedIn) --- */
     { id: "aws-badges", name: "AWS · Skill Builder Digital Badges", url: "https://aws.amazon.com/training/badges/", lang: "EN", grupo: "badges" },
     { id: "gcp-skillsboost", name: "Google Cloud Skills Boost · skill badges", url: "https://www.cloudskillsboost.google/", lang: "EN", grupo: "badges" },
-    { id: "ibm-skillsbuild", name: "IBM SkillsBuild · credenciales Credly", url: "https://skillsbuild.org/", lang: "EN", grupo: "badges" },
+    { id: "ibm-skillsbuild", name: "IBM SkillsBuild · credenciales Credly", url: "https://skillsbuild.org/learning-catalog", lang: "EN", grupo: "badges" },
     { id: "ibm-cognitive", name: "IBM Cognitive Class · certificados y badges", url: "https://cognitiveclass.ai/", lang: "EN", grupo: "badges" },
     { id: "cisco-skillsforall", name: "Cisco Skills for All · badges", url: "https://skillsforall.com/", lang: "ES/EN", grupo: "badges" },
     { id: "google-developers", name: "Google Developers · badges y rutas", url: "https://developers.google.com/learn", lang: "EN", grupo: "badges" },

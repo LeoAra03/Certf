@@ -84,12 +84,12 @@
    "t": "descuento",
    "disc": 50,
    "kind": "cert",
-   "cond": "50% dto (US$50) con AIF2CLOUD · 100% gratis con voucher de estudiante",
-   "url": "https://builder.aws.com/student-rewards",
+   "cond": "50% dto (US$50) con AIF2CLOUD: la página trae 'Get promo code' y el registro del examen · 100% gratis con voucher de estudiante",
+   "url": "https://www.pearsonvue.com/us/en/aws/aif2cloud.html",
    "lang": "Inglés",
    "verify": "Credly",
    "deadline": "aws-aif2cloud",
-   "note": "Certificación de IA fundacional, sin requisitos técnicos. Es la llave para que el CLF salga gratis."
+   "note": "Certificación de IA fundacional, sin requisitos técnicos. Es la llave para que el CLF salga gratis. Si eres estudiante, el voucher de US$100 está en builder.aws.com/student-rewards."
   },
   {
    "id": "ms-certweek",
@@ -116,11 +116,11 @@
    "t": "gratis",
    "disc": 100,
    "kind": "cert",
-   "cond": "100% gratis: formación + evaluación en laboratorio real",
-   "url": "https://learn.microsoft.com/en-us/credentials/applied-skills/",
+   "cond": "100% gratis: elige la credencial en el catálogo directo y rinde la evaluación en laboratorio real",
+   "url": "https://learn.microsoft.com/en-us/credentials/browse/?credential_types=applied%20skills",
    "lang": "Inglés",
    "verify": "Perfil Microsoft Learn + Credly",
-   "note": "Credencial verificable de Microsoft sin pagar examen. Demuestra ejecución, no teoría. No caduca."
+   "note": "Credencial verificable de Microsoft sin pagar examen. Demuestra ejecución, no teoría. No caduca. Entra con cuenta Microsoft gratis."
   },
   {
    "id": "g-cyber",
@@ -191,11 +191,11 @@
    "t": "gratis",
    "disc": 100,
    "kind": "cert",
-   "cond": "100% gratis: capacitación, examen y credencial + hasta 12 créditos universitarios ACE",
-   "url": "https://skillsbuild.org/college-students/college-certificates",
+   "cond": "100% gratis: postula directo (Apply Now) en la página oficial; 4 cursos, examen y credencial + hasta 12 créditos universitarios",
+   "url": "https://www.uopeople.edu/programs/certificate/ibm-skillsbuild/cybersecurity/",
    "lang": "Inglés",
    "verify": "Credly",
-   "note": "El certificado gratuito más fuerte disponible hoy: ~60-65 h, credencial IBM y créditos transferibles. Plazo 1 año, 80% para aprobar."
+   "note": "El certificado gratuito más fuerte disponible hoy: ~60-65 h, credencial IBM y créditos transferibles. Postulación: botón Apply Now (crea cuenta UoPeople y elige el major 'IBM SkillsBuild'); el curso se ingresa desde my.uopeople.edu. Crea Credly con el MISMO email de la postulación. Plazo 1 año, 80% para aprobar."
   },
   {
    "id": "ibm-cyber-coursera",
@@ -266,11 +266,11 @@
    "t": "gratis",
    "disc": 100,
    "kind": "cert",
-   "cond": "100% gratis: curso + evaluación + badge digital (Credly)",
-   "url": "https://training.fortinet.com/",
+   "cond": "100% gratis: entra directo al curso NSE 1 (cuenta gratis); NSE 2/3 y exámenes FCF/FCA a $0",
+   "url": "https://training.fortinet.com/local/staticpage/view.php?page=library_cybersecurity-and-cloud-fundamentals",
    "lang": "Inglés",
    "verify": "Fortinet Training Institute + Credly",
-   "note": "De las pocas certificaciones de seguridad con examen $0 real (no solo curso gratis). Pesa en empresas con firewall Fortinet; suma keywords de ciberseguridad en el ATS."
+   "note": "De las pocas certificaciones de seguridad con examen $0 real (no solo curso gratis). Pesa en empresas con firewall Fortinet; suma keywords de ciberseguridad en el ATS. En el mismo sitio: NSE 2 'Introduction to NGFW' y NSE 3 'FortiGate Operator'."
   },
   {
    "id": "aws-exam-benefit",
@@ -371,11 +371,11 @@
    "t": "gratis",
    "disc": 100,
    "kind": "cert",
-   "cond": "Oracle ofrece 'free training and certifications' en nivel Foundations (verificar en tu cuenta)",
+   "cond": "Catálogo oficial 'Free Training and Certifications': entra a cada learning path y dale Start (cuenta MyLearn gratis)",
    "url": "https://mylearn.oracle.com/ou/story/163512",
    "lang": "Inglés",
    "verify": "Oracle CertView + badge",
-   "note": "Muy valorado en empresas con stack Oracle. Revisa qué examen Foundations está efectivamente en $0 antes de empezar."
+   "note": "Muy valorado en empresas con stack Oracle. Los paths Foundations (OCI, OCI AI, Data) salen con etiqueta 'Certification' en el catálogo; confirma en tu cuenta que el examen está en $0 antes de empezar."
   },
   {
    "id": "cisco-junior-cyber",
@@ -401,11 +401,11 @@
    "t": "gratis",
    "disc": 100,
    "kind": "cert",
-   "cond": "100% gratis + hasta 8 créditos universitarios",
-   "url": "https://skillsbuild.org/college-students/college-certificates",
+   "cond": "100% gratis: postula directo (Apply Now); 3 cursos + hasta 8 créditos universitarios",
+   "url": "https://www.uopeople.edu/programs/certificate/ibm-skillsbuild/data-analytics/",
    "lang": "Inglés",
    "verify": "Credly",
-   "note": "Misma lógica que el de ciberseguridad, perfil analista de datos, sin costo y sin esperar aprobación de beca."
+   "note": "Misma lógica que el de ciberseguridad, perfil analista de datos, sin costo y sin esperar aprobación de beca. Postulación: botón Apply Now (cuenta UoPeople, major 'IBM SkillsBuild'); el curso se ingresa desde my.uopeople.edu."
   },
   {
    "id": "g-ux",
@@ -596,11 +596,11 @@
    "t": "gratis",
    "disc": 100,
    "kind": "badge",
-   "cond": "100% gratis con credencial digital Credly",
-   "url": "https://skillsbuild.org",
+   "cond": "100% gratis: entra directo al catálogo, crea cuenta gratis (Sign up) y enrégate",
+   "url": "https://skillsbuild.org/learning-catalog",
    "lang": "Inglés",
    "verify": "Credly",
-   "note": "4-20 h cada uno. Ideales para sumar marca IBM al perfil mientras esperas una beca."
+   "note": "4-20 h cada uno, con credencial digital Credly. Ideales para sumar marca IBM al perfil mientras esperas una beca. En el catálogo filtra por tema (AI, Cybersecurity, Data) e idioma (incluye Español)."
   },
   {
    "id": "digital-garage",
@@ -641,11 +641,11 @@
    "t": "gratis",
    "disc": 100,
    "kind": "cert",
-   "cond": "100% gratis en Chile: +18 años, RUN y ClaveÚnica",
+   "cond": "100% gratis en Chile: postula en el Buscador de Cursos de SENCE (eligemejor.sence.cl) con ClaveÚnica; +18 años, RUN",
    "url": "https://sence.gob.cl/personas/noticias/sence-y-microsoft-abren-tres-nuevos-cursos-gratuitos-para-ampliar-competencias-digitales",
    "lang": "Español",
    "verify": "Certificado SENCE / Microsoft Learn",
-   "note": "Contenido oficial de Microsoft (Azure, Power BI, Copilot, C#) gratis y en español para residentes en Chile. Certificado estatal + marca Microsoft: buena combinación para el CV local."
+   "note": "Contenido oficial de Microsoft (Azure, Power BI, Copilot, C#) gratis y en español para residentes en Chile. Certificado estatal + marca Microsoft: buena combinación para el CV local. El enlace es la noticia oficial; la postulación se hace en el buscador de cursos con ClaveÚnica."
   },
   {
    "id": "freecodecamp",
