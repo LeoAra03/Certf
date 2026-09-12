@@ -26,7 +26,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Rastrear (46 fuentes: oficiales, badges, español y comunidades)
+      - name: "Rastrear 46 fuentes (oficiales, badges, español y comunidades)"
         run: python3 tools/crawler.py --report data/last-report.md
 
       - name: Validar datos y pruebas
