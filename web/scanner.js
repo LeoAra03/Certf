@@ -759,8 +759,15 @@
     return out;
   }
 
+  /* ¿Estamos dentro de la APK? Ahí el puente nativo descarga sin CORS. */
+  function esApp() {
+    return !!(typeof window !== "undefined" && window.CertfNative &&
+      typeof window.CertfNative.fetchUrl === "function");
+  }
+
   window.CertfScanner = {
     SOURCES: SOURCES,
+    esApp: esApp,
     QUERIES: QUERIES,
     scan: scan,
     scanURL: scanURL,

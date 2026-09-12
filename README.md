@@ -77,7 +77,7 @@ cd android && gradle :app:assembleDebug
 ## Pruebas
 
 ```bash
-node tools/smoke_test.js             # 32 verificaciones: catálogo, descuentos, badges, alertas, guías, novedades
+node tools/smoke_test.js             # 33 verificaciones: catálogo, descuentos, badges, alertas, guías, novedades
 node tools/scanner_test.js           # 46 verificaciones del buscador en vivo, sin red (fixtures + puente nativo simulado)
 python3 tools/build_data.py          # valida data.js y genera data.json
 python3 tools/crawler.py --selftest  # 41 pruebas del rastreador, sin red

@@ -155,6 +155,10 @@ check("Novedades del robot renderizadas con su %", nov && nov.items.length > 0
   "novedades: " + (nov ? nov.items.length : "?"));
 check("La lista en vivo parte vacía (hasta que busques)", novedades.length === 0 &&
   !(els["#novedades-vacio"] || { classList: { contains: () => true } }).classList.contains("hidden"));
+
+check("En el navegador avisa por qué alguna página puede no responder",
+  !(els["#aviso-cors"] || { classList: { contains: () => true } }).classList.contains("hidden"),
+  "el aviso debe verse fuera de la APK");
 check("Estado del rastreador informado", ((els["#nov-estado"] || {}).innerHTML || "").includes("Última revisión automática"),
   (els["#nov-estado"] || {}).innerHTML);
 
