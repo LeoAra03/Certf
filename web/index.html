@@ -21,18 +21,19 @@
     </div>
   </div>
   <div class="topbar-actions">
+    <button id="btn-buscar" class="btn btn-buscar" title="Revisa ahora mismo las páginas oficiales y busca ofertas, códigos y badges">🔎 Buscar páginas</button>
     <button id="btn-install" class="btn btn-ghost hidden">Instalar</button>
     <button id="btn-notify" class="btn btn-ghost">🔔 Alertas</button>
   </div>
 </header>
 
-<p class="updated">Datos verificados al <strong id="updated"></strong> · <span id="counts"></span><span id="last-check"></span></p>
+<p class="updated">Datos verificados al <strong id="updated"></strong> · <span id="counts"></span><span id="counts-desc"></span><span id="last-check"></span></p>
 
 <nav class="tabs" role="tablist">
   <button class="tab active" data-view="catalogo">Catálogo</button>
   <button class="tab" data-view="mias">Mis certificaciones <span id="badge-mias" class="badge hidden">0</span></button>
   <button class="tab" data-view="alertas">Alertas <span id="badge-alertas" class="badge hidden">0</span></button>
-  <button class="tab" data-view="novedades">🛰️ Novedades <span id="badge-nov" class="badge hidden">0</span></button>
+  <button class="tab" data-view="novedades">🔎 Buscar páginas <span id="badge-nov" class="badge hidden">0</span></button>
   <button class="tab" data-view="guias">Guías</button>
 </nav>
 
@@ -40,6 +41,13 @@
 <main id="view-catalogo" class="view">
   <div class="controls">
     <input id="q" type="search" placeholder="Buscar curso, institución o tecnología…" autocomplete="off" />
+    <div class="chips" id="filtro-desc">
+      <button class="chip active" data-desc="all">💲 Todo</button>
+      <button class="chip" data-desc="100">🟢 100% gratis</button>
+      <button class="chip" data-desc="50">🏷️ 50% dto</button>
+      <button class="chip" data-desc="otro">💰 Otro descuento</button>
+      <button class="chip" data-desc="beca">🎓 Beca / ayuda</button>
+    </div>
     <div class="chips" id="filtro-tipo">
       <button class="chip active" data-tipo="all">Todas</button>
       <button class="chip" data-tipo="gratis">🟢 Todo gratis</button>
@@ -57,9 +65,20 @@
       <button class="chip" data-cat="Gestión">Gestión</button>
       <button class="chip" data-cat="Marketing">Marketing</button>
     </div>
+    <div class="chips" id="filtro-formato">
+      <button class="chip active" data-formato="all">📜 Certificaciones y badges</button>
+      <button class="chip" data-formato="cert">Solo certificaciones</button>
+      <button class="chip" data-formato="badge">🎖️ Solo badges / insignias</button>
+    </div>
+    <div class="chips" id="filtro-lang">
+      <button class="chip active" data-lang="all">🌐 Cualquier idioma</button>
+      <button class="chip" data-lang="es">🇪🇸 En español</button>
+      <button class="chip" data-lang="en">🇬🇧 En inglés</button>
+    </div>
     <label class="sort">Ordenar
       <select id="sort">
         <option value="peso">Peso en el CV (mayor primero)</option>
+        <option value="descuento">Descuento (100% primero)</option>
         <option value="nombre">Nombre (A-Z)</option>
         <option value="institucion">Institución</option>
         <option value="urgencia">Fecha límite más próxima</option>
@@ -99,15 +118,69 @@
   </div>
 </section>
 
-<!-- NOVEDADES (rastreador diario) -->
+<!-- BUSCAR PÁGINAS EN VIVO + NOVEDADES DEL RASTREADOR -->
 <section id="view-novedades" class="view hidden">
-  <div class="panel">
-    <h2>Lo que encontró el rastreador</h2>
-    <p class="muted">Todos los días un robot revisa las páginas oficiales del catálogo (AWS, Microsoft, IBM, Oracle, edX, GitHub, Cisco, ISC2, Google, Helsinki, freeCodeCamp, Coursera) buscando vouchers, descuentos y cambios. Lo nuevo aparece aquí; confirma siempre en la fuente oficial antes de postular o pagar.</p>
-    <p class="meta" id="nov-estado"></p>
+
+  <div class="panel panel-buscar">
+    <h2>🔎 Buscar páginas y actualizar</h2>
+    <p class="muted">Aprieta el botón cuando quieras —<b>no hay que esperar al rastreo diario</b>. Se revisan en vivo las páginas oficiales de AWS, Microsoft, Google, IBM, Oracle, Cisco, GitHub, ISC2, Fortinet, Anthropic, edX, Coursera, Harvard/Helsinki, más las de <b>badges</b> y las <b>en español</b>. Cada hallazgo te dice al tiro si es <b>100% gratis</b>, <b>50% de descuento</b>, otro porcentaje o beca, y si aparece un <b>código</b> (incluso de un solo uso) lo muestra listo para copiar.</p>
+    <div class="row">
+      <button id="btn-scan" class="btn btn-buscar btn-big">🔄 Buscar páginas y actualizar ahora</button>
+      <button id="btn-discover" class="btn btn-ghost">🌐 Descubrir páginas nuevas</button>
+      <button id="btn-stop" class="btn btn-danger hidden">Detener</button>
+    </div>
+    <p class="meta" id="scan-transporte"></p>
+
+    <div id="scan-progreso" class="progreso hidden">
+      <div class="barra"><div id="scan-barra" class="barra-fill"></div></div>
+      <p class="meta" id="scan-estado">Preparando…</p>
+    </div>
+
+    <div id="scan-resumen" class="resumen-scan hidden"></div>
+
+    <label class="check"><input type="checkbox" id="chk-comunidad" /> También buscar códigos en comunidades (Reddit, Hacker News) y agregadores <span class="muted">— más lento, pero es donde se publican los códigos de un solo uso</span></label>
+    <label class="check"><input type="checkbox" id="chk-auto" /> Buscar automáticamente al abrir la app si la última búsqueda tiene más de 6 h</label>
+
+    <div class="chips" id="filtro-nov">
+      <button class="chip active" data-nov="all">Todo lo encontrado</button>
+      <button class="chip" data-nov="nuevos">✨ Solo nuevos</button>
+      <button class="chip" data-nov="100">🟢 100% gratis</button>
+      <button class="chip" data-nov="50">🏷️ 50% dto</button>
+      <button class="chip" data-nov="codigo">🔑 Códigos</button>
+      <button class="chip" data-nov="unico">1️⃣ Único uso</button>
+      <button class="chip" data-nov="badge">🎖️ Badges</button>
+      <button class="chip" data-nov="es">🇪🇸 Español</button>
+      <button class="chip" data-nov="en">🇬🇧 Inglés</button>
+    </div>
+
+    <details id="scan-fuentes" class="fuentes">
+      <summary>Estado de cada página revisada (<span id="scan-fuentes-n">0</span>)</summary>
+      <div id="lista-fuentes" class="lista-fuentes"></div>
+    </details>
+
+    <div class="row custom-row">
+      <input id="custom-url" type="text" placeholder="Pega aquí cualquier página (https://…) para vigilarla" autocomplete="off" />
+      <button id="btn-custom-add" class="btn btn-ghost btn-small">Vigilar</button>
+      <button id="btn-custom-scan" class="btn btn-ghost btn-small">Revisar ahora</button>
+    </div>
+    <div id="lista-custom" class="lista-custom"></div>
   </div>
+
+  <div id="panel-descubiertas" class="panel hidden">
+    <h2>🌐 Páginas descubiertas ahora</h2>
+    <p class="muted small">Resultados de buscar en internet oportunidades nuevas. Revisa una al tiro o agrégala a tu lista de vigilancia.</p>
+    <div id="lista-descubiertas" class="lista"></div>
+  </div>
+
   <div id="lista-novedades" class="lista"></div>
-  <p id="novedades-vacio" class="empty hidden">Sin novedades por ahora. La revisión corre a diario; aquí verás cualquier oferta nueva apenas aparezca en internet.</p>
+  <p id="novedades-vacio" class="empty hidden">Todavía no buscaste. Aprieta <strong>“🔄 Buscar páginas y actualizar ahora”</strong> y en unos segundos verás aquí las ofertas vigentes, con su porcentaje de descuento y cualquier código publicado.</p>
+
+  <div class="panel">
+    <h2>🛰️ Rastreador automático (diario)</h2>
+    <p class="muted">Además del botón, un robot revisa solo todos los días las fuentes oficiales y publica lo nuevo aquí abajo. El botón de arriba no depende de él: funciona cuando tú lo aprietes.</p>
+    <p class="meta" id="nov-estado"></p>
+    <div id="lista-novedades-auto" class="lista"></div>
+  </div>
 </section>
 
 <!-- GUÍAS -->
@@ -128,6 +201,7 @@
 
 <script src="data.js"></script>
 <script src="novedades.js"></script>
+<script src="scanner.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

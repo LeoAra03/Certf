@@ -1,0 +1,31 @@
+{
+  "kind": "Listing",
+  "data": {
+    "children": [
+      {
+        "kind": "t3",
+        "data": {
+          "title": "Free 100% voucher code for Security+ (single use)",
+          "selftext": "Hey, I have a unique single-use code COMPSEC-4417 that gives 100% off the exam. It is non-transferable and expires soon, so grab it fast.",
+          "url": "https://example.com/voucher-security-plus"
+        }
+      },
+      {
+        "kind": "t3",
+        "data": {
+          "title": "50% off Azure fundamentals exam this month",
+          "selftext": "Use code AZ50PCT at checkout, valid until the end of October 2026 for the fundamentals level exam.",
+          "url": "https://example.com/azure-50-off"
+        }
+      },
+      {
+        "kind": "t3",
+        "data": {
+          "title": "Anyone else studying for the associate exam?",
+          "selftext": "Looking for study groups and practice questions, nothing about discounts here at all.",
+          "url": "https://example.com/study-group"
+        }
+      }
+    ]
+  }
+}

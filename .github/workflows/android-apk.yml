@@ -13,6 +13,9 @@ on:
       - "!web/novedades.js"
   workflow_dispatch:
 
+permissions:
+  contents: write   # para publicar la APK en dist/ y poder descargarla sin artefactos
+
 jobs:
   build:
     name: Compilar APK (debug)
@@ -33,6 +36,9 @@ jobs:
       - name: Prueba de humo de la PWA
         run: node tools/smoke_test.js
 
+      - name: Prueba del buscador en vivo (botón "Buscar páginas")
+        run: node tools/scanner_test.js
+
       - name: JDK 17
         uses: actions/setup-java@v4
         with:
@@ -52,12 +58,41 @@ jobs:
         working-directory: android
         run: gradle :app:assembleDebug --no-daemon --stacktrace
 
-      - name: Subir APK
+      - name: Subir APK (artefacto)
         uses: actions/upload-artifact@v4
         with:
           name: certf-debug-apk
           path: android/app/build/outputs/apk/debug/*.apk
           retention-days: 90
+
+      # Además del artefacto, se deja la APK dentro del repo (dist/Certf-debug.apk):
+      # así se puede descargar con git/raw sin depender de la retención de Actions.
+      - name: Publicar la APK en el repositorio
+        run: |
+          set -e
+          APK=$(ls android/app/build/outputs/apk/debug/*.apk | head -1)
+          mkdir -p dist
+          cp "$APK" dist/Certf-debug.apk
+          SHA=$(sha256sum dist/Certf-debug.apk | cut -d' ' -f1)
+          SIZE=$(du -h dist/Certf-debug.apk | cut -f1)
+          BR="${GITHUB_REF_NAME}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f dist/Certf-debug.apk
+          if git diff --cached --quiet; then
+            echo "La APK no cambió desde la última compilación."
+          else
+            git commit -m "📦 APK debug $SIZE (sha256 ${SHA:0:12}) [skip ci]"
+            git fetch origin "$BR"
+            git rebase FETCH_HEAD || git rebase --abort || true
+            git push origin "HEAD:refs/heads/$BR"
+          fi
+          {
+            echo "### 📦 APK lista en el repositorio"
+            echo "- Ruta: \`dist/Certf-debug.apk\` ($SIZE) en la rama \`$BR\`"
+            echo "- SHA-256: \`$SHA\`"
+            echo "- También está como artefacto \`certf-debug-apk\` de esta ejecución."
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Resumen
         run: |

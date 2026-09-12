@@ -23,8 +23,9 @@ import android.widget.FrameLayout
 class MainActivity : Activity() {
 
     private var web: WebView? = null
+    private var nativeFetch: NativeFetch? = null
 
-    @SuppressLint("SetJavaScriptEnabled")
+    @SuppressLint("SetJavaScriptEnabled", "SetAllowUniversalAccessFromFileURLs", "JavascriptInterface")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -41,6 +42,10 @@ class MainActivity : Activity() {
             settings.allowContentAccess = true
             settings.cacheMode = WebSettings.LOAD_DEFAULT
             settings.mediaPlaybackRequiresUserGesture = false
+            // El botón "🔎 Buscar páginas" vive en file:// (assets): sin esto el WebView
+            // aplica CORS y no deja leer las respuestas de las páginas oficiales.
+            // Además se usa el puente nativo CertfNative, que descarga sin CORS.
+            settings.allowUniversalAccessFromFileURLs = true
 
             webViewClient = object : WebViewClient() {
                 override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
@@ -55,6 +60,11 @@ class MainActivity : Activity() {
                 }
             }
             webChromeClient = WebChromeClient()
+            // Puente nativo para la búsqueda en vivo de páginas (sin CORS).
+            // Debe registrarse ANTES de loadUrl para que window.CertfNative exista.
+            val puente = NativeFetch(this) // here `this` es el WebView
+            nativeFetch = puente
+            addJavascriptInterface(puente, "CertfNative")
             loadUrl("file:///android_asset/www/index.html")
         }
         root.addView(view)
@@ -64,6 +74,17 @@ class MainActivity : Activity() {
         Alerts.ensureChannel(this)
         Alerts.scheduleDaily(this)
         requestNotificationPermissionIfNeeded()
+    }
+
+    override fun onDestroy() {
+        try {
+            web?.removeJavascriptInterface("CertfNative")
+            nativeFetch?.cerrar()
+        } catch (_: Exception) {
+        }
+        web?.destroy()
+        web = null
+        super.onDestroy()
     }
 
     override fun onBackPressed() {

@@ -18,3 +18,7 @@ __pycache__/
 # Sistema
 .DS_Store
 Thumbs.db
+
+# La APK la publica el workflow en dist/Certf-debug.apk con `git add -f`
+# (se versiona a propósito para poder descargarla sin depender de los artefactos).
+dist/

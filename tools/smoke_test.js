@@ -63,7 +63,7 @@ const sandbox = {
   setTimeout: () => 0,
   Notification: undefined
 };
-sandbox.window = Object.assign(sandbox.window, { document });
+sandbox.window = Object.assign(sandbox.window, { document, localStorage: sandbox.localStorage, navigator: sandbox.navigator });
 sandbox.globalThis = sandbox;
 
 const ctx = vm.createContext(sandbox);
@@ -71,6 +71,9 @@ vm.runInContext(read("web/data.js"), ctx, { filename: "data.js" });
 let novCargado = true;
 try { vm.runInContext(read("web/novedades.js"), ctx, { filename: "novedades.js" }); }
 catch (e) { novCargado = false; }
+let scannerCargado = true;
+try { vm.runInContext(read("web/scanner.js"), ctx, { filename: "scanner.js" }); }
+catch (e) { scannerCargado = false; console.error(e); }
 vm.runInContext(read("web/app.js"), ctx, { filename: "app.js" });
 
 // Disparamos DOMContentLoaded (el listener quedó guardado en document._ready)
@@ -100,8 +103,39 @@ check("Alerta urgente detectada", alertas.includes("AIF2CLOUD"));
 check("Conteo en cabecera actualizado", (els["#counts"] || {}).textContent === data.certs.length + " de " + data.certs.length + " credenciales",
   (els["#counts"] || {}).textContent);
 check("Fecha de actualización visible", (els["#updated"] || {}).textContent === data.updated, (els["#updated"] || {}).textContent);
+check("Resumen de descuentos en la cabecera",
+  ((els["#counts-desc"] || {}).textContent || "").includes("gratis al 100%") &&
+  ((els["#counts-desc"] || {}).textContent || "").includes("becas hasta 100%") && ((els["#counts-desc"] || {}).textContent || "").includes("badges"),
+  (els["#counts-desc"] || {}).textContent);
 check("Guías renderizadas", ((els["#guias-lista"] || {}).innerHTML || "").includes("Financial aid"));
 check("Descartes renderizados", ((els["#descartes"] || {}).innerHTML || "").includes("ISC2"));
+
+/* ---------- descuento a la vista + badges + buscador en vivo ---------- */
+const html = read("web/index.html");
+check("Dice al tiro el 100% gratis en el catálogo", lista.includes("100% GRATIS"), "revisa web/data.js (campo disc)");
+check("Dice al tiro el 50% de descuento en el catálogo", lista.includes("50% DTO"));
+check("Distingue certificaciones de badges", lista.includes("🎖️ Badge") && lista.includes("📜 Certificación"));
+check("Botón 'Buscar páginas' en la cabecera", html.includes('id="btn-buscar"') && html.includes("Buscar páginas"));
+check("Botón 'Buscar páginas y actualizar ahora'", html.includes('id="btn-scan"') && html.includes("Buscar páginas y actualizar ahora"));
+check("Filtros de descuento e idioma", html.includes('id="filtro-desc"') && html.includes('id="filtro-lang"'));
+check("scanner.js cargado y con API", scannerCargado && sandbox.window.CertfScanner &&
+  typeof sandbox.window.CertfScanner.scan === "function" && typeof sandbox.window.CertfScanner.discover === "function");
+check("Fuentes en vivo del buscador", sandbox.window.CertfScanner && sandbox.window.CertfScanner.SOURCES.length >= 30,
+  sandbox.window.CertfScanner ? sandbox.window.CertfScanner.SOURCES.length : 0);
+check("Fuentes en español y de badges", sandbox.window.CertfScanner &&
+  sandbox.window.CertfScanner.SOURCES.some((s) => s.grupo === "es") &&
+  sandbox.window.CertfScanner.SOURCES.some((s) => s.grupo === "badges") &&
+  sandbox.window.CertfScanner.SOURCES.some((s) => s.grupo === "comunidad"));
+/* ningún selector de app.js puede quedar sin elemento en index.html (crash seguro) */
+const idsHtml = new Set([...html.matchAll(/id="([^"]+)"/g)].map((m) => m[1]));
+const idsUsados = new Set([...read("web/app.js").matchAll(/\$\("#([A-Za-z0-9_-]+)"\)/g)].map((m) => m[1]));
+const faltan = [...idsUsados].filter((i) => !idsHtml.has(i));
+check("Todos los elementos que usa app.js existen", faltan.length === 0, "faltan: " + faltan.join(", "));
+check("Todos los scripts están en el HTML", ["data.js", "novedades.js", "scanner.js", "app.js"]
+  .every((f) => html.includes('src="' + f + '"')));
+
+check("scanner.js va en el service worker y en la APK",
+  read("web/sw.js").includes("scanner.js") && read("android/app/build.gradle").includes("scanner.js"));
 check("Estado de notificaciones informado", (((els["#estado-notif"] || {}).textContent) || "").length > 0,
   (els["#estado-notif"] || {}).textContent);
 
@@ -110,12 +144,17 @@ const nov = sandbox.window.__CERTF_NOVEDADES__;
 const novedades = els["#lista-novedades"] ? els["#lista-novedades"].innerHTML : "";
 check("Datos de novedades cargados", novCargado && nov && Array.isArray(nov.items),
   nov && nov.items ? nov.items.length + " hallazgos" : "novedades.js ausente o inválido");
-check("Sello de última revisión visible", ((els["#last-check"] || {}).textContent || "").includes("revisión:"),
+check("Sello de tu última búsqueda visible", ((els["#last-check"] || {}).textContent || "").includes("tu última búsqueda:"),
   (els["#last-check"] || {}).textContent);
-check("Lista de novedades renderizada", nov && nov.items.length > 0
-  ? novedades.includes("card nov") && novedades.includes("50% off")
-  : novedades.length === 0,
+check("Sello del rastreador automático visible", ((els["#last-check"] || {}).textContent || "").includes("robot:"),
+  (els["#last-check"] || {}).textContent);
+const auto = els["#lista-novedades-auto"] ? els["#lista-novedades-auto"].innerHTML : "";
+check("Novedades del robot renderizadas con su %", nov && nov.items.length > 0
+  ? auto.includes("card nov") && auto.includes("50% off") && auto.includes("50% DESCUENTO")
+  : auto.length === 0,
   "novedades: " + (nov ? nov.items.length : "?"));
+check("La lista en vivo parte vacía (hasta que busques)", novedades.length === 0 &&
+  !(els["#novedades-vacio"] || { classList: { contains: () => true } }).classList.contains("hidden"));
 check("Estado del rastreador informado", ((els["#nov-estado"] || {}).innerHTML || "").includes("Última revisión automática"),
   (els["#nov-estado"] || {}).innerHTML);
 
