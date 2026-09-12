@@ -84,7 +84,11 @@ python3 tools/crawler.py --selftest  # 41 pruebas del rastreador, sin red
 python3 tools/crawler.py --offline tools/fixtures   # corrida completa con HTML local
 ```
 
-El workflow de la APK ejecuta las tres primeras antes de compilar; el del rastreador ejecuta el crawler + ambas.
+**En cada push corre `.github/workflows/tests.yml`** (14 s, sin red): valida que los cuatro
+workflows sean YAML correcto, que `data.js` y `data.json` estén sincronizados, y ejecuta las
+cuatro pruebas anteriores más una corrida completa del rastreador con fixtures. Nada llega a
+la app si algo falla ahí. El workflow de la APK repite las pruebas antes de compilar y el del
+rastreador las repite antes de publicar.
 
 ### Qué cubre `scanner_test.js`
 
