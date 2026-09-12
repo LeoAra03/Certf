@@ -251,7 +251,7 @@
    "t": "descuento",
    "disc": 90,
    "kind": "cert",
-   "cond": "Asistencia financiera 80–90% (US$1.350 → ≈US$150-300)",
+   "cond": "Asistencia financiera 80–90% (US$1.350 a ≈US$150-300)",
    "url": "https://www.edx.org/micromasters/mitx-statistics-and-data-science",
    "lang": "Inglés",
    "verify": "Certificado edX / MITx",
@@ -281,11 +281,11 @@
    "t": "descuento",
    "disc": 50,
    "kind": "cert",
-   "cond": "Aprueba cualquier examen AWS → 50% dto en el siguiente (vigente 12 meses)",
+   "cond": "Aprueba cualquier examen AWS: 50% dto en el siguiente (vigente 12 meses)",
    "url": "https://aws.amazon.com/certification/",
    "lang": "Inglés",
    "verify": "Cuenta AWS Certification",
-   "note": "Beneficio permanente, no una promoción: encadena CLF → SAA → Developer y baja de US$400 a ≈US$250. El voucher llega por correo a los pocos días de aprobar."
+   "note": "Beneficio permanente, no una promoción: encadena CLF a SAA a Developer y baja de US$400 a ≈US$250. El voucher llega por correo a los pocos días de aprobar."
   },
   {
    "id": "g-pm",
@@ -330,7 +330,7 @@
    "url": "https://www.coursera.org/professional-certificates/ibm-data-analyst",
    "lang": "Inglés",
    "verify": "Certificado Coursera",
-   "note": "Excel, SQL, Python, Cognos y Tableau. Muy orientado a herramientas → buenas keywords para ATS."
+   "note": "Excel, SQL, Python, Cognos y Tableau. Muy orientado a herramientas: buenas keywords para ATS."
   },
   {
    "id": "meta-fe",
@@ -768,13 +768,327 @@
    "note": "Las certificaciones Salesforce cuestan US$75+; la gratuidad de AI terminó el 31-dic-2025."
   }
  ],
+ "rutas": [
+  {
+   "id": "cloud",
+   "area": "Cloud",
+   "papel": "Soporte / Cloud junior",
+   "fases": [
+    {
+     "n": 1,
+     "titulo": "Fundamentos a costo cero",
+     "plazo": "4-8 semanas",
+     "objetivo": "Vocabulario, primeros labs y badges verificables que llenan tu perfil mientras no tienes experiencia.",
+     "ids": [
+      "ms-applied",
+      "gcp-skillsboost",
+      "aws-badges",
+      "cisco-netacad"
+     ]
+    },
+    {
+     "n": 2,
+     "titulo": "Primera certificación verificable",
+     "plazo": "2-4 meses",
+     "objetivo": "El primer examen que el empleador puede verificar. La AI Practitioner es la llave: con ella el Cloud Practitioner te sale gratis.",
+     "ids": [
+      "aws-aif",
+      "aws-clf",
+      "oracle-foundations",
+      "g-it"
+     ]
+    },
+    {
+     "n": 3,
+     "titulo": "Encadena descuentos y credenciales",
+     "plazo": "2-4 meses",
+     "objetivo": "50% en el siguiente examen, badges Cisco y competencias de empleabilidad en español.",
+     "ids": [
+      "aws-exam-benefit",
+      "cisco-skillsforall",
+      "santander-open"
+     ]
+    },
+    {
+     "n": 4,
+     "titulo": "Examen de rol con voucher 100%",
+     "plazo": "cuando haya evento",
+     "objetivo": "Examen de rol (AZ-305, SC-500, etc.) a costo cero en eventos oficiales. Vigila las fechas abajo.",
+     "ids": [
+      "ms-certweek",
+      "aws-exam-benefit"
+     ],
+     "fechas": [
+      "ms-ignite",
+      "reinvent"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "seguridad",
+   "area": "Seguridad",
+   "papel": "Analista de seguridad junior",
+   "fases": [
+    {
+     "n": 1,
+     "titulo": "Fundamentos de ciberseguridad",
+     "plazo": "4-8 semanas",
+     "objetivo": "Ruta oficial Cisco con 7 labs y la única certificación de seguridad con examen a US$0 real (Fortinet FCF).",
+     "ids": [
+      "cisco-junior-cyber",
+      "fortinet-fcf",
+      "ibm-cognitive"
+     ]
+    },
+    {
+     "n": 2,
+     "titulo": "Certificación con marca (beca)",
+     "plazo": "3-5 meses",
+     "objetivo": "Google Cybersecurity está alineado con CompTIA Security+; IBM prepara el examen con herramientas reales (SIEM, pentesting).",
+     "ids": [
+      "g-cyber",
+      "ibm-cyber-coursera",
+      "cisco-skillsforall"
+     ]
+    },
+    {
+     "n": 3,
+     "titulo": "Certificación 100% gratis + créditos",
+     "plazo": "4-8 meses",
+     "objetivo": "IBM via UoPeople: examen y credencial gratis, más hasta 12 créditos universitarios transferibles.",
+     "ids": [
+      "ibm-cyber-uopeople",
+      "g-it"
+     ]
+    },
+    {
+     "n": 4,
+     "titulo": "Examen de rol con voucher 100%",
+     "plazo": "cuando haya evento",
+     "objetivo": "SC-500 u otro examen de seguridad Microsoft gratis en Certification Week / Ignite. Vigila las fechas abajo.",
+     "ids": [
+      "ms-certweek",
+      "fortinet-fcf"
+     ],
+     "fechas": [
+      "ms-ignite"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ia",
+   "area": "IA",
+   "papel": "Analista junior de IA / automatizaciones",
+   "fases": [
+    {
+     "n": 1,
+     "titulo": "Alfabetización en IA",
+     "plazo": "3-6 semanas",
+     "objetivo": "Certificado universitario europeo (2 ECTS), cursos oficiales de Anthropic con link de verificación único y credenciales IBM gratis.",
+     "ids": [
+      "helsinki-ai",
+      "anthropic-academy",
+      "ibm-cognitive"
+     ]
+    },
+    {
+     "n": 2,
+     "titulo": "Certificado profesional de IA (beca)",
+     "plazo": "3-5 meses",
+     "objetivo": "El programa de IA de Google (nuevo 2026), contenido oficial de Microsoft gratis en Chile, o la base clásica de Machine Learning de Stanford.",
+     "ids": [
+      "g-ai",
+      "sence-microsoft",
+      "stanford-ml"
+     ]
+    },
+    {
+     "n": 3,
+     "titulo": "Certificación de proveedor de IA",
+     "plazo": "2-3 meses",
+     "objetivo": "AWS AI Practitioner al 50% (y con ella el Cloud Practitioner gratis) + credenciales cortas IBM para sumar marca.",
+     "ids": [
+      "aws-aif",
+      "ibm-short"
+     ]
+    },
+    {
+     "n": 4,
+     "titulo": "Examen de rol con voucher 100%",
+     "plazo": "cuando haya evento",
+     "objetivo": "AI-200 u otro examen de rol Microsoft gratis en eventos, encadenando el 50% del Exam Pass Benefit de AWS.",
+     "ids": [
+      "ms-certweek",
+      "aws-exam-benefit"
+     ],
+     "fechas": [
+      "ms-ignite"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "datos",
+   "area": "Datos",
+   "papel": "Analista de datos junior",
+   "fases": [
+    {
+     "n": 1,
+     "titulo": "Fundamentos de datos",
+     "plazo": "4-8 semanas",
+     "objetivo": "Micro-cursos Kaggle, learning paths IBM y Python con laboratorio en Cisco, todos gratis y con badge.",
+     "ids": [
+      "kaggle",
+      "ibm-cognitive",
+      "cisco-netacad"
+     ]
+    },
+    {
+     "n": 2,
+     "titulo": "Certificado de analista (beca)",
+     "plazo": "3-5 meses",
+     "objetivo": "Google Data Analytics (la más reconocida por reclutadores no técnicos) o IBM Data Analyst con SQL y Python.",
+     "ids": [
+      "g-data",
+      "ibm-da"
+     ]
+    },
+    {
+     "n": 3,
+     "titulo": "Profundiza con capstone y portafolio",
+     "plazo": "4-6 meses",
+     "objetivo": "IBM Data Science con 12 cursos y portafolio, o peso académico real con MicroMasters de MIT (asistencia 80-90%).",
+     "ids": [
+      "ibm-ds",
+      "mit-micromasters",
+      "edx-verified"
+     ]
+    },
+    {
+     "n": 4,
+     "titulo": "Certificación 100% gratis + créditos",
+     "plazo": "4-8 meses",
+     "objetivo": "IBM via UoPeople (gratis + hasta 8 créditos universitarios) o Meta Database Engineer con proyectos.",
+     "ids": [
+      "ibm-da-uopeople",
+      "meta-db"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "desarrollo",
+   "area": "Desarrollo",
+   "papel": "Desarrollador web junior",
+   "fases": [
+    {
+     "n": 1,
+     "titulo": "Primer código con portafolio",
+     "plazo": "3-6 meses",
+     "objetivo": "freeCodeCamp (proyectos públicos), Python con laboratorio en Cisco y credenciales cortas IBM, todo gratis.",
+     "ids": [
+      "freecodecamp",
+      "cisco-netacad",
+      "ibm-short"
+     ]
+    },
+    {
+     "n": 2,
+     "titulo": "Base sólida de ingeniería",
+     "plazo": "4-8 meses",
+     "objetivo": "CS50 de Harvard (gratis completando los problem sets), Full Stack Open de Helsinki o Meta Front-End (beca) con portafolio final.",
+     "ids": [
+      "cs50",
+      "helsinki-fso",
+      "meta-fe"
+     ]
+    },
+    {
+     "n": 3,
+     "titulo": "Certificaciones de estudiante",
+     "plazo": "2-4 meses",
+     "objetivo": "Si eres estudiante: MongoDB gratis vía GitHub Student Pack y el voucher de GitHub Foundations (revisa la pestaña Buscar páginas: se agota).",
+     "ids": [
+      "mongodb",
+      "github-foundations"
+     ]
+    },
+    {
+     "n": 4,
+     "titulo": "Examen de rol con voucher 100%",
+     "plazo": "cuando haya evento",
+     "objetivo": "PL-400, GH-600 u otro examen de rol Microsoft gratis en eventos, más el 50% encadenado de AWS si vas por ese lado.",
+     "ids": [
+      "ms-certweek",
+      "aws-exam-benefit"
+     ],
+     "fechas": [
+      "ms-ignite",
+      "reinvent"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "marketing",
+   "area": "Marketing y gestión",
+   "papel": "Marketing digital / soporte de proyectos",
+   "fases": [
+    {
+     "n": 1,
+     "titulo": "Fundamentos de marketing digital",
+     "plazo": "4-8 semanas",
+     "objetivo": "HubSpot (los reclutadores lo reconocen por nombre), Fundamentals de Google en español y Skillshop (Ads, GA4, YouTube).",
+     "ids": [
+      "hubspot",
+      "digital-garage",
+      "skillshop"
+     ]
+    },
+    {
+     "n": 2,
+     "titulo": "Certificados profesionales (beca)",
+     "plazo": "3-5 meses",
+     "objetivo": "Google Digital Marketing & E-commerce, Google UX Design (terminas con portafolio en Figma) y cursos de empleabilidad de Santander.",
+     "ids": [
+      "g-mkt",
+      "g-ux",
+      "santander-open"
+     ]
+    },
+    {
+     "n": 3,
+     "titulo": "Gestión de proyectos",
+     "plazo": "3-5 meses",
+     "objetivo": "Google Project Management (alternativa creíble antes del CAPM), itinerarios Conecta Empleo y Capacítate, todos gratis en español.",
+     "ids": [
+      "g-pm",
+      "telefonica-conecta",
+      "capacitate-slim"
+     ]
+    },
+    {
+     "n": 4,
+     "titulo": "Badges y base técnica",
+     "plazo": "continuo",
+     "objetivo": "Trailhead suma badges Salesforce gratis, y Google IT Support (beca) te da la base de soporte más aceptada para primer empleo.",
+     "ids": [
+      "trailhead",
+      "g-it"
+     ]
+    }
+   ]
+  }
+ ],
  "tips": [
-  "Usa el botón 🔎 'Buscar páginas' cada vez que vayas a postular: revisa en vivo las páginas oficiales y te dice al tiro si la oferta es 100% gratis, 50% u otro descuento, y si hay un código publicado (incluso de un solo uso).",
+  "Usa el botón 'Buscar páginas' cada vez que vayas a postular: revisa en vivo las páginas oficiales y te dice al tiro si la oferta es 100% gratis, 50% u otro descuento, y si hay un código publicado (incluso de un solo uso).",
   "Coursera: aplica a Financial Aid en la página del CURSO individual (no la especialización), enlace 'Financial aid available' bajo el botón Enroll.",
   "Escribe los dos ensayos de 150+ palabras con tu situación real y un objetivo laboral concreto. No copies textos: Coursera detecta respuestas repetidas.",
   "Mientras esperas los ~15-16 días de la beca, entra en modo Audit y avanza con las clases. No pierdes progreso.",
   "AWS: verifica tu estado de estudiante en Builder Center (SheerID) para recibir 12 meses de Skill Builder Premium y el voucher de US$100 a los 21 badges.",
-  "AWS Exam Pass Benefit: cada examen aprobado te da 50% en el siguiente por 12 meses. Encadena CLF → SAA → Developer y ahorras ≈US$150.",
+  "AWS Exam Pass Benefit: cada examen aprobado te da 50% en el siguiente por 12 meses. Encadena CLF a SAA a Developer y ahorras ≈US$150.",
   "GitHub Student Pack: activa MongoDB (certificación gratis) y revisa el voucher de GitHub Foundations con el botón Buscar páginas.",
   "Badges sí suman si tienen URL verificable (Credly, Skills Boost, Cisco, IBM): agrégalos en LinkedIn en 'Licencias y certificaciones', no en 'Cursos'.",
   "En español y gratis: Cisco Skills for All, Google Garage Digital, HubSpot Academy, SENCE+Microsoft (Chile), Conecta Empleo y Santander Open Academy.",

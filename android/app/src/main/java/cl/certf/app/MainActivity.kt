@@ -42,7 +42,7 @@ class MainActivity : Activity() {
             settings.allowContentAccess = true
             settings.cacheMode = WebSettings.LOAD_DEFAULT
             settings.mediaPlaybackRequiresUserGesture = false
-            // El botón "🔎 Buscar páginas" vive en file:// (assets): sin esto el WebView
+            // El botón "Buscar páginas" vive en file:// (assets): sin esto el WebView
             // aplica CORS y no deja leer las respuestas de las páginas oficiales.
             // Además se usa el puente nativo CertfNative, que descarga sin CORS.
             settings.allowUniversalAccessFromFileURLs = true

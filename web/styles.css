@@ -218,3 +218,26 @@ footer{text-align:center;padding:0 16px}
   .fuente-det{display:none}
   .desc.grande{font-size:13px;padding:6px 9px}
 }
+
+/* ---------- categorización por secciones (resultados ordenados por urgencia) ---------- */
+.sec-h{margin:20px 2px 4px;font-size:15px;letter-spacing:.2px}
+.sec-h:first-child{margin-top:4px}
+.sec-n{color:var(--muted);font-weight:600;font-size:13px}
+.sec-note{margin:0 2px 10px;font-size:12px;color:var(--muted)}
+.pill-cat{background:rgba(79,140,255,.16);color:var(--acc);border-color:rgba(79,140,255,.45);text-transform:uppercase;letter-spacing:.4px}
+.verif{border-top:1px dashed var(--line);padding-top:7px;margin-top:2px}
+.kpi-scan.kbeca b{color:var(--stud)}
+
+/* ---------- ruta 0 a pro ---------- */
+.fase{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:14px}
+.fase h3{font-size:15.5px}
+.fase h3 .meta{font-size:12px;color:var(--muted);font-weight:500}
+.fase p.meta{margin:6px 0 0;font-size:12.5px}
+.fase-lista{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.fase-item{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:11px 12px}
+.fase-top{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.fase-top b{font-size:14.5px}
+.fase-top .desc{margin-left:auto}
+.fase-item > .meta{margin:7px 0 9px;font-size:12px}
+.fase-fechas{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:5px}
+.fase-fechas li{font-size:13.5px;color:var(--muted)}

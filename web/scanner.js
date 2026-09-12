@@ -1,4 +1,4 @@
-/* Certf — buscador EN VIVO de páginas (botón "🔎 Buscar páginas").
+/* Certf — buscador EN VIVO de páginas (botón "Buscar páginas").
    Sin dependencias: funciona en la PWA (GitHub Pages) y dentro del WebView
    de la APK (ahí usa el puente nativo CertfNative, que no tiene CORS).
 
@@ -366,7 +366,7 @@
   }
 
   /* ------------------------------------------------------------------ */
-  /* Transporte: puente nativo Android → fetch directo → proxies CORS    */
+  /* Transporte: puente nativo Android, luego fetch directo, luego proxies CORS  */
   /* ------------------------------------------------------------------ */
   var pendientes = {}, trozos = {}, seq = 0;
 

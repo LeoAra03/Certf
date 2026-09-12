@@ -168,17 +168,17 @@
     html += '<span class="peso" title="Peso estimado en el CV">CV ' + c.p + "/10</span></div>";
     if (dsc) {
       html += '<p class="desc-line"><span class="desc ' + claseDescuento(c) + '">' + esc(dsc) + "</span>" +
-        '<span class="tipo ' + ((c.kind === "badge") ? "t-badge" : "t-cert") + '">' + (c.kind === "badge" ? "🎖️ Badge" : "📜 Certificación") + "</span></p>";
+        '<span class="tipo ' + ((c.kind === "badge") ? "t-badge" : "t-cert") + '">' + (c.kind === "badge" ? "Badge" : "Certificación") + "</span></p>";
     }
     html += '<p class="cond"><span class="tipo t-' + esc(c.t) + '">' + esc(TIPO_LABEL[c.t] || c.t) + "</span>" + esc(c.cond) + "</p>";
     html += '<p class="note">' + esc(c.note) + "</p>";
     html += '<p class="meta">Idioma: <b>' + esc(c.lang) + "</b> · Área: <b>" + esc(c.c) + "</b> · Verificación: <b>" + esc(c.verify) + "</b></p>";
     if (dl) {
-      html += '<p class="meta">⏳ Fecha crítica: <b class="' + claseDias(dias) + '">' + esc(dl.title) + " — " + textoDias(dias) + "</b> (" + fmtFecha(dl.date) + ")</p>";
+      html += '<p class="meta">Fecha crítica: <b class="' + claseDias(dias) + '">' + esc(dl.title) + " — " + textoDias(dias) + "</b> (" + fmtFecha(dl.date) + ")</p>";
     }
     html += '<div class="row">';
     html += '<a class="btn" target="_blank" rel="noopener" href="' + esc(c.url) + '">Abrir enlace</a>';
-    html += '<button class="btn btn-ghost" data-act="seguir">' + (siguiendo ? "✓ Siguiendo" : "Seguir") + "</button>";
+    html += '<button class="btn btn-ghost" data-act="seguir">' + (siguiendo ? "Siguiendo" : "Seguir") + "</button>";
     if (siguiendo) html += '<button class="btn btn-ghost" data-act="ver-mia">Ver en mis certificaciones</button>';
     html += "</div></article>";
     return html;
@@ -195,8 +195,8 @@
     var badges = list.filter(function (c) { return c.kind === "badge"; }).length;
     var becas = list.filter(function (c) { return c.t === "beca" && c.disc === 100; }).length;
     var el = $("#counts-desc");
-    if (el) el.textContent = " · 🟢 " + g100 + " gratis al 100% · 🎓 " + becas +
-      " becas hasta 100% · 🏷️ " + g50 + " al 50% · 🎖️ " + badges + " badges";
+    if (el) el.textContent = " · " + g100 + " gratis al 100% · " + becas +
+      " becas hasta 100% · " + g50 + " al 50% · " + badges + " badges";
   }
 
   /* ---------- mis certificaciones ---------- */
@@ -216,7 +216,7 @@
     html += "</select></label>";
     html += '<label class="sort" style="flex:1 1 160px">Fecha objetivo<input type="date" data-act="fecha" value="' + esc(m.fecha || "") + '"></label></div>';
     if (m.fecha) {
-      html += '<p class="meta">⏳ Tu plazo: <b class="' + claseDias(dias) + '">' + textoDias(dias) + "</b> (" + fmtFecha(m.fecha) + ")</p>";
+      html += '<p class="meta">Tu plazo: <b class="' + claseDias(dias) + '">' + textoDias(dias) + "</b> (" + fmtFecha(m.fecha) + ")</p>";
     }
     html += '<div class="row"><textarea data-act="nota" rows="2" placeholder="Notas (código de cupón, usuario, progreso…)">' + esc(m.nota || "") + "</textarea></div>";
     html += '<div class="row"><a class="btn" target="_blank" rel="noopener" href="' + esc(c.url) + '">Abrir enlace</a>';
@@ -280,13 +280,99 @@
 
     var perm = typeof Notification !== "undefined" ? Notification.permission : "unsupported";
     var txt = {
-      granted: "✅ Notificaciones activas en este dispositivo.",
-      denied: "⛔ Bloqueaste las notificaciones. Habilítalas en los ajustes del sitio/app.",
-      default: "🔕 Notificaciones sin activar.",
+      granted: "Notificaciones activas en este dispositivo.",
+      denied: "Bloqueaste las notificaciones. Habilítalas en los ajustes del sitio/app.",
+      default: "Notificaciones sin activar.",
       unsupported: "Este navegador no soporta notificaciones; la app Android usa alarmas nativas."
     };
     $("#estado-notif").textContent = txt[perm] || txt.default;
     $("#btn-permiso").classList.toggle("hidden", perm === "granted" || perm === "unsupported");
+  }
+
+  /* Categorización ordenada de los hallazgos (prioridad: urgencia de canje).
+     Mismo orden en la app, en el rastreador y en el prompt del asistente. */
+  var SECCIONES = [
+    { id: "unico",     titulo: "Códigos de un solo uso",           nota: "Canjea primero: cuando se agota, no vuelve." },
+    { id: "gratis",    titulo: "100% gratis (100% OFF)",           nota: "Sin costo. Guarda la URL de verificación de la credencial." },
+    { id: "dto50",     titulo: "50% de descuento",                 nota: "Aplica el código en el checkout oficial del proveedor." },
+    { id: "dtoo",      titulo: "Otro descuento",                   nota: "El porcentaje sale de la frase verificada en la página." },
+    { id: "beca",      titulo: "Becas y ayuda financiera",         nota: "Postula; el monto depende de la aprobación (75-100%)." },
+    { id: "badge",     titulo: "Badges y credenciales digitales",  nota: "Llenan LinkedIn con evidencia mientras preparas el examen." },
+    { id: "comunidad", titulo: "Leaks y códigos de comunidad",     nota: "Fuente no oficial: confirma en el checkout del proveedor antes de pagar o postular." },
+    { id: "otro",      titulo: "Resto de hallazgos",               nota: "Sin descuento explícito: revisa la fuente antes de actuar." }
+  ];
+  function categoriaDe(v) {
+    if (v.unico) return "unico";
+    if (v.grupo === "comunidad" || v.grupo === "agregador") return "comunidad";
+    if (v.beca) return "beca";
+    if (v.disc === 100) return "gratis";
+    if (v.disc === 50) return "dto50";
+    if (typeof v.disc === "number" && v.disc > 0) return "dtoo";
+    if (v.badge) return "badge";
+    return "otro";
+  }
+  function tituloCategoria(id) {
+    for (var i = 0; i < SECCIONES.length; i++) if (SECCIONES[i].id === id) return SECCIONES[i].titulo;
+    return "Otros";
+  }
+  function esFuenteOficial(v) {
+    return v.grupo === "oficial" || v.grupo === "badges" || v.grupo === "es" || v.grupo === "custom";
+  }
+
+  /* ---------- RUTA 0 A PRO (de cero experiencia a perfil profesional) ---------- */
+function certPorId(id) {
+    for (var i = 0; i < DATA.certs.length; i++) if (DATA.certs[i].id === id) return DATA.certs[i];
+    return null;
+  }
+  function rutaActual() {
+    var rutas = DATA.rutas || [];
+    for (var i = 0; i < rutas.length; i++) if (rutas[i].id === (prefs.rutaArea || rutas[0] && rutas[0].id)) return rutas[i];
+    return rutas[0] || null;
+  }
+  function renderChipsRuta() {
+    var cont = $("#filtro-area");
+    if (!cont) return;
+    var r = rutaActual();
+    cont.innerHTML = (DATA.rutas || []).map(function (x) {
+      return '<button class="chip' + (r && x.id === r.id ? " active" : "") + '" data-area="' + esc(x.id) + '">' + esc(x.area) + "</button>";
+    }).join("");
+  }
+  function renderRuta() {
+    var cont = $("#lista-ruta");
+    if (!cont) return;
+    renderChipsRuta();
+    var r = rutaActual();
+    if (!r) { cont.innerHTML = '<p class="empty">Sin rutas definidas.</p>'; return; }
+    var html = '<p class="muted">Meta: <b>' + esc(r.papel) + "</b> — " + r.fases.length +
+      " fases, cada una con varias opciones para elegir. Empieza la Fase 1 hoy y encadena desde ahí.</p>";
+    r.fases.forEach(function (f) {
+      html += '<div class="fase"><h3>Fase ' + f.n + " · " + esc(f.titulo) + ' <span class="meta">(' + esc(f.plazo) + ")</span></h3>";
+      html += '<p class="meta">' + esc(f.objetivo) + "</p>";
+      html += '<ul class="fase-lista">';
+      (f.ids || []).forEach(function (id) {
+        var c = certPorId(id);
+        if (!c) return;
+        var siguiendo = !!mis[id];
+        html += '<li class="fase-item"><div class="fase-top"><b>' + esc(c.n) +
+          '</b> <span class="desc ' + claseDescuento(c) + '">' + esc(etiquetaDescuento(c) || "Verificable") + "</span></div>" +
+          '<p class="meta small">' + esc(c.i) + " · " + esc(c.lang) + " · Verificación: " + esc(c.verify) + "</p>" +
+          '<div class="row"><a class="btn btn-small" target="_blank" rel="noopener" href="' + esc(c.url) + '">Abrir enlace</a>' +
+          '<button class="btn btn-ghost btn-small" data-ruta-seguir="' + esc(id) + '">' + (siguiendo ? "Siguiendo" : "Seguir") + "</button></div></li>";
+      });
+      if (f.fechas && f.fechas.length) {
+        html += '<li class="fase-item fase-fechas"><b>Fechas a vigilar (vouchers por evento):</b><ul class="fase-fechas">';
+        f.fechas.forEach(function (fid) {
+          var d = null;
+          for (var i = 0; i < DATA.deadlines.length; i++) if (DATA.deadlines[i].id === fid) d = DATA.deadlines[i];
+          if (!d) return;
+          var n = diasRestantes(d.date);
+          html += "<li>" + esc(d.title) + " — " + fmtFecha(d.date) + ' <span class="' + claseDias(n) + '">(' + textoDias(n) + ")</span></li>";
+        });
+        html += "</ul></li>";
+      }
+      html += "</ul></div>";
+    });
+    cont.innerHTML = html;
   }
 
   /* ---------- BUSCAR PÁGINAS EN VIVO ---------- */
@@ -299,15 +385,15 @@
 
   function etiquetaBuscar(activo) {
     var corto = typeof window.innerWidth === "number" && window.innerWidth < 520;
-    if (activo) return corto ? "⏳" : "⏳ Buscando…";
-    return corto ? "🔎 Buscar" : "🔎 Buscar páginas";
+    if (activo) return corto ? "…" : "Buscando…";
+    return corto ? "Buscar" : "Buscar páginas";
   }
 
   function setScanUI(activo) {
     scanActivo = activo;
     var b1 = $("#btn-scan"), b2 = $("#btn-buscar"), b3 = $("#btn-discover"), st = $("#btn-stop");
     [b1, b2, b3].forEach(function (b) { if (b) b.disabled = activo; });
-    if (b1) b1.textContent = activo ? "⏳ Buscando páginas…" : "🔄 Buscar páginas y actualizar ahora";
+    if (b1) b1.textContent = activo ? "Buscando páginas…" : "Buscar páginas y actualizar ahora";
     if (b2) b2.textContent = etiquetaBuscar(activo);
     if (b2) b2.title = "Revisa ahora las páginas oficiales y busca descuentos, códigos y badges";
     if (st) st.classList.toggle("hidden", !activo);
@@ -329,7 +415,7 @@
       est.textContent = "Revisando " + ev.total + " páginas… " + ev.hechas + " listas · ahora: " + ev.fuente.name;
     } else if (ev.tipo === "fin") {
       var r = ev.reg;
-      est.textContent = (r.ok ? "✓ " : "✗ ") + r.name + (r.ok ? " · " + r.hallazgos + " hallazgo(s)" + (r.nuevos ? " (" + r.nuevos + " nuevo(s))" : "") : " · " + (r.error || "sin respuesta")) +
+      est.textContent = (r.ok ? "OK · " : "Fallo · ") + r.name + (r.ok ? " · " + r.hallazgos + " hallazgo(s)" + (r.nuevos ? " (" + r.nuevos + " nuevo(s))" : "") : " · " + (r.error || "sin respuesta")) +
         " — " + ev.hechas + "/" + ev.total;
     }
   }
@@ -387,7 +473,7 @@
     if (g) partes.push(g + " al 100% gratis");
     if (d50) partes.push(d50 + " al 50%");
     if (cod) partes.push(cod + " con código" + (uni ? " (" + uni + " de un solo uso)" : ""));
-    avisar("🔎 " + nuevos.length + " hallazgo(s) nuevo(s)", partes.length ? partes.join(" · ") : "Revisa la pestaña Buscar páginas.");
+    avisar("Nuevos hallazgos", nuevos.length + " hallazgo(s) nuevo(s): " + (partes.length ? partes.join(" · ") : "revisa la pestaña Buscar páginas."));
   }
 
   /* --- tarjetas de hallazgos --- */
@@ -422,29 +508,31 @@
     var html = "";
     html += '<article class="card nov' + (v.review ? " nov-review" : "") + (v.nuevo ? " nov-nueva" : "") + '" data-nov="' + esc(v.id) + '">';
     html += '<div class="card-top"><div><h3>' + esc(v.name) + '</h3><div class="inst">' + esc(fmtFecha(v.found)) + " · " + esc(haceCuando(v.found)) +
-      (v.nuevo ? ' · <b class="pill-nuevo">✨ NUEVO</b>' : "") + "</div></div>";
+      (v.nuevo ? ' · <b class="pill-nuevo">NUEVO</b>' : "") + "</div></div>";
     html += '<span class="desc grande ' + claseDescVivo(v) + '">' + esc(etiquetaViva(v)) + "</span></div>";
 
     var pills = [];
-    if (v.unico) pills.push('<span class="pill pill-unico">1️⃣ código de UN SOLO USO</span>');
-    if (v.badge) pills.push('<span class="pill pill-badge">🎖️ badge / insignia</span>');
-    if (v.beca && v.disc !== 100) pills.push('<span class="pill pill-beca">🎓 beca / ayuda financiera</span>');
-    if (v.lang) pills.push('<span class="pill pill-lang">🌐 ' + esc(v.lang) + "</span>");
-    if (v.review) pills.push('<span class="pill pill-review">⚠ requiere revisión</span>');
+    pills.push('<span class="pill pill-cat">' + esc(tituloCategoria(categoriaDe(v))) + "</span>");
+    if (v.unico) pills.push('<span class="pill pill-unico">CÓDIGO DE UN SOLO USO</span>');
+    if (v.badge) pills.push('<span class="pill pill-badge">badge / insignia</span>');
+    if (v.beca && v.disc !== 100) pills.push('<span class="pill pill-beca">beca / ayuda financiera</span>');
+    if (v.lang) pills.push('<span class="pill pill-lang">' + esc(v.lang) + "</span>");
+    if (v.review) pills.push('<span class="pill pill-review">requiere revisión</span>');
     if (v.grupo === "agregador" || v.grupo === "comunidad") pills.push('<span class="pill pill-review">fuente no oficial: confirmar</span>');
     if (pills.length) html += '<p class="pills">' + pills.join("") + "</p>";
 
-    html += '<p class="note">“' + esc(v.text) + "”</p>";
+    html += '<p class="note"><b>Evidencia (frase de la página):</b> “' + esc(v.text) + "”</p>";
 
     if (v.codes && v.codes.length) {
       html += '<div class="codigos">';
       v.codes.forEach(function (c) {
-        html += '<button class="codigo" data-code="' + esc(c) + '" title="Toca para copiar">' + esc(c) + " ⧉</button>";
+        html += '<button class="codigo" data-code="' + esc(c) + '" title="Toca para copiar">' + esc(c) + "</button>";
       });
       html += "</div>";
     }
 
-    html += '<div class="row"><a class="btn btn-small" target="_blank" rel="noopener" href="' + esc(v.url) + '">Ver fuente oficial</a>';
+    html += '<p class="meta small verif">Verificación: ' + (esFuenteOficial(v) ? "fuente oficial" : "fuente no oficial: confirma en el checkout del proveedor antes de pagar o postular") + " · " + esc(v.name) + "</p>";
+    html += '<div class="row"><a class="btn btn-small" target="_blank" rel="noopener" href="' + esc(v.url) + '">Ver fuente</a>';
     if (v.codes && v.codes.length) html += '<button class="btn btn-ghost btn-small" data-act="copiar-todos">Copiar código</button>';
     html += '<button class="btn btn-ghost btn-small" data-act="vigilar">Vigilar esta página</button>';
     html += "</div>";
@@ -462,7 +550,14 @@
     });
     var filtro = novPrefs.filtro || "all";
     var visibles = vivos.filter(function (v) { return cumpleFiltroNov(v, filtro); });
-    $("#lista-novedades").innerHTML = visibles.map(cardHallazgo).join("");
+    var htmlNov = "";
+    SECCIONES.forEach(function (sec) {
+      var items = visibles.filter(function (v) { return categoriaDe(v) === sec.id; });
+      if (!items.length) return;
+      htmlNov += '<h3 class="sec-h">' + esc(sec.titulo) + ' <span class="sec-n">(' + items.length + ")</span></h3>" +
+        '<p class="sec-note">' + esc(sec.nota) + "</p>" + items.map(cardHallazgo).join("");
+    });
+    $("#lista-novedades").innerHTML = htmlNov;
     $("#novedades-vacio").classList.toggle("hidden", visibles.length > 0);
 
     /* resumen */
@@ -473,11 +568,12 @@
         resumen.classList.remove("hidden");
         resumen.innerHTML =
           '<div class="kpi kpi-scan"><b>' + (r.nuevos || 0) + "</b><span>nuevos</span></div>" +
+          '<div class="kpi kpi-scan kun"><b>' + vivos.filter(function (v) { return v.unico; }).length + "</b><span>único uso</span></div>" +
           '<div class="kpi kpi-scan k100"><b>' + vivos.filter(function (v) { return v.disc === 100; }).length + "</b><span>100% gratis</span></div>" +
           '<div class="kpi kpi-scan k50"><b>' + vivos.filter(function (v) { return v.disc === 50; }).length + "</b><span>50% dto</span></div>" +
           '<div class="kpi kpi-scan kod"><b>' + vivos.filter(function (v) { return v.disc && v.disc !== 100 && v.disc !== 50; }).length + "</b><span>otro %</span></div>" +
+          '<div class="kpi kpi-scan kbeca"><b>' + vivos.filter(function (v) { return v.beca; }).length + "</b><span>becas</span></div>" +
           '<div class="kpi kpi-scan"><b>' + vivos.filter(function (v) { return v.codes && v.codes.length; }).length + "</b><span>códigos</span></div>" +
-          '<div class="kpi kpi-scan kun"><b>' + vivos.filter(function (v) { return v.unico; }).length + "</b><span>único uso</span></div>" +
           '<div class="kpi kpi-scan"><b>' + vivos.filter(function (v) { return v.badge; }).length + "</b><span>badges</span></div>" +
           '<div class="kpi kpi-scan"><b>' + (r.okFuentes || 0) + "/" + (r.totalFuentes || 0) + "</b><span>páginas OK</span></div>";
       } else {
@@ -492,7 +588,7 @@
       var fs = (ultimoScan && ultimoScan.fuentes) || [];
       lf.innerHTML = fs.length ? fs.map(function (f) {
         return '<div class="fuente ' + (f.ok ? "ok" : "err") + '">' +
-          '<span class="fuente-estado">' + (f.ok ? "✓" : "✗") + "</span>" +
+          '<span class="fuente-estado">' + (f.ok ? "OK" : "x") + "</span>" +
           '<span class="fuente-nombre">' + esc(f.name) + (f.hallazgos ? ' <b>' + f.hallazgos + " hallazgo(s)</b>" : "") +
           (f.nuevos ? ' <b class="pill-nuevo">' + f.nuevos + " nuevo(s)</b>" : "") + "</span>" +
           '<span class="fuente-det">' + esc(f.ok ? (f.transporte || "") : (f.error || "sin respuesta")) + "</span>" +
@@ -527,7 +623,7 @@
     var lc = $("#last-check");
     if (lc) {
       var cuando = ultimoScan ? haceCuando(ultimoScan.checked) : "todavía no";
-      lc.textContent = " · 🔎 tu última búsqueda: " + cuando + " · 🛰️ robot: " + haceCuando(NOV.checked);
+      lc.textContent = " · tu última búsqueda: " + cuando + " · rastreador: " + haceCuando(NOV.checked);
       lc.classList.toggle("stale", !ultimoScan || horasDesde(ultimoScan.checked) > 6);
     }
 
@@ -539,8 +635,8 @@
     if (!el || !SC) return;
     var list = SC.customFuentes();
     el.innerHTML = list.length ? list.map(function (c) {
-      return '<span class="custom-chip">👁 ' + esc(c.name) +
-        ' <button class="x" data-act="quitar-custom" data-id="' + esc(c.id) + '" title="Dejar de vigilar">✕</button></span>';
+      return '<span class="custom-chip">' + esc(c.name) +
+        ' <button class="x" data-act="quitar-custom" data-id="' + esc(c.id) + '" title="Dejar de vigilar">x</button></span>';
     }).join("") : '<span class="muted small">Sin páginas propias. Pega una URL arriba para vigilarla en cada búsqueda.</span>';
   }
 
@@ -548,9 +644,9 @@
   function descubrirPaginas() {
     if (!SC) return;
     var btn = $("#btn-discover");
-    if (btn) { btn.disabled = true; btn.textContent = "⏳ Buscando páginas nuevas…"; }
+    if (btn) { btn.disabled = true; btn.textContent = "Buscando páginas nuevas…"; }
     SC.discover({}).then(function (lista) {
-      if (btn) { btn.disabled = false; btn.textContent = "🌐 Descubrir páginas nuevas"; }
+      if (btn) { btn.disabled = false; btn.textContent = "Descubrir páginas nuevas"; }
       var panel = $("#panel-descubiertas");
       var cont = $("#lista-descubiertas");
       if (!panel || !cont) return;
@@ -559,13 +655,13 @@
         return '<article class="card desc-card" data-url="' + esc(c.url) + '">' +
           '<div class="card-top"><div><h3>' + esc(c.titulo || c.url) + '</h3><div class="inst">' + esc(c.origen) + "</div></div></div>" +
           '<p class="meta small">' + esc(c.url) + "</p>" +
-          '<div class="row"><button class="btn btn-small" data-act="revisar-fuente" data-url="' + esc(c.url) + '" data-nombre="' + esc(c.titulo || c.url) + '">🔎 Revisar ahora</button>' +
-          '<button class="btn btn-ghost btn-small" data-act="vigilar-url" data-url="' + esc(c.url) + '">👁 Vigilar</button>' +
+          '<div class="row"><button class="btn btn-small" data-act="revisar-fuente" data-url="' + esc(c.url) + '" data-nombre="' + esc(c.titulo || c.url) + '">Revisar ahora</button>' +
+          '<button class="btn btn-ghost btn-small" data-act="vigilar-url" data-url="' + esc(c.url) + '">Vigilar</button>' +
           '<a class="btn btn-ghost btn-small" target="_blank" rel="noopener" href="' + esc(c.url) + '">Abrir</a></div>' +
           "</article>";
       }).join("") : '<p class="empty">No encontré páginas nuevas que no estén ya en la lista.</p>';
     }, function () {
-      if (btn) { btn.disabled = false; btn.textContent = "🌐 Descubrir páginas nuevas"; }
+      if (btn) { btn.disabled = false; btn.textContent = "Descubrir páginas nuevas"; }
     });
   }
 
@@ -586,9 +682,9 @@
         });
         ultimoScan.checked = new Date().toISOString().replace(/\.\d+Z$/, "Z");
         if (SC.guardarScan) SC.guardarScan(ultimoScan);
-        avisar("🔎 " + r.items.length + " hallazgo(s) en " + (nombre || url), r.items.map(function (i) { return etiquetaViva(i); }).join(" · "));
+        avisar("Hallazgos en " + (nombre || url), r.items.length + ": " + r.items.map(function (i) { return etiquetaViva(i); }).join(" · "));
       } else if (r.ok) {
-        avisar("🔎 Sin ofertas en " + (nombre || url), "La página respondió pero no tiene frases de descuento, código o badge.");
+        avisar("Sin ofertas en " + (nombre || url), "La página respondió pero no tiene frases de descuento, código o badge.");
       } else {
         avisar("No se pudo revisar " + (nombre || url), r.error || "sin respuesta");
       }
@@ -637,9 +733,18 @@
       "<b>Udacity:</b> los Nanodegrees son pagos y no hay becas abiertas en 2026.",
       "<b>Códigos de agregadores (dumpsgate, passitexams…):</b> la app los muestra marcados como <i>fuente no oficial</i>. Pruébalos solo en el checkout oficial de Pearson VUE/PSI y nunca pagues por un voucher."
     ].map(function (x) { return "<li>" + x + "</li>"; }).join("");
+    $("#fantasmas").innerHTML = [
+      "<b>Un descuento que no aparece en la página oficial no existe.</b> Certf solo muestra un porcentaje si sale en la frase exacta de la página verificada en ese momento; cada hallazgo muestra su evidencia y su fuente.",
+      "<b>Nunca pagues por un voucher.</b> Los códigos gratuitos (AIF2CLOUD, ISC2 1MCC, Certification Week) se canjean gratis en el checkout oficial de Pearson VUE, PSI o Microsoft. Si alguien te cobra por entregar un voucher, es timo.",
+      "<b>Los agregadores no son la fuente, son la pista.</b> Páginas tipo dumpsgate solo indican dónde buscar: confirma el código en el checkout del proveedor antes de confiar; si no se aplica ahí, no era real.",
+      "<b>\u201c100% gratis\u201d que pide tarjeta no es gratis.</b> Si registran tu tarjeta o te cobran \u201cgastos de administración\u201d, no es 100% OFF: reclasifícalo como pago.",
+      "<b>La beca no es un descuento garantizado.</b> Financial Aid cubre entre 75% y 100% según la aprobación; el remanente puede ser de US$20-60 por curso.",
+      "<b>Sin fecha publicada, sin promesa.</b> Si la página no publica el fin de la promoción, la app lo muestra como sin fecha: no planifiques en base a una fecha que no está en la fuente.",
+      "<b>Credencial sin URL de verificación no cuenta.</b> Credly, Coursera, cs50.io, CertView, Skillshop: si no hay link público que el empleador pueda abrir, el ATS no la registra."
+    ].map(function (x) { return "<li>" + x + "</li>"; }).join("");
   }
 
-  function renderAll() { renderCatalogo(); renderMias(); renderAlertas(); renderNovedades(); renderGuias(); }
+  function renderAll() { renderCatalogo(); renderRuta(); renderMias(); renderAlertas(); renderNovedades(); renderGuias(); }
 
   /* ---------- notificaciones ---------- */
   function pedirPermiso() {
@@ -665,7 +770,7 @@
       if (n === null || n < 0 || n > 7) return;
       var cuando = new Date(ahora.getTime() + 4000 + Math.random() * 2000);
       setTimeout(function () {
-        avisar(n === 0 ? "⏰ Vence HOY: " + d.title : "⏳ " + textoDias(n) + ": " + d.title, d.note, d.url);
+        avisar(n === 0 ? "Vence HOY: " + d.title : textoDias(n) + ": " + d.title, d.note, d.url);
       }, cuando - ahora);
     });
   }
@@ -832,6 +937,20 @@
         if (btn && btn.dataset.act === "quitar-custom" && SC) { SC.quitarCustom(btn.dataset.id); renderCustom(); }
       });
     }
+
+    /* ruta 0 a pro */
+    $("#filtro-area").addEventListener("click", function (e) {
+      var b = e.target.closest ? e.target.closest(".chip") : null;
+      if (!b) return;
+      prefs.rutaArea = b.dataset.area; save(PREFS_KEY, prefs); renderRuta();
+    });
+    $("#lista-ruta").addEventListener("click", function (e) {
+      var btn = e.target.closest ? e.target.closest("[data-ruta-seguir]") : null;
+      if (!btn) return;
+      var id = btn.dataset.rutaSeguir;
+      if (mis[id]) { delete mis[id]; } else { mis[id] = { estado: "Pendiente", fecha: "", nota: "", added: new Date().toISOString() }; }
+      save(STORE_KEY, mis); renderRuta(); renderMias(); renderCatalogo(); renderAlertas();
+    });
 
     $("#btn-permiso").addEventListener("click", pedirPermiso);
     $("#btn-notify").addEventListener("click", function () { pedirPermiso(); mostrarVista("alertas"); });

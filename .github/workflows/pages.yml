@@ -1,7 +1,7 @@
 name: Publicar PWA en GitHub Pages
 
 # Publica la PWA en GitHub Pages. Requiere activar Pages UNA sola vez:
-#   Settings → Pages → Build and deployment → Source: GitHub Actions
+#   Settings / Pages / Build and deployment / Source: GitHub Actions
 # Mientras no esté activado, este workflow avisa y termina sin error.
 on:
   push:
@@ -40,7 +40,7 @@ jobs:
             echo "activado=true" >> "$GITHUB_OUTPUT"
           else
             echo "activado=false" >> "$GITHUB_OUTPUT"
-            echo "::warning::GitHub Pages no está activado. Ve a Settings → Pages → Build and deployment → Source: GitHub Actions (una sola vez) y vuelve a ejecutar este workflow."
+            echo "::warning::GitHub Pages no está activado. Ve a Settings / Pages / Build and deployment / Source: GitHub Actions (una sola vez) y vuelve a ejecutar este workflow."
           fi
 
       - name: Saltar despliegue (Pages sin activar)
@@ -49,7 +49,7 @@ jobs:
           echo "### PWA lista, pero Pages aún no está activado" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "La app funciona igual: local con \`python3 -m http.server 8000 --directory web\` o instalándola desde la vista previa." >> "$GITHUB_STEP_SUMMARY"
-          echo "Para publicarla: **Settings → Pages → Build and deployment → Source: GitHub Actions** y re-ejecuta este workflow." >> "$GITHUB_STEP_SUMMARY"
+          echo "Para publicarla: **Settings / Pages / Build and deployment / Source: GitHub Actions** y re-ejecuta este workflow." >> "$GITHUB_STEP_SUMMARY"
 
       - uses: actions/configure-pages@v5
         if: steps.estado.outputs.activado == 'true'

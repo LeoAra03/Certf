@@ -15,7 +15,7 @@ import java.util.concurrent.Executors
 import java.util.zip.GZIPInputStream
 
 /**
- * Puente nativo del botón "🔎 Buscar páginas".
+ * Puente nativo del botón "Buscar páginas".
  *
  * La app se sirve desde file:///android_asset/, donde el navegador aplica CORS y
  * casi ninguna página oficial (AWS, Pearson VUE, Microsoft, Cisco…) permite leer

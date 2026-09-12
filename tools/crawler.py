@@ -619,7 +619,7 @@ def generar_informe(resumen: list[dict], novedades_total: int, revisar: list[str
         detalle = "; ".join(r["avisos"]) if r["avisos"] else (f"{r['snippets']} señales vigilarlas" if r["snippets"] else "sin señales nuevas")
         lin.append(f"| {r['name']} | {r['status']} | {detalle} |")
     if revisar:
-        lin.append("\n## ⚠ requiere revisión (cambios sin señales claras)\n")
+        lin.append("\n## requiere revisión (cambios sin señales claras)\n")
         for url in revisar:
             lin.append(f"- [ ] Revisar {url}")
         lin.append("\nSi confirmas una oferta nueva, añádela a `web/data.js` y corre `python3 tools/build_data.py`.")
@@ -640,7 +640,7 @@ def selftest() -> int:
 
     def check(nombre, cond, extra=""):
         nonlocal fallos
-        print(("  ✅ " if cond else "  ❌ ") + nombre + (f" → {extra}" if extra and not cond else ""))
+        print(("  [OK]   " if cond else "  [FALLO] ") + nombre + (f" => {extra}" if extra and not cond else ""))
         if not cond:
             fallos += 1
 
@@ -783,9 +783,9 @@ def selftest() -> int:
 
     print("────────────────────────────────────────")
     if fallos:
-        print(f"❌ {fallos} verificación(es) fallida(s)\n")
+        print(f"[FALLO] {fallos} verificación(es) fallida(s)\n")
         return 1
-    print("✅ Todo OK\n")
+    print("[OK] Todo OK\n")
     return 0
 
 
@@ -860,7 +860,7 @@ def main(argv: list[str] | None = None) -> int:
             "snippets": len(es.get("snippets", {})),
         })
         if not args.quiet:
-            estado_txt = "⚠ " + (error or "") if error else ("· " + "; ".join(avisos) if avisos else "sin cambios")
+            estado_txt = "Atención: " + (error or "") if error else ("· " + "; ".join(avisos) if avisos else "sin cambios")
             print(f"  [{resumen[-1]['status']:^5}] {src['name']:<48} {estado_txt}")
 
     items_finales = recortar(items_existentes)

@@ -82,13 +82,13 @@ jobs:
           if git diff --cached --quiet; then
             echo "La APK no cambió desde la última compilación."
           else
-            git commit -m "📦 APK debug $SIZE (sha256 ${SHA:0:12}) [skip ci]"
+            git commit -m "APK debug $SIZE (sha256 ${SHA:0:12}) [skip ci]"
             git fetch origin "$BR"
             git rebase FETCH_HEAD || git rebase --abort || true
             git push origin "HEAD:refs/heads/$BR"
           fi
           {
-            echo "### 📦 APK lista en el repositorio"
+            echo "### APK lista en el repositorio"
             echo "- Ruta: \`dist/Certf-debug.apk\` ($SIZE) en la rama \`$BR\`"
             echo "- SHA-256: \`$SHA\`"
             echo "- También está como artefacto \`certf-debug-apk\` de esta ejecución."
@@ -98,6 +98,6 @@ jobs:
         run: |
           APK=$(ls android/app/build/outputs/apk/debug/*.apk | head -1)
           SIZE=$(du -h "$APK" | cut -f1)
-          echo "### ✅ APK lista" >> "$GITHUB_STEP_SUMMARY"
+          echo "### APK lista" >> "$GITHUB_STEP_SUMMARY"
           echo "- Archivo: \`$(basename "$APK")\` ($SIZE)" >> "$GITHUB_STEP_SUMMARY"
           echo "- Descárgala desde el recuadro **Artifacts** de esta ejecución." >> "$GITHUB_STEP_SUMMARY"

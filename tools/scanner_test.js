@@ -66,7 +66,7 @@ const SC = sandbox.CertfScanner;
 /* ---------- assertions ---------- */
 let fallos = 0;
 function check(label, cond, extra) {
-  console.log((cond ? "  ✅ " : "  ❌ ") + label + (extra !== undefined && !cond ? " → " + extra : ""));
+  console.log((cond ? "  [OK]   " : "  [FALLO]") + " " + label + (extra !== undefined && !cond ? " => " + extra : ""));
   if (!cond) fallos++;
 }
 
@@ -240,11 +240,11 @@ function check(label, cond, extra) {
 
   console.log("────────────────────────────────────────");
   if (fallos) {
-    console.log("❌ " + fallos + " verificación(es) fallida(s)\n");
+    console.log("[FALLO] " + fallos + " verificación(es) fallida(s)\n");
     process.exit(1);
   }
-  console.log("✅ Todo OK\n");
+  console.log("[OK] Todo OK\n");
 })().catch((e) => {
-  console.error("❌ La prueba reventó:", e && e.stack ? e.stack : e);
+  console.error("[FALLO] La prueba reventó:", e && e.stack ? e.stack : e);
   process.exit(1);
 });

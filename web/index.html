@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Certf — Certificaciones con peso real en el CV</title>
-<meta name="description" content="Catálogo de certificaciones gratuitas, becadas y con descuento estudiantil, con seguimiento personal y alertas de vencimiento." />
+<meta name="description" content="Catálogo de certificaciones gratuitas, becadas y con descuento estudiantil, con seguimiento personal, alertas de vencimiento y ruta de cero a profesional." />
 <meta name="theme-color" content="#0b1220" />
 <link rel="manifest" href="manifest.webmanifest" />
 <link rel="icon" href="icon-192.png" />
@@ -21,9 +21,9 @@
     </div>
   </div>
   <div class="topbar-actions">
-    <button id="btn-buscar" class="btn btn-buscar" title="Revisa ahora mismo las páginas oficiales y busca ofertas, códigos y badges">🔎 Buscar páginas</button>
+    <button id="btn-buscar" class="btn btn-buscar" title="Revisa ahora mismo las páginas oficiales y busca ofertas, códigos y badges">Buscar páginas</button>
     <button id="btn-install" class="btn btn-ghost hidden">Instalar</button>
-    <button id="btn-notify" class="btn btn-ghost">🔔 Alertas</button>
+    <button id="btn-notify" class="btn btn-ghost">Alertas</button>
   </div>
 </header>
 
@@ -31,9 +31,10 @@
 
 <nav class="tabs" role="tablist">
   <button class="tab active" data-view="catalogo">Catálogo</button>
+  <button class="tab" data-view="ruta">Ruta 0 a PRO</button>
   <button class="tab" data-view="mias">Mis certificaciones <span id="badge-mias" class="badge hidden">0</span></button>
   <button class="tab" data-view="alertas">Alertas <span id="badge-alertas" class="badge hidden">0</span></button>
-  <button class="tab" data-view="novedades">🔎 Buscar páginas <span id="badge-nov" class="badge hidden">0</span></button>
+  <button class="tab" data-view="novedades">Buscar páginas <span id="badge-nov" class="badge hidden">0</span></button>
   <button class="tab" data-view="guias">Guías</button>
 </nav>
 
@@ -42,18 +43,18 @@
   <div class="controls">
     <input id="q" type="search" placeholder="Buscar curso, institución o tecnología…" autocomplete="off" />
     <div class="chips" id="filtro-desc">
-      <button class="chip active" data-desc="all">💲 Todo</button>
-      <button class="chip" data-desc="100">🟢 100% gratis</button>
-      <button class="chip" data-desc="50">🏷️ 50% dto</button>
-      <button class="chip" data-desc="otro">💰 Otro descuento</button>
-      <button class="chip" data-desc="beca">🎓 Beca / ayuda</button>
+      <button class="chip active" data-desc="all">Todo</button>
+      <button class="chip" data-desc="100">100% gratis</button>
+      <button class="chip" data-desc="50">50% dto</button>
+      <button class="chip" data-desc="otro">Otro descuento</button>
+      <button class="chip" data-desc="beca">Beca / ayuda</button>
     </div>
     <div class="chips" id="filtro-tipo">
       <button class="chip active" data-tipo="all">Todas</button>
-      <button class="chip" data-tipo="gratis">🟢 Todo gratis</button>
-      <button class="chip" data-tipo="beca">🎓 Beca</button>
-      <button class="chip" data-tipo="descuento">🏷️ Descuento</button>
-      <button class="chip" data-tipo="estudiante">🪪 Estudiante</button>
+      <button class="chip" data-tipo="gratis">Todo gratis</button>
+      <button class="chip" data-tipo="beca">Beca</button>
+      <button class="chip" data-tipo="descuento">Descuento</button>
+      <button class="chip" data-tipo="estudiante">Estudiante</button>
     </div>
     <div class="chips" id="filtro-cat">
       <button class="chip active" data-cat="all">Todas las áreas</button>
@@ -66,14 +67,14 @@
       <button class="chip" data-cat="Marketing">Marketing</button>
     </div>
     <div class="chips" id="filtro-formato">
-      <button class="chip active" data-formato="all">📜 Certificaciones y badges</button>
+      <button class="chip active" data-formato="all">Certificaciones y badges</button>
       <button class="chip" data-formato="cert">Solo certificaciones</button>
-      <button class="chip" data-formato="badge">🎖️ Solo badges / insignias</button>
+      <button class="chip" data-formato="badge">Solo badges / insignias</button>
     </div>
     <div class="chips" id="filtro-lang">
-      <button class="chip active" data-lang="all">🌐 Cualquier idioma</button>
-      <button class="chip" data-lang="es">🇪🇸 En español</button>
-      <button class="chip" data-lang="en">🇬🇧 En inglés</button>
+      <button class="chip active" data-lang="all">Cualquier idioma</button>
+      <button class="chip" data-lang="es">En español</button>
+      <button class="chip" data-lang="en">En inglés</button>
     </div>
     <label class="sort">Ordenar
       <select id="sort">
@@ -88,11 +89,21 @@
   <div id="lista" class="lista"></div>
 </main>
 
+<!-- RUTA 0 A PRO -->
+<section id="view-ruta" class="view hidden">
+  <div class="panel">
+    <h2>Ruta 0 a PRO: de cero experiencia a perfil profesional</h2>
+    <p class="muted">Elige un área. Cada fase trae <b>varias opciones para elegir</b> (no una sola): cursos 100% gratis, badges, becas y descuentos, todos con enlace y con la forma de verificar la credencial. Marca las que tomes con <em>“Seguir”</em> y te avisamos de las fechas límite. Las fases se encadenan: cada una usa lo que dio la anterior.</p>
+    <div class="chips" id="filtro-area"></div>
+  </div>
+  <div id="lista-ruta" class="lista"></div>
+</section>
+
 <!-- MIS CERTIFICACIONES -->
 <section id="view-mias" class="view hidden">
   <div class="resumen" id="resumen"></div>
   <div id="lista-mias" class="lista"></div>
-  <p id="mias-vacio" class="empty hidden">Aún no agregaste certificaciones. Entra al <strong>Catálogo</strong> y pulsa <em>“Seguir”</em> en las que te interesen.</p>
+  <p id="mias-vacio" class="empty hidden">Aún no agregaste certificaciones. Entra al <strong>Catálogo</strong> o a la <strong>Ruta 0 a PRO</strong> y pulsa <em>“Seguir”</em> en las que te interesen.</p>
 </section>
 
 <!-- ALERTAS -->
@@ -122,11 +133,12 @@
 <section id="view-novedades" class="view hidden">
 
   <div class="panel panel-buscar">
-    <h2>🔎 Buscar páginas y actualizar</h2>
-    <p class="muted">Aprieta el botón cuando quieras —<b>no hay que esperar al rastreo diario</b>. Se revisan en vivo las páginas oficiales de AWS, Microsoft, Google, IBM, Oracle, Cisco, GitHub, ISC2, Fortinet, Anthropic, edX, Coursera, Harvard/Helsinki, más las de <b>badges</b> y las <b>en español</b>. Cada hallazgo te dice al tiro si es <b>100% gratis</b>, <b>50% de descuento</b>, otro porcentaje o beca, y si aparece un <b>código</b> (incluso de un solo uso) lo muestra listo para copiar.</p>
+    <h2>Buscar páginas y actualizar</h2>
+    <p class="muted">Aprieta el botón cuando quieras —<b>no hay límite ni espera al rastreo diario</b>. Se revisan en vivo las páginas oficiales de AWS, Microsoft, Google, IBM, Oracle, Cisco, GitHub, ISC2, Fortinet, Anthropic, edX, Coursera, Harvard/Helsinki, más las de <b>badges</b> y las <b>en español</b>. Cada hallazgo te dice al tiro si es <b>100% gratis</b>, <b>50% de descuento</b>, otro porcentaje o beca, y si aparece un <b>código</b> (incluso de un solo uso) lo muestra listo para copiar.</p>
+    <p class="muted small"><b>Orden de los resultados (por urgencia):</b> 1. Códigos de un solo uso · 2. 100% gratis · 3. 50% de descuento · 4. Otro descuento · 5. Becas y ayuda financiera · 6. Badges y credenciales digitales · 7. Leaks y códigos de comunidad (fuente no oficial: confirmar) · 8. Resto. Cada hallazgo muestra su <b>evidencia</b> (la frase exacta de la página) y su <b>verificación</b>, para que no existan descuentos fantasmas.</p>
     <div class="row">
-      <button id="btn-scan" class="btn btn-buscar btn-big">🔄 Buscar páginas y actualizar ahora</button>
-      <button id="btn-discover" class="btn btn-ghost">🌐 Descubrir páginas nuevas</button>
+      <button id="btn-scan" class="btn btn-buscar btn-big">Buscar páginas y actualizar ahora</button>
+      <button id="btn-discover" class="btn btn-ghost">Descubrir páginas nuevas</button>
       <button id="btn-stop" class="btn btn-danger hidden">Detener</button>
     </div>
     <p class="meta" id="scan-transporte"></p>
@@ -144,14 +156,14 @@
 
     <div class="chips" id="filtro-nov">
       <button class="chip active" data-nov="all">Todo lo encontrado</button>
-      <button class="chip" data-nov="nuevos">✨ Solo nuevos</button>
-      <button class="chip" data-nov="100">🟢 100% gratis</button>
-      <button class="chip" data-nov="50">🏷️ 50% dto</button>
-      <button class="chip" data-nov="codigo">🔑 Códigos</button>
-      <button class="chip" data-nov="unico">1️⃣ Único uso</button>
-      <button class="chip" data-nov="badge">🎖️ Badges</button>
-      <button class="chip" data-nov="es">🇪🇸 Español</button>
-      <button class="chip" data-nov="en">🇬🇧 Inglés</button>
+      <button class="chip" data-nov="nuevos">Solo nuevos</button>
+      <button class="chip" data-nov="100">100% gratis</button>
+      <button class="chip" data-nov="50">50% dto</button>
+      <button class="chip" data-nov="codigo">Códigos</button>
+      <button class="chip" data-nov="unico">Único uso</button>
+      <button class="chip" data-nov="badge">Badges</button>
+      <button class="chip" data-nov="es">Español</button>
+      <button class="chip" data-nov="en">Inglés</button>
     </div>
 
     <details id="scan-fuentes" class="fuentes">
@@ -168,16 +180,16 @@
   </div>
 
   <div id="panel-descubiertas" class="panel hidden">
-    <h2>🌐 Páginas descubiertas ahora</h2>
+    <h2>Páginas descubiertas ahora</h2>
     <p class="muted small">Resultados de buscar en internet oportunidades nuevas. Revisa una al tiro o agrégala a tu lista de vigilancia.</p>
     <div id="lista-descubiertas" class="lista"></div>
   </div>
 
   <div id="lista-novedades" class="lista"></div>
-  <p id="novedades-vacio" class="empty hidden">Todavía no buscaste. Aprieta <strong>“🔄 Buscar páginas y actualizar ahora”</strong> y en unos segundos verás aquí las ofertas vigentes, con su porcentaje de descuento y cualquier código publicado.</p>
+  <p id="novedades-vacio" class="empty hidden">Todavía no buscaste. Aprieta <strong>“Buscar páginas y actualizar ahora”</strong> y en unos segundos verás aquí las ofertas vigentes, ordenadas por urgencia, con su porcentaje de descuento, su evidencia y cualquier código publicado.</p>
 
   <div class="panel">
-    <h2>🛰️ Rastreador automático (diario)</h2>
+    <h2>Rastreador automático (diario)</h2>
     <p class="muted">Además del botón, un robot revisa solo todos los días las fuentes oficiales y publica lo nuevo aquí abajo. El botón de arriba no depende de él: funciona cuando tú lo aprietes.</p>
     <p class="meta" id="nov-estado"></p>
     <div id="lista-novedades-auto" class="lista"></div>
@@ -193,6 +205,11 @@
   <div class="panel">
     <h2>Descartados (no pierdas tiempo)</h2>
     <ul class="steps" id="descartes"></ul>
+  </div>
+  <div class="panel">
+    <h2>Descuentos fantasmas: cómo detectarlos</h2>
+    <p class="muted">Regla de oro: si el porcentaje no aparece en la página oficial, no existe. Todo lo que muestra Certf trae la evidencia y la fuente.</p>
+    <ul class="steps" id="fantasmas"></ul>
   </div>
 </section>
 

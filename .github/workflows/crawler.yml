@@ -45,7 +45,7 @@ jobs:
             echo "Sin cambios desde la última revisión."
           else
             git add web/novedades.js data/crawler-state.json
-            git commit -m "🛰️ Revisión automática $(date -u +%F): novedades del rastreador"
+            git commit -m "Revisión automática $(date -u +%F): novedades del rastreador"
             git push
             echo "cambios=true" >> "$GITHUB_OUTPUT"
           fi
@@ -67,7 +67,7 @@ jobs:
           git add -f data/last-report.md
           git commit -m "Informe de revisión del rastreador ($FECHA)" || true
           git push -f origin crawler/reporte
-          TITULO="🛰️ Rastreador $FECHA: páginas cambiaron sin señales claras"
+          TITULO="Rastreador $FECHA: páginas cambiaron sin señales claras"
           gh pr create --base main --head crawler/reporte \
             --title "$TITULO" --body-file data/last-report.md \
             || gh pr edit crawler/reporte --title "$TITULO" --body-file data/last-report.md
