@@ -355,7 +355,8 @@
       var tr = $("#scan-transporte");
       if (tr) tr.innerHTML = "Última búsqueda: <b>" + esc(haceCuando(res.checked)) + "</b> · " + res.okFuentes + "/" + res.totalFuentes +
         " páginas respondieron en " + seg + " s" + (res.cancelado ? " (detenida por ti)" : "") + " · " +
-        (res.okFuentes ? "transporte usado: " + esc(transporteMasUsado(res)) : "ninguna página respondió (revisa tu conexión)");
+        (res.okFuentes ? "transporte usado: " + esc(transporteMasUsado(res))
+          : "ninguna página respondió. Revisa tu conexión; en el navegador algunas páginas bloquean la lectura (CORS) — en la APK de Certf la descarga la hace tu teléfono.");
       if (opts.despues) opts.despues(res);
       return res;
     }, function (e) {
@@ -741,6 +742,9 @@
     $("#btn-scan").addEventListener("click", function () { ejecutarBusqueda({}); });
     $("#btn-buscar").addEventListener("click", function () { mostrarVista("novedades"); ejecutarBusqueda({}); });
     $("#btn-discover").addEventListener("click", function () { mostrarVista("novedades"); descubrirPaginas(); });
+    var avisoCors = $("#aviso-cors");
+    if (avisoCors) avisoCors.classList.toggle("hidden", !!(SC && SC.esApp && SC.esApp()));
+
     $("#btn-stop").addEventListener("click", function () {
       if (scanSignal) scanSignal.cancelado = true;   // deja de abrir páginas nuevas
       var est = $("#scan-estado");
