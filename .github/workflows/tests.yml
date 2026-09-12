@@ -63,6 +63,11 @@ jobs:
 
       - name: El rastreador funciona de punta a punta (fixtures, sin red)
         run: |
-          python3 tools/crawler.py --offline tools/fixtures --dry-run \
-            --novedades /tmp/novedades.js --state /tmp/crawler-state.json
+          python3 tools/crawler.py --offline tools/fixtures \
+            --novedades /tmp/novedades.js --state /tmp/crawler-state.json \
+            --report /tmp/informe.md
           test -s /tmp/novedades.js
+          test -s /tmp/informe.md
+          grep -q "__CERTF_NOVEDADES__" /tmp/novedades.js
+          # la prueba escribe solo en /tmp: el repo debe quedar intacto
+          git diff --exit-code
