@@ -1,0 +1,1446 @@
+{
+ "last_run": "2026-09-12T16:29:05Z",
+ "sources": {
+  "anthropic": {
+   "hash": "384c8e47110aaf98bfbe4efc5f7fccedea019c4b22d87204fc0e3bc443fbd3e1",
+   "last_check": "2026-09-12T16:28:17Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {}
+  },
+  "aws-aif2cloud": {
+   "hash": "b4c342c738a6bfb28eb0e664cbd3378eb436a1b11e03fc30c8d54ee92582dd66",
+   "last_check": "2026-09-12T16:27:45Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "afterpassingtheawscertifiedaipractitionerexamthefreeattemptfortheawscertifiedcloudpractitionerwillbeautomaticallyappliedduringexamregistration": {
+     "first": "2026-09-12",
+     "t": "After passing the AWS Certified AI Practitioner Exam, the free attempt for the AWS Certified Cloud Practitioner will be automatically applied during exam registration."
+    },
+    "avoucherisnotprovidedfortheawscertifiedcloudpractitionerexam": {
+     "first": "2026-09-12",
+     "t": "A voucher is not provided for the AWS Certified Cloud Practitioner Exam."
+    },
+    "becausemanyaitoolsandmodernbusinesssystemsrunoncloudinfrastructure": {
+     "first": "2026-09-12",
+     "t": "Because many AI tools and modern business systems run on cloud infrastructure."
+    },
+    "closepromocodedialogpreferredlanguagedialogselectionlanguageyourpreferredlanguagepreferredlanguageotheravailablelanguagesselectyourlanguagearabicenglishunitedki": {
+     "first": "2026-09-12",
+     "t": "Close Promo code dialog Preferred language dialog selection Language Your preferred language {preferredLanguage} Other available languages Select your Language العربية Arabic English - United Kingdom English - United Kingdom English - United States English - U"
+    },
+    "duringtheofferperiodregisterforandtakeawscertifiedaipractitionerregisterandapplythediscountcodetosave50whenschedulingyouraifc01exam": {
+     "first": "2026-09-12",
+     "t": "During the Offer Period, register for and take AWS Certified AI Practitioner register and apply the discount code to save 50% when scheduling your AIF-C01 Exam."
+    },
+    "featuredsearchesfindanexamprogramlogintomyaccountcreateanaccountreschedulemyexampurchasevoucherscustomerserviceclosesearchoverlaymodaldialogunleashopportunitywi": {
+     "first": "2026-09-12",
+     "t": "Featured searches Find an exam program Log in to my account Create an account Reschedule my exam Purchase vouchers Customer service Close Search overlay modal dialog Unleash opportunity with in-demand skilling and certification For test-takers Resources and FA"
+    },
+    "getpromocodewhatyoullgainpracticalbusinessapplicationsofaiconfidenceusingthelanguageofaiandcloudintheworkplaceagloballyrecognizedawscredentialastrongerfoundatio": {
+     "first": "2026-09-12",
+     "t": "Get promo code What you’ll gain Practical business applications of AI Confidence using the language of AI and cloud in the workplace A globally recognized AWS credential A stronger foundation for working with technical teams Career-ready knowledge across indus"
+    },
+    "ifyouusethepromocodeandpassthataifc01examyouareeligibletotakeawscertifiedcloudpractitionerforfreeduringtheofferperiodandnolaterthannovember3020261159pmlocaltime": {
+     "first": "2026-09-12",
+     "t": "If you use the promo code and pass that AIF-C01 Exam, you are eligible to take AWS Certified Cloud Practitioner for free during the Offer Period and no later than November 30, 2026, 11:59 PM local time (the “CLF-C02 Exam Deadline”) (for test centers) and 11:59"
+    },
+    "inorderfortheautomaticdiscountcodetoapplytheinitialaifexammustbecompletedandpassedbyseptember3020261159pmlocaltimefortestcentersand1159pmcentraltimeforonlinepro": {
+     "first": "2026-09-12",
+     "t": "In order for the automatic discount code to apply, the initial AIF exam must be completed and passed by September 30, 2026 11:59 PM local time (for test centers) and 11:59 PM Central Time for online proctored ."
+    },
+    "intheeventyoufailtheaifc01examyouwillnotbeeligibleforthefreeclfc02exam": {
+     "first": "2026-09-12",
+     "t": "In the event you fail the AIF-C01 Exam, you will not be eligible for the free CLF-C02 Exam."
+    },
+    "isanexamvoucherprovidedwiththisoffer": {
+     "first": "2026-09-12",
+     "t": "Is an exam voucher provided with this offer?"
+    },
+    "militarycustomerservicefortestownersfortestcentersfortrainingcentersexploreskillingsolutionsaboutusloginfortesttakersamazonwebservicesawsawsaicloudfoundationalc": {
+     "first": "2026-09-12",
+     "t": "military Customer service For test owners For test centers For training centers Explore skilling solutions About us Log in For test-takers / Amazon Web Services (AWS) / AWS AI & Cloud Foundational Certifications Get AWS AI and Cloud Certified with 50% off Buil"
+    },
+    "passtheawscertifiedaipractitionerexambyseptember30andyoullqualifyforafreeawscertifiedcloudpractitionerexamanytimebeforenovember302026": {
+     "first": "2026-09-12",
+     "t": "Pass the AWS Certified AI Practitioner exam by September 30, and you’ll qualify for a free AWS Certified Cloud Practitioner exam any time before November 30, 2026."
+    },
+    "promocodeheresyourpromocodeaif2cloudtotakeadvantageofthisofferapplythispromotioncodeatpaymentwhenregisteringforawscertifiedaipractitionerexam": {
+     "first": "2026-09-12",
+     "t": "Promo code Here’s your promo code AIF2CLOUD To take advantage of this offer, apply this promotion code at payment when registering for AWS Certified AI Practitioner exam."
+    },
+    "promotionalofferdescriptionregisterforandtakeawscertifiedaipractitionertheaifc01exambetweenmay2620261201amlocaltimefortestcentersand1201amcentraltimeforonlinepr": {
+     "first": "2026-09-12",
+     "t": "Promotional offer description: Register for and take AWS Certified AI Practitioner (the “AIF-C01 Exam,”) between May 26, 2026, 12:01 AM local time (for test centers) and 12:01 AM Central Time for online proctored and September 30, 2026, 11:59 PM local time (fo"
+    },
+    "termsconditionsbyregisteringforanexamyouagreetothetermsandconditionsforthepromotiondescribedabovetheoffer": {
+     "first": "2026-09-12",
+     "t": "Terms & Conditions: By registering for an Exam, you agree to the Terms and Conditions for the promotion described above (the “Offer”)."
+    },
+    "theawscertifiedcloudpractitionerexamneedstobecompletedpriortonovember3020261159pmlocaltimetheclfc02examdeadlinefortestcentersand1159pmcentraltimeforonlineprocto": {
+     "first": "2026-09-12",
+     "t": "The AWS Certified Cloud Practitioner exam needs to be completed prior to November 30, 2026, 11:59 PM local time (the “CLF-C02 Exam Deadline”) (for test centers) and 11:59 PM Central Time for online proctored ."
+    },
+    "thepromocodeisonlyofferedforexamsthatarescheduledthroughpearsonvue": {
+     "first": "2026-09-12",
+     "t": "The promo code is only offered for Exams that are scheduled through Pearson VUE."
+    },
+    "thesamepromocodeautomaticallygivesyouafreeawscertifiedcloudpractitionerwithintheofferperiodifyoupassthataifc01exam": {
+     "first": "2026-09-12",
+     "t": "The same promo code automatically gives you a free AWS Certified Cloud Practitioner within the Offer Period if you pass that AIF-C01 Exam."
+    },
+    "thisoffermaynotbecombinedwithotheroffersorvouchersseetermsandconditions": {
+     "first": "2026-09-12",
+     "t": "This offer may not be combined with other offers or vouchers, see terms and conditions."
+    },
+    "youcanusethecampaignpromocodetosave50onyouraifc01examwhichneedstobecompletedbyseptember3020261159pmlocaltimefortestcentersand1159pmcentraltimeforonlineproctored": {
+     "first": "2026-09-12",
+     "t": "You can use the campaign promo code to save 50% on your AIF-C01 Exam, which needs to be completed by September 30, 2026, 11:59 PM local time (for test centers) and 11:59 PM Central Time for online proctored."
+    },
+    "youdonotneedtoenterthisoranotherpromocodetoreceivethefreeawscertifiedcloudpractitionerexamvoucherifyoupasstheawscertifiedaipractitionerexam": {
+     "first": "2026-09-12",
+     "t": "You do not need to enter this or another promo code to receive the free AWS Certified Cloud Practitioner exam voucher if you pass the AWS Certified AI Practitioner exam."
+    },
+    "youmayrescheduleanaifc01orclfc02examsolongasitiscompletedbeforetheexamdeadline": {
+     "first": "2026-09-12",
+     "t": "You may reschedule an AIF-C01 or CLF-C02 Exam so long as it is completed before the Exam Deadline."
+    }
+   }
+  },
+  "aws-badges": {
+   "hash": "4375371f7f9d9b466ab7917c3d41418191c07012d51540b12821eb05b90d145b",
+   "last_check": "2026-09-12T16:28:24Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "additionallyawsofferstrainingbadgesforprogramsincludingawseducateawsacademyawscloudinstituteandawsrestart": {
+     "first": "2026-09-12",
+     "t": "Additionally, AWS offers Training badges for programs including AWS Educate , AWS Academy , AWS Cloud Institute , and AWS re/Start ."
+    },
+    "additionalresourcesinterestedinearninganawscertificationbadge": {
+     "first": "2026-09-12",
+     "t": "Additional resources Interested in earning an AWS Certification Badge?"
+    },
+    "adigitalbadgeprovidesaverifiablewayforindividualstoshowcaseknowledgeskillsoraccomplishmentswhetherthrougharesumesocialnetworkoremailsignature": {
+     "first": "2026-09-12",
+     "t": "A digital badge provides a verifiable way for individuals to showcase knowledge, skills, or accomplishments, whether through a resume, social network, or email signature."
+    },
+    "awstrainingandcertificationusescredlyanindependentorganizationtodeliverdigitalbadges": {
+     "first": "2026-09-12",
+     "t": "AWS Training and Certification uses Credly, an independent organization, to deliver digital badges."
+    },
+    "awstrainingbadgesofferthesebenefitsdemonstrateyourprogressgainingknowledgeandskillsforspecificawscloudtopicssuchasserverlessshareableonsocialnetworkstohelpyoust": {
+     "first": "2026-09-12",
+     "t": "AWS Training badges offer these benefits: Demonstrate your progress gaining knowledge and skills for specific AWS Cloud topics, such as Serverless Shareable on social networks to help you stand out to recruiters and prospective hiring managers Free to earn and"
+    },
+    "badgeearnerscandisplaythebadgeimagewithauniquelinkthatanyonecanclicktoverifythatspecificindividualsachievement": {
+     "first": "2026-09-12",
+     "t": "Badge earners can display the badge image with a unique link that anyone can click to verify that specific individual’s achievement."
+    },
+    "claimcreateacredlyaccounttoclaimyourdigitalbadge": {
+     "first": "2026-09-12",
+     "t": "Claim Create a Credly account to claim your digital badge."
+    },
+    "eachbadgehasitsownrequirementswhichareoutlinedonthespecificbadgepageunderearningcriteriaoncredlycom": {
+     "first": "2026-09-12",
+     "t": "Each badge has its own requirements, which are outlined on the specific badge page under Earning Criteria on Credly.com ."
+    },
+    "eachbadgehasitsowntimelinesforawardingabadge": {
+     "first": "2026-09-12",
+     "t": "Each badge has its own timelines for awarding a badge."
+    },
+    "earnandclaimdigitalbadgesawstrainingawsskiptomaincontentfilterallenglishcontactusawsmarketplacesupportmyaccountreinventdiscoverawsproductssolutionspricingresour": {
+     "first": "2026-09-12",
+     "t": "Earn and Claim Digital Badges | AWS Training | AWS Skip to main content Filter: All English Contact us AWS Marketplace Support My account re:Invent Discover AWS Products Solutions Pricing Resources Search Filter: All Sign in to console Create account Explore t"
+    },
+    "enrollenrollinselectmodulesthatofferdigitalbadgessuchasknowledgebadgereadinesspathsandcloudquest": {
+     "first": "2026-09-12",
+     "t": "Enroll Enroll in select modules that offer digital badges, such as Knowledge Badge Readiness Paths and Cloud Quest ."
+    },
+    "faqswhatdigitalbadgesdoawstrainingcertificationoffer": {
+     "first": "2026-09-12",
+     "t": "FAQs What digital badges do AWS Training & Certification offer?"
+    },
+    "howsoonwilligetmybadgeafterimeettherequirements": {
+     "first": "2026-09-12",
+     "t": "How soon will I get my badge, after I meet the requirements?"
+    },
+    "iammissingabadgewhatshouldido": {
+     "first": "2026-09-12",
+     "t": "I am missing a badge, what should I do?"
+    },
+    "ifthebadgehasbeenissuedtoanotheremailyoucanaddthatemailasasecondaryemailwithinyourcredlyaccount": {
+     "first": "2026-09-12",
+     "t": "If the badge has been issued to another email, you can add that email as a secondary email within your Credly account."
+    },
+    "ifyoureexpectingtoreceiveabadgeandyouhavenotyetreceiveditfirstmakesurethatthebadgeyouhavebeenissuedissenttothesameemailaddressyouhaveregisteredwithcredly": {
+     "first": "2026-09-12",
+     "t": "If you're expecting to receive a badge and you have not yet received it, first make sure that the badge you have been issued is sent to the same email address you have registered with Credly."
+    },
+    "ifyoustillhavenotreceivedthebadgecontactcredlysupportforfurtherassistance": {
+     "first": "2026-09-12",
+     "t": "If you still have not received the badge, contact Credly support for further assistance."
+    },
+    "mostbadgesrequireareviewprocesstoensureindividualshavemettherequirements": {
+     "first": "2026-09-12",
+     "t": "Most badges require a review process to ensure individuals have met the requirements."
+    },
+    "ourpremierebadgesareawardedforawscertifications": {
+     "first": "2026-09-12",
+     "t": "Our premiere badges are awarded for AWS Certifications ."
+    },
+    "pleasereviewcredlyssiteforinformationaboutacceptingabadge": {
+     "first": "2026-09-12",
+     "t": "Please review Credly’s site for information about accepting a badge ."
+    },
+    "showcaseshareyourbadgesbyactivatingyourskillsprofileinyourskillbuilderprofilesettings": {
+     "first": "2026-09-12",
+     "t": "Showcase Share your badges by activating your Skills Profile in your Skill Builder profile settings ."
+    },
+    "thereisnocosttocreateacredlycomaccountoracceptabadge": {
+     "first": "2026-09-12",
+     "t": "there is no cost to create a Credly.com account or accept a badge."
+    },
+    "wealsoofferawscertificationdigitalbadgesviacredlysplatform": {
+     "first": "2026-09-12",
+     "t": "We also offer AWS Certification digital badges via Credly’s platform."
+    },
+    "weoffertrainingbadgesinavarietyofformsincludingknowledgecloudquestandpartnertrainingsforcontenthostedonawsskillbuilder": {
+     "first": "2026-09-12",
+     "t": "We offer Training badges in a variety of forms including Knowledge , Cloud Quest , and Partner trainings for content hosted on AWS Skill Builder."
+    },
+    "whilemostofourbadgesarefreetoearnsomerequiremembershipinaspecificprogramorhaveotherrequirements": {
+     "first": "2026-09-12",
+     "t": "While most of our badges are free to earn, some require membership in a specific program or have other requirements."
+    },
+    "whocanearnabadgeandhowmuchdoesitcost": {
+     "first": "2026-09-12",
+     "t": "Who can earn a badge and how much does it cost?"
+    },
+    "youcanfindinformationoncredlyssiteabouthowtoacceptorshareyourbadge": {
+     "first": "2026-09-12",
+     "t": "You can find information on Credly’s site about how to accept or share your badge."
+    },
+    "youcanreviewallawstrainingandcertificationbadgesoncredlycom": {
+     "first": "2026-09-12",
+     "t": "You can review all AWS Training and Certification badges on Credly.com ."
+    }
+   }
+  },
+  "aws-certification": {
+   "hash": "153fd37ee505713eb701eec9c4311d98866910513fd66a4fcb7596eaa4b608d6",
+   "last_check": "2026-09-12T16:27:48Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "applynowawscertificationdigitalbadgesweprovidedigitalbadgesasabenefitofearninganawscertificationtoshowcasecertificationstatus": {
+     "first": "2026-09-12",
+     "t": "Apply now AWS Certification digital badges We provide digital badges as a benefit of earning an AWS Certification to showcase certification status."
+    },
+    "buyexamvoucherssubjectmatterexpertprogramwearesearchingforqualifiedsubjectmatterexpertssmes": {
+     "first": "2026-09-12",
+     "t": "Buy exam vouchers Subject matter expert program We are searching for qualified subject matter experts (SMEs)."
+    },
+    "getstartedexamvouchersareyousupportingateamtakingawscertificationexams": {
+     "first": "2026-09-12",
+     "t": "Get started Exam Vouchers Are you supporting a team taking AWS Certification exams?"
+    },
+    "makeiteasierwithexamvouchers": {
+     "first": "2026-09-12",
+     "t": "Make it easier with exam vouchers."
+    },
+    "purchaseonlineanytimeandthenuseaselfserviceportaltoefficientlydistributetrackandmanagestandardexamvouchers": {
+     "first": "2026-09-12",
+     "t": "Purchase online anytime, and then use a self-service portal to efficiently distribute, track, and manage standard exam vouchers."
+    },
+    "youcanalsoaccessyourawscertifiedbenefitssuchasyourdigitalbadgeand50discountvoucherforafutureexam": {
+     "first": "2026-09-12",
+     "t": "You can also access your AWS Certified benefits, such as your digital badge and 50% discount voucher for a future exam."
+    }
+   }
+  },
+  "aws-student": {
+   "hash": "54afa79a4b27d7657455be5dfb12c3c6dccb1580b6ab07a0ccdcc4aa9d558fb1",
+   "last_check": "2026-09-12T16:27:46Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {}
+  },
+  "capacitate": {
+   "hash": "99396fe1af983630ba9ce6cc5b51bcc9b7be74830b23ca5b652f809f489b60a4",
+   "last_check": "2026-09-12T16:28:52Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {}
+  },
+  "cisco-netacad": {
+   "hash": "7bffa016d3131847f92ecfbed90eadafa009582d6e52fe5d7e1a5ab5896fdeeb",
+   "last_check": "2026-09-12T16:28:03Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {}
+  },
+  "cisco-skillsforall": {
+   "hash": "690f1fdd112b887bc04c7cb8537ab30a8b20019977e64965c9f0848a421bbaf7",
+   "last_check": "2026-09-12T16:28:31Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {}
+  },
+  "classcentral": {
+   "hash": "cebf826c5c68976210d090db6e8e75cf784b0aa5d64924932df12592abe33105",
+   "last_check": "2026-09-12T16:29:01Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "450freegooglecertificationscoursesbadges2026classcentralgoogleibmmetacareercertificates40offfor3months": {
+     "first": "2026-09-12",
+     "t": "450+ Free Google Certifications, Courses & Badges [2026] — Class Central Google, IBM & Meta Career Certificates, 40% Off for 3 Months."
+    },
+    "600freegooglecertificationstrendingmostcommonjavadatasciencemachinelearningpopularsubjectsdataanalysis9768coursescybersecurity28222coursesprogramming35602course": {
+     "first": "2026-09-12",
+     "t": "600 Free Google Certifications Trending Most common java data science machine learning Popular subjects Data Analysis 9,768 courses Cybersecurity 28,222 courses Programming 35,602 courses Popular courses Introducción a la genética y la evolución Universidad Au"
+    },
+    "aftergettingascoreof80orhigherontheassessmentyoullearnafreecertificateofcompletionliketheoneabove": {
+     "first": "2026-09-12",
+     "t": "After getting a score of 80% or higher on the assessment, you’ll earn a free certificate of completion, like the one above."
+    },
+    "althoughthoseexamsarenotfreetherearehundredsoffreeprepcoursestohelpyoupasstheexams": {
+     "first": "2026-09-12",
+     "t": "Although those exams are not free, there are hundreds of free prep courses to help you pass the exams."
+    },
+    "availabilitychangesoftensoitisworthconfirmingacoursestilloffersafreecredentialbeforeenrolling": {
+     "first": "2026-09-12",
+     "t": "Availability changes often, so it is worth confirming a course still offers a free credential before enrolling."
+    },
+    "browseourcatalogdiscoverthousandsoffreeonlinecoursesfromtopuniversitiesaroundtheworldlikemitstanfordandharvard": {
+     "first": "2026-09-12",
+     "t": "Browse our catalog Discover thousands of free online courses from top universities around the world like MIT, Stanford, and Harvard."
+    },
+    "checkindividualcoursesforbadgeavailability": {
+     "first": "2026-09-12",
+     "t": "Check individual courses for badge availability."
+    },
+    "clickontheshortcutsforcourseswithfreecertificatesorbadgesfreegoogleskillshopcertificationsfreegoogleanalyticscertificationfreegoogleplayacademycertificatefreeba": {
+     "first": "2026-09-12",
+     "t": "Click on the shortcuts for courses with free certificates or badges: Free Google Skillshop Certifications Free Google Analytics Certification Free Google Play Academy Certificate Free Badges from Google Cloud Skills Boost (Quiklabs) Free Google Developer Badge"
+    },
+    "courserareplaceditsoldauditoptionwithalimitedpreviewin2025anditsprofessionalcertificatepagesdonotallowafreesinglecoursesignup": {
+     "first": "2026-09-12",
+     "t": "Coursera replaced its old Audit option with a limited Preview in 2025, and its Professional Certificate pages do not allow a free single-course signup."
+    },
+    "coursereport450freegooglecertificationscoursesbadges2026googleoffers450freeonlinecourseswithcertificatesandbadgescoveringgoogleadsanalyticsaicloudandmore": {
+     "first": "2026-09-12",
+     "t": "Course Report 450+ Free Google Certifications, Courses & Badges [2026] Google offers 450+ free online courses with certificates and badges, covering Google Ads, Analytics, AI, Cloud, and more."
+    },
+    "currentlygoogleskillshopoffers14onlinecourseswithafreecertificateofcompletion": {
+     "first": "2026-09-12",
+     "t": "Currently, Google Skillshop offers 14 online courses with a free certificate of completion."
+    },
+    "currentlyonefreecertificateisavailablegoogleplaystorelistingcertificate": {
+     "first": "2026-09-12",
+     "t": "Currently, one free certificate is available: Google Play Store Listing Certificate ."
+    },
+    "dofreegooglecoursesgiveacertificateorjustabadge": {
+     "first": "2026-09-12",
+     "t": "Do free Google courses give a certificate or just a badge?"
+    },
+    "dogooglecertificatesandbadgesexpire": {
+     "first": "2026-09-12",
+     "t": "Do Google certificates and badges expire?"
+    },
+    "eachcourseisfreetotakeandeachgivesyouacredentialyoucanaddtoyourcvorlinkedinprofile": {
+     "first": "2026-09-12",
+     "t": "Each course is free to take, and each gives you a credential you can add to your CV or LinkedIn profile."
+    },
+    "earningtheshareablecertificaterequiresanactivecourserasubscriptionthoughafreetrialisoftenavailableandfinancialaidcancovermostofthecost": {
+     "first": "2026-09-12",
+     "t": "Earning the shareable certificate requires an active Coursera subscription, though a free trial is often available and financial aid can cover most of the cost."
+    },
+    "financialaidandafreetrialcanlowerthecostbuttheprogramisnotfreeandisseparatefromthefreecourseslistedonthispage": {
+     "first": "2026-09-12",
+     "t": "Financial aid and a free trial can lower the cost, but the program is not free and is separate from the free courses listed on this page."
+    },
+    "forcloudanddatatopicsgooglecloudskillsboostoffersfreebadgecoursesthatcoversimilarground": {
+     "first": "2026-09-12",
+     "t": "For cloud and data topics, Google Cloud Skills Boost offers free badge courses that cover similar ground."
+    },
+    "forgoogleadsandgoogleanalyticstheskillshopcertificationslistedabovearefreefromstarttofinishincludingthecertificate": {
+     "first": "2026-09-12",
+     "t": "For Google Ads and Google Analytics, the Skillshop certifications listed above are free from start to finish, including the certificate."
+    },
+    "fortheoccasiongooglelaunchednewonlinecoursesincludingafreecertificationprogramgoogleanalyticscertification": {
+     "first": "2026-09-12",
+     "t": "For the occasion, Google launched new online courses, including a free certification program: Google Analytics Certification ."
+    },
+    "freebadgesfromgooglecloudskillsboostqwiklabspatsfreeintroductiontogenerativeaibadgeqwiklabsastartupacquiredbygoogleandsincethenrebrandedtogooglecloudskillsboost": {
+     "first": "2026-09-12",
+     "t": "Free Badges from Google Cloud Skills Boost (Qwiklabs) Pat’s free Introduction to Generative AI badge Qwiklabs, a startup acquired by Google and since then rebranded to Google Cloud Skills Boost (though the Qwiklabs name lingers), lets you learn Google Cloud th"
+    },
+    "freegoogleplayacademycertificategoogleplayacademycoursesgoogleplayacademyhasover60freeshortcourseswithoutcertificatesavailabletohelpyoubuildasuccessfulapporgame": {
+     "first": "2026-09-12",
+     "t": "Free Google Play Academy Certificate Google Play Academy courses Google Play Academy has over 60 free short courses (without certificates) available to help you build a successful app or game business."
+    },
+    "googlecloudskillsboostandgoogledevelopersmainlyawardskillorcompletionbadges": {
+     "first": "2026-09-12",
+     "t": "Google Cloud Skills Boost and Google Developers mainly award skill or completion badges."
+    },
+    "googlehaswithdrawnitsfreecertificatecoursesfortheuniversalanalyticsplatformthatstoppedworkingfromjuly1st2023": {
+     "first": "2026-09-12",
+     "t": "Google has withdrawn its free certificate courses for the Universal Analytics platform that stopped working from July 1st, 2023."
+    },
+    "googleoffersmorethan450freeonlinecoursesthatleadtoacertificateoradigitalbadge": {
+     "first": "2026-09-12",
+     "t": "Google offers more than 450 free online courses that lead to a certificate or a digital badge."
+    },
+    "googleplayacademyoffersaround60shortcourseswithoutcertificatesplusonecoursethatleadstoafreecertificate": {
+     "first": "2026-09-12",
+     "t": "Google Play Academy offers around 60 short courses without certificates, plus one course that leads to a free certificate."
+    },
+    "googlerunsmorethan450freeonlinecoursesthatcomewithacertificateofcompletionoradigitalbadgespreadacrossgoogleskillshopgoogleanalyticsacademygoogleplayacademygoogl": {
+     "first": "2026-09-12",
+     "t": "Google runs more than 450 free online courses that come with a certificate of completion or a digital badge, spread across Google Skillshop, Google Analytics Academy, Google Play Academy, Google Cloud Skills Boost, and Google Developers."
+    },
+    "googleskillshopprovidesfreetrainingprogramsforalargenumberofgoogleservicesincludingtheirmarketingtools": {
+     "first": "2026-09-12",
+     "t": "Google Skillshop provides free training programs for a large number of Google services, including their marketing tools."
+    },
+    "ifyourgoalistheknowledgeratherthanthecredentialthefreecredentialsalreadyonthispagearethebetterstartingpoint": {
+     "first": "2026-09-12",
+     "t": "If your goal is the knowledge rather than the credential, the free credentials already on this page are the better starting point."
+    },
+    "inparticulartheplatformhas1500learningresourcesincluding120onlinecoursesandfreebadgesfrombeginnertoadvancedlevels": {
+     "first": "2026-09-12",
+     "t": "In particular, the platform has 1500 learning resources including 120+ online courses and free badges from beginner to advanced levels."
+    },
+    "morearticlesfrommanoelcortesmendezrelated202610000freetechcoursescertificatesfromgooglemicrosoftamazonandmore20262000freedeveloperanditcertifications2026280free": {
+     "first": "2026-09-12",
+     "t": "More articles from Manoel Cortes Mendez Related [2026] 10,000+ Free Tech Courses & Certificates from Google, Microsoft, Amazon, and More [2026] 2000+ Free Developer and IT Certifications [2026] 280+ Free Digital Marketing Certificates & Badges [2026] 100+ Goog"
+    },
+    "noteveryfreegooglecredentialisthesame": {
+     "first": "2026-09-12",
+     "t": "Not every free Google credential is the same."
+    },
+    "paidoptiongooglecareercertificatesmanypeoplesearchingforfreegooglecertificatesareactuallylookingforthegooglecareercertificates": {
+     "first": "2026-09-12",
+     "t": "Paid option: Google Career Certificates Many people searching for free Google certificates are actually looking for the Google Career Certificates ."
+    },
+    "platformfreecredentialfreecoursestopicsexamplegoogleskillshopcertificateofcompletion14googleadsmarketingplatformgoogleadssearchcertificationgoogleanalyticsacade": {
+     "first": "2026-09-12",
+     "t": "Platform Free credential Free courses Topics Example Google Skillshop Certificate of completion 14 Google Ads, Marketing Platform Google Ads Search Certification Google Analytics Academy Certificate of completion (via Skillshop) 1 Google Analytics 4 Google Ana"
+    },
+    "pleasenoteclasscentralisnotinvolvedinrunningthesecoursesorissuingthecertificatesandbadges": {
+     "first": "2026-09-12",
+     "t": "Please note, Class Central is not involved in running these courses or issuing the certificates and badges."
+    },
+    "replydibyendudas652025at1213amthanksgoogleformakingthisavailableatnocost": {
+     "first": "2026-09-12",
+     "t": "Reply Dibyendu Das 6/5/2025 at 12:13am Thanks Google for making this available at no cost."
+    },
+    "replyjennytailya5132021at546amwowthiswasasuggestedarticlefromgooglebecauseibeenlookingforthingslikethisforthelastmonth": {
+     "first": "2026-09-12",
+     "t": "Reply Jenny Tailya 5/13/2021 at 5:46am Wow, this was a suggested article from Google because I been looking for things like this for the last month."
+    },
+    "skillandcompletionbadgesfromcloudskillsboostandgoogledevelopersgenerallydonotexpire": {
+     "first": "2026-09-12",
+     "t": "Skill and completion badges from Cloud Skills Boost and Google Developers generally do not expire."
+    },
+    "skillshopandgoogleanalyticsissueshareablecertificatesofcompletionwhilecloudskillsboostandthedeveloperplatformmostlyawardskillbadges": {
+     "first": "2026-09-12",
+     "t": "Skillshop and Google Analytics issue shareable certificates of completion, while Cloud Skills Boost and the Developer platform mostly award skill badges."
+    },
+    "someskillshopassessmentscanbecompletedinafewhourswhilebadgecoursesoncloudskillsboostrangefromshortlabstomultihourpathways": {
+     "first": "2026-09-12",
+     "t": "Some Skillshop assessments can be completed in a few hours, while badge courses on Cloud Skills Boost range from short labs to multi-hour pathways."
+    },
+    "tagsfreecertificatesgoogleruimawithabackgroundinhealthstatisticsandsociologyshehasbuiltacareerpathindataanalytics": {
+     "first": "2026-09-12",
+     "t": "Tags Free certificates Google Rui Ma With a background in Health Statistics and Sociology, she has built a career path in Data Analytics."
+    },
+    "thanksgoogleformakingthisavailableatnocost": {
+     "first": "2026-09-12",
+     "t": "Thanks Google for making this available at no cost."
+    },
+    "thecertificateyouearnisidenticaltothepaidoneandgivesnosignthatfinancialaidwasused": {
+     "first": "2026-09-12",
+     "t": "The certificate you earn is identical to the paid one and gives no sign that financial aid was used."
+    },
+    "thegoogleanalyticscertificationcoveringgoogleanalytics4isfreethroughgoogleskillshop": {
+     "first": "2026-09-12",
+     "t": "The Google Analytics Certification, covering Google Analytics 4, is free through Google Skillshop."
+    },
+    "themainwaytoearnoneatreducedcostiscourserafinancialaid": {
+     "first": "2026-09-12",
+     "t": "The main way to earn one at reduced cost is Coursera financial aid ."
+    },
+    "wefoundover300coursesofferingafreeskillsbadgeorcompletionbadge": {
+     "first": "2026-09-12",
+     "t": "We found over 300 courses offering a free skills badge or completion badge ."
+    }
+   }
+  },
+  "comptia-desc": {
+   "last_check": "2026-09-12T16:28:15Z",
+   "last_error": "HTTP 404",
+   "last_status": 404,
+   "url": "https://www.comptia.org/exam-vouchers/discounts"
+  },
+  "coursera-aid": {
+   "last_check": "2026-09-12T16:28:14Z",
+   "last_error": "HTTP 404",
+   "last_status": 404,
+   "url": "https://www.coursera.org/financial-aid"
+  },
+  "coursera-gcyber": {
+   "hash": "84dfe989d630c4312dfc3fd8dd596d62440a3a4a7a1d932ba82146f993a45b5e",
+   "last_check": "2026-09-12T16:28:12Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "becauseofthiscybersecurityanalystsareinhighdemandandcancommandacompetitivesalaryacrossawiderangeofindustries": {
+     "first": "2026-09-12",
+     "t": "Because of this, cybersecurity analysts are in high demand and can command a competitive salary across a wide range of industries."
+    },
+    "googlecybersecurityprofessionalcertificatecourseraforindividualsforbusinessesforuniversitiesforgovernmentsexploredegreesloginjoinforfreejoinforfreegooglecyberse": {
+     "first": "2026-09-12",
+     "t": "Google Cybersecurity Professional Certificate | Coursera For Individuals For Businesses For Universities For Governments Explore Degrees ​ Log In Join for Free Join for Free Google Cybersecurity Professional Certificate About Outcomes Courses Testimonials Prev"
+    },
+    "graduatesofthegooglecybersecuritycertificatecanaccessthecomptiasecurityexamandtrainingatadiscountedprice": {
+     "first": "2026-09-12",
+     "t": "Graduates of the Google Cybersecurity Certificate can access the CompTIA Security+ exam and training at a discounted price."
+    },
+    "intheunitedstates75ofcertificategraduatesreportapositivecareeroutcomeegnewjobpromotionorraisewithinsixmonthsofcertificatecompletionwhenwesawthepositiveimpactthi": {
+     "first": "2026-09-12",
+     "t": "In the United States, 75% of certificate graduates report a positive career outcome (e.g., new job, promotion, or raise) within six months of certificate completion.¹ When we saw the positive impact this program was having on people all over the world, we expa"
+    },
+    "positivecareeroutcomeegnewjobpromotionorraisewithinsixmonthsofcompletion": {
+     "first": "2026-09-12",
+     "t": "²Positive career outcome (e.g., new job, promotion, or raise) within six months of completion."
+    },
+    "showall16frequentlyaskedquestionsmorequestionsvisitthelearnerhelpcenterfinancialaidavailablelearnmorelightcastus": {
+     "first": "2026-09-12",
+     "t": "Show all 16 frequently asked questions More questions Visit the learner help center Financial aid available, learn more ¹Lightcast™ U.S."
+    },
+    "toshareproofofcompletionwithschoolscertificategraduateswillreceiveanemailpromptingthemtoclaimtheircredlybadgewhichcontainstheaceorectscreditrecommendation": {
+     "first": "2026-09-12",
+     "t": "To share proof of completion with schools, certificate graduates will receive an email prompting them to claim their Credly badge, which contains the ACE ® ️ or ECTS credit recommendation."
+    }
+   }
+  },
+  "databricks": {
+   "hash": "65d573fb20e4beacd864ada117d7d7b08c8b924457d709a41d8161662efc35e3",
+   "last_check": "2026-09-12T16:28:20Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "earnabadgetoshowcaseyourskillsonlinkedinoryourrsum": {
+     "first": "2026-09-12",
+     "t": "Earn a badge to showcase your skills on LinkedIn or your résumé."
+    },
+    "earnyourbadgetodayandshareyouraccomplishmentonlinkedinorrsum": {
+     "first": "2026-09-12",
+     "t": "Earn your badge today and share your accomplishment on LinkedIn or résumé."
+    },
+    "free12h00mlabviewalltrainingbyrolecoursesbyexpertinstructorsintermediategenerativeaiengineeringwithdatabricksbuildllmcentricapplicationswiththelatestandmostpopu": {
+     "first": "2026-09-12",
+     "t": "FREE 12h 00m LAB View all training by role Courses by expert instructors Intermediate Generative AI Engineering with Databricks Build LLM-centric applications with the latest and most popular frameworks."
+    },
+    "free1h30mfreeondemandtrainingaiagentfundamentalsaiagentsempowerteamstoworksmarterautomateeverydaytasksanddriveinnovation": {
+     "first": "2026-09-12",
+     "t": "FREE 1H 30M Free on-demand training AI Agent Fundamentals AI agents empower teams to work smarter, automate everyday tasks and drive innovation."
+    },
+    "free1h30mfreeondemandtraininggenerativeaifundamentalsorganizationsthatharnessthistransformativetechnologysuccessfullywillbedifferentiatedinthemarketandbeleaders": {
+     "first": "2026-09-12",
+     "t": "FREE 1h 30m Free on-demand training Generative AI Fundamentals Organizations that harness this transformative technology successfully will be differentiated in the market and be leaders in the future."
+    },
+    "free60mheresmoretoexploretraininggenerativeaifundamentalsstartnowtraininglakehousefundamentalsstartnowtrainingfreeazuredatabrickstrainingwatchnowgenerativeaifun": {
+     "first": "2026-09-12",
+     "t": "FREE 60m Here's more to explore Training Generative AI Fundamentals Start now Training Lakehouse Fundamentals Start now Training Free Azure Databricks Training Watch now Generative AI Fundamentals Learn how to use LLMs and more in your organization with 4 shor"
+    },
+    "getademologincontactustrydatabrickstrainingandcertificationbuildastrongdataandaifoundationwithdatabrickstrainingandcertificationtodemonstrateyourcompetenceandac": {
+     "first": "2026-09-12",
+     "t": "Get a Demo Login Contact Us Try Databricks Training and Certification Build a strong data and AI foundation with Databricks training and certification to demonstrate your competence and accelerate your career Upskill today Explore all training Access Role-Base"
+    },
+    "getcertified95cansolvegreaterchallenges93havegreaterefficiency88havegreatercostsavingsareyouapartner": {
+     "first": "2026-09-12",
+     "t": "Get certified 95% Can solve greater challenges 93% Have greater efficiency 88% Have greater cost savings Are you a Partner?"
+    },
+    "getuptospeedongenerativeaiwiththisfreeondemandtraining": {
+     "first": "2026-09-12",
+     "t": "Get up to speed on generative AI with this free on-demand training."
+    },
+    "getuptospeedonthefundamentalsofaiagentswiththisshortfreeondemandtraining": {
+     "first": "2026-09-12",
+     "t": "Get up to speed on the fundamentals of AI agents with this short, free on-demand training."
+    },
+    "paid8h00mlabviewalllabbasedtraininglearnmoreaboutdatabricksacademylabscertificationdatabrickscertificationandbadgescertificationexamsassessyourknowledgeofthedat": {
+     "first": "2026-09-12",
+     "t": "PAID 8h 00m lab View all lab-based training Learn more about Databricks Academy Labs Certification Databricks Certification and Badges Certification exams assess your knowledge of the Databricks Data + AI Platform and the underlying methods required to success"
+    },
+    "thenpassaquiztoearnabadgeforlinkedinoryourrsum": {
+     "first": "2026-09-12",
+     "t": "Then pass a quiz to earn a badge for LinkedIn or your résumé."
+    },
+    "viewalltrainingrequestprivatetrainingfreeondemandtrainingdatabricksfundamentalsinjustonehourlearnaboutthelatestdataandaitechniquesandhowtobringaitoyourdatawithd": {
+     "first": "2026-09-12",
+     "t": "View all training Request private training Free on-demand training Databricks Fundamentals In just one hour, learn about the latest data and AI techniques and how to bring AI to your data with Databricks."
+    }
+   }
+  },
+  "dumpsgate": {
+   "hash": "8dec1c847945ed45a479c9915d96b6295842fa919e5c233619bc96ef4a27ee0e",
+   "last_check": "2026-09-12T16:29:05Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "200standardkeydeadlinesaifc01mustbetakenandpassedbyseptember3020261159pmlocalctforonlineclfc02freeexammustbecompletedbynovember302026restrictionsonepercustomera": {
+     "first": "2026-09-12",
+     "t": "$200 standard) Key deadlines AIF-C01 must be taken and passed by September 30, 2026 (11:59 PM local / CT for online) CLF-C02 free exam must be completed by November 30, 2026 Restrictions One per customer/account; cannot be combined with other offers or voucher"
+    },
+    "2560effectivesavingsawsactivateprovidesawsservicecreditstoqualifyingstartupsandnonprofits": {
+     "first": "2026-09-12",
+     "t": "(25–60% Effective Savings) AWS Activate provides AWS service credits to qualifying startups and nonprofits."
+    },
+    "a70discountisnotastandardawsoffer": {
+     "first": "2026-09-12",
+     "t": "A 70% discount is not a standard AWS offer."
+    },
+    "acompleteoverviewofcurrentpmipromocodesandverifiedsavingsmethodsisavailableherepmipromocodes": {
+     "first": "2026-09-12",
+     "t": "A complete overview of current PMI promo codes and verified savings methods is available here: PMI promo codes ."
+    },
+    "activatetierstiercreditsrequirementsfoundersupto1000selffundedstartupnewawsaccountportfolioupto25000100000backedbyawsactivateprovidervcacceleratorincubatoraddit": {
+     "first": "2026-09-12",
+     "t": "Activate Tiers Tier Credits Requirements Founders Up to $1,000 Self-funded startup, new AWS account Portfolio Up to $25,000–$100,000+ Backed by AWS Activate provider (VC, accelerator, incubator) Additional Activate benefits AWS Support credits (Business-level)"
+    },
+    "activecodesincludecampaignspecificvouchersegaif2cloudfor50offawscertifiedaipractitionervalidthroughseptember302026plusongoingprogramscreditsfornewaccountsawsact": {
+     "first": "2026-09-12",
+     "t": "Active codes include campaign-specific vouchers (e.g., AIF2CLOUD for 50% off AWS Certified AI Practitioner, valid through September 30, 2026), plus ongoing programs: credits for new accounts, AWS Activate for startups, certification vouchers, exam retake polic"
+    },
+    "addexpirydatestoyourcalendarimmediatelyuponreceivinganyvoucher": {
+     "first": "2026-09-12",
+     "t": "Add expiry dates to your calendar immediately upon receiving any voucher."
+    },
+    "aif2cloudisanofficialpearsonvuepromocodethatprovides50offtheawscertifiedaipractitioneraifc01exam": {
+     "first": "2026-09-12",
+     "t": "AIF2CLOUD is an official Pearson VUE promo code that provides 50% off the AWS Certified AI Practitioner (AIF-C01) exam."
+    },
+    "aif2cloudisaverifiedlivepromocodeissuedbypearsonvueconfirmedseptember122026": {
+     "first": "2026-09-12",
+     "t": "AIF2CLOUD is a verified, live promo code issued by Pearson VUE (confirmed September 12, 2026)."
+    },
+    "aretakevoucherforsaac03cannotbeusedondvac02": {
+     "first": "2026-09-12",
+     "t": "A retake voucher for SAA-C03 cannot be used on DVA-C02."
+    },
+    "arethereany30awscertificationdiscountcodesavailable": {
+     "first": "2026-09-12",
+     "t": "Are there any 30% AWS certification discount codes available?"
+    },
+    "asofseptember2026awsandpearsonvuepublishlimitedtimepublicpromocodesalongsidestructureddiscountprograms": {
+     "first": "2026-09-12",
+     "t": "As of September 2026, AWS and Pearson VUE publish limited-time public promo codes alongside structured discount programs."
+    },
+    "asofseptember2026nostandingfreeretakeprogramexiststheseareeventspecificcampaigns": {
+     "first": "2026-09-12",
+     "t": "As of September 2026, no standing free retake program exists — these are event-specific campaigns."
+    },
+    "asofseptember2026theactivepublicpromocodeisaif2cloudissuedbypearsonvue": {
+     "first": "2026-09-12",
+     "t": "As of September 2026, the active public promo code is AIF2CLOUD, issued by Pearson VUE."
+    },
+    "awsacademygraduatesreceivea50offvoucherfortheirfirstcertificationexam": {
+     "first": "2026-09-12",
+     "t": "AWS Academy graduates receive a 50% off voucher for their first certification exam."
+    },
+    "awsandpearsonvueoccasionallyreleaselimitedtime30discountcodesthroughpromotionalcampaignseventsandregionaloffers": {
+     "first": "2026-09-12",
+     "t": "AWS and Pearson VUE occasionally release limited-time 30% discount codes through promotional campaigns, events, and regional offers."
+    },
+    "awscertificationexamdiscountsaredeliveredasvouchersalphanumericcodesenteredduringexamregistrationonpearsonvueorpsi": {
+     "first": "2026-09-12",
+     "t": "AWS certification exam discounts are delivered as vouchers, alphanumeric codes entered during exam registration on Pearson VUE or PSI."
+    },
+    "awsdiscountmechanismsactiveasofseptember2026discounttypecodevalueeligibilityexpiresaipractitioner50offfreeclfc02aif2cloudanyone18pearsonvueonlysep302026aifnov30": {
+     "first": "2026-09-12",
+     "t": "AWS discount mechanisms active as of September 2026: Discount Type Code / Value Eligibility Expires AI Practitioner 50% Off + Free CLF-C02 AIF2CLOUD Anyone 18+; Pearson VUE only Sep 30, 2026 (AIF) / Nov 30, 2026 (CLF) AWS Free Tier 12 months of usage limits Ne"
+    },
+    "awsdoesnotallowtwovouchersonasingleexambutyoucanstackacrossdifferentexamsandovertime": {
+     "first": "2026-09-12",
+     "t": "AWS does not allow two vouchers on a single exam, but you can stack across different exams and over time."
+    },
+    "awseducateprovidesfreecourseaccessandupto200inawscreditsperyearforstudentsatmemberinstitutionsnocreditcardrequired": {
+     "first": "2026-09-12",
+     "t": "AWS Educate provides free course access and up to $200 in AWS credits per year for students at member institutions, no credit card required."
+    },
+    "awspolicyallowsonlyonevoucherorpromocodeperexamregistration": {
+     "first": "2026-09-12",
+     "t": "AWS policy allows only one voucher or promo code per exam registration."
+    },
+    "awspromocodeguidelineseligibilityandimportantremindersofficialguidelinesawsvouchersandcreditsarenontransferableunlessexplicitlystatedvoucherscannotbeexchangedfo": {
+     "first": "2026-09-12",
+     "t": "AWS Promo Code Guidelines, Eligibility, and Important Reminders Official Guidelines AWS vouchers and credits are non-transferable unless explicitly stated Vouchers cannot be exchanged for cash or AWS credits One voucher per exam registration; no stacking on a "
+    },
+    "awspromocodesdiscountsaugust2026saveupto50viewaccounts0items0subtotal000viewcartcheckouthomepopularexamsmicrosoftsalesforceamazonwebservicessnowflakecertificati": {
+     "first": "2026-09-12",
+     "t": "AWS Promo Codes & Discounts (August 2026): Save Up To 50% View Accounts 0 Items : 0 Subtotal : $ 0.00 View Cart Check Out Home Popular Exams Microsoft Salesforce Amazon Web Services Snowflake Certifications PMI Project Management & Specialized Google Cloud Com"
+    },
+    "awsstandardexampricingseptember2026examtierstandardpriceusdafter50discountafterfreevoucherfoundationalcloudpractitioneraipractitioner100500associatesaac03dvac02": {
+     "first": "2026-09-12",
+     "t": "AWS Standard Exam Pricing (September 2026) Exam Tier Standard Price (USD) After 50% Discount After Free Voucher Foundational (Cloud Practitioner, AI Practitioner) $100 $50 $0 Associate (SAA-C03, DVA-C02, SOA-C02, etc.) $150 $75 $0 Professional (SAP-C02, DOP-C0"
+    },
+    "candidateswhopassaifc01usingthiscodeautomaticallyreceiveafreeawscertifiedcloudpractitionerclfc02voucherredeemablebeforenovember302026": {
+     "first": "2026-09-12",
+     "t": "Candidates who pass AIF-C01 using this code automatically receive a free AWS Certified Cloud Practitioner (CLF-C02) voucher, redeemable before November 30, 2026."
+    },
+    "canicombinetwoawsvouchersonasingleexam": {
+     "first": "2026-09-12",
+     "t": "Can I combine two AWS vouchers on a single exam?"
+    },
+    "canigeta70discountonanawscertificationexam": {
+     "first": "2026-09-12",
+     "t": "Can I get a 70% discount on an AWS certification exam?"
+    },
+    "canstudentsgetawsexamdiscounts": {
+     "first": "2026-09-12",
+     "t": "Can students get AWS exam discounts?"
+    },
+    "checkawsamazoncomcertificationcertificationprepforactivepromotions": {
+     "first": "2026-09-12",
+     "t": "Check aws.amazon.com/certification/certification-prep for active promotions."
+    },
+    "checkwithyourhroritdepartmentthisisthemostoverlookedsourceofanawsdiscountcardorvoucher": {
+     "first": "2026-09-12",
+     "t": "Check with your HR or IT department — this is the most overlooked source of an AWS discount card or voucher."
+    },
+    "creditsreduceinfrastructurebillsdollarfordollardeliveringeffectivesavingsof2560dependingonusagevolume": {
+     "first": "2026-09-12",
+     "t": "Credits reduce infrastructure bills dollar-for-dollar, delivering effective savings of 25–60% depending on usage volume."
+    },
+    "doesawsactivategiveexamdiscounts": {
+     "first": "2026-09-12",
+     "t": "Does AWS Activate give exam discounts?"
+    },
+    "doublechecktheexamcodebeforeenteringyourvouchermistake2lettingvouchersexpireretakevoucherstypicallyexpirein612months": {
+     "first": "2026-09-12",
+     "t": "Double-check the exam code before entering your voucher Mistake 2: Letting vouchers expire Retake vouchers typically expire in 6–12 months."
+    },
+    "employersponsorshipstudentdiscountsandbulkvouchersemployersponsorshiplargestsourceofawsexamvouchercoveragemanyawspartnersandenterprisecustomersfundteamcertifica": {
+     "first": "2026-09-12",
+     "t": "Employer Sponsorship, Student Discounts, and Bulk Vouchers Employer Sponsorship Largest source of AWS exam voucher coverage Many AWS Partners and Enterprise customers fund team certifications How to request: Submit a business case citing AWS Partner tier requi"
+    },
+    "eventvouchersoftenexpirein60days": {
+     "first": "2026-09-12",
+     "t": "Event vouchers often expire in 60 days."
+    },
+    "fivemethodsworkreliablyusetheaif2cloudpromocodeactivenowusea50retakevoucherafterfailinganexamaccessapnpartnervouchersthroughyouremployerattendawsreinventorasumm": {
+     "first": "2026-09-12",
+     "t": "Five methods work reliably: use the AIF2CLOUD promo code (active now), use a 50% retake voucher after failing an exam, access APN partner vouchers through your employer, attend AWS re:Invent or a Summit, or wait for AWS Training & Certification newsletter prom"
+    },
+    "forexamdiscountsusethepathsoutlinedintheawscertificationvoucherssection": {
+     "first": "2026-09-12",
+     "t": "For exam discounts, use the paths outlined in the AWS Certification Vouchers section."
+    },
+    "frequentlyaskedquestionsfaqdoesawshaveapromocodein2026": {
+     "first": "2026-09-12",
+     "t": "Frequently Asked Questions (FAQ) Does AWS have a promo code in 2026?"
+    },
+    "fulldetailsinthehowtoget50discountsectionabove": {
+     "first": "2026-09-12",
+     "t": "Full details in the How to Get 50% Discount section above."
+    },
+    "hereisanexampleofacandidatepursuingawssolutionsarchitectprofessionalwithoutdiscountsitemcostsaac03associate150sapc02professional300practiceexams280total530herei": {
+     "first": "2026-09-12",
+     "t": "Here is an example of a candidate pursuing AWS Solutions Architect Professional without discounts: Item Cost SAA-C03 (Associate) $150 SAP-C02 (Professional) $300 Practice Exams (×2) $80 Total $530 Here is what you’ll pay with vouchers (APN 50% + free practice "
+    },
+    "homeblogawspromocodesdiscountsseptember2026saveupto50awspromocodesdiscountsseptember2026saveupto50writtenbydaniellurieupdatedonsep3202618minread30discountseptem": {
+     "first": "2026-09-12",
+     "t": "Home / Blog / AWS Promo Codes & Discounts (September 2026): Save Up To 50% AWS Promo Codes & Discounts (September 2026): Save Up To 50% Written by Daniel Lurie • Updated on Sep 3, 2026 • 18 min read 30% Discount, September 2026, Code: EMEA2026 50% Discount, Se"
+    },
+    "howdoiget50offanawscertificationexam": {
+     "first": "2026-09-12",
+     "t": "How do I get 50% off an AWS certification exam?"
+    },
+    "howlongareawsexamvouchersvalid": {
+     "first": "2026-09-12",
+     "t": "How long are AWS exam vouchers valid?"
+    },
+    "howtoget50discountonawscertificationexams": {
+     "first": "2026-09-12",
+     "t": "How to Get 50% Discount on AWS Certification Exams?"
+    },
+    "howtostackeffectivelyuseaif2cloudpromocodefirstgetaifc01for50andclfc02freetwofoundationalcertsfor50totalexpiressep302026getafreepracticeexamviacertificationbene": {
+     "first": "2026-09-12",
+     "t": "How to Stack Effectively Use AIF2CLOUD promo code first : get AIF-C01 for $50 and CLF-C02 free; two foundational certs for $50 total (expires Sep 30, 2026) Get a free practice exam via Certification Benefits : use it for your highest-cost upcoming exam (Profes"
+    },
+    "ifyouarealsoplanningtotakecomptiaexamsyoucanreviewthelatestworkingcomptiapromocodesandthemostreliablediscountmethodsherecomptiapromocodesanddiscounts": {
+     "first": "2026-09-12",
+     "t": "If you are also planning to take CompTIA exams, you can review the latest working CompTIA promo codes and the most reliable discount methods here: CompTIA promo codes and discounts ."
+    },
+    "itdependsonthesourceretakevoucherstypicallyexpirein612monthseventvouchersreinventsummitstypicallyexpirein60daystheaif2cloudcodeexpiresseptember302026alwaysnotet": {
+     "first": "2026-09-12",
+     "t": "It depends on the source: retake vouchers typically expire in 6–12 months ; event vouchers (re:Invent, Summits) typically expire in 60 days ; the AIF2CLOUD code expires September 30, 2026 Always note the expiry date immediately upon receiving any voucher."
+    },
+    "itgives50offtheawscertifiedaipractitionerexamaifc01andafreeawscertifiedcloudpractitionerexamclfc02ifyoupass": {
+     "first": "2026-09-12",
+     "t": "It gives 50% off the AWS Certified AI Practitioner exam (AIF-C01) and a free AWS Certified Cloud Practitioner exam (CLF-C02) if you pass."
+    },
+    "mistake5ignoringemployersapnstatusmanyemployeesatawspartnercompaniesdontknowtheiremployersapnmembershipprovides50examvouchers": {
+     "first": "2026-09-12",
+     "t": "Mistake 5: Ignoring employer’s APN status Many employees at AWS Partner companies don’t know their employer’s APN membership provides 50% exam vouchers."
+    },
+    "mostofficialcertificationdiscountsareupto50whilelargersavingsarelimitedtoselectprogramsorspecialpromotionswitheligibilityrequirements": {
+     "first": "2026-09-12",
+     "t": "Most official certification discounts are up to 50%, while larger savings are limited to select programs or special promotions with eligibility requirements."
+    },
+    "noawsactivateprovidesawsservicecreditsreducingyourcloudinfrastructurebillnotcertificationexamvouchers": {
+     "first": "2026-09-12",
+     "t": "No, AWS Activate provides AWS service credits (reducing your cloud infrastructure bill), not certification exam vouchers."
+    },
+    "nopromocoderequiredmonitorusageviathefreetierusagedashboardestimatedvalue200500inequivalentserviceusageover12monthsdependingonworkloadtype": {
+     "first": "2026-09-12",
+     "t": "No promo code required Monitor usage via the Free Tier Usage dashboard Estimated value: $200–$500 in equivalent service usage over 12 months, depending on workload type."
+    },
+    "notapplicableonpsimustbe18oroldernotvalidincubairannorthkoreasyriacrimeaorrussiafailingaifc01forfeitsthefreeclfc02voucheroffermaybemodifiedorcancelledbyawsatany": {
+     "first": "2026-09-12",
+     "t": "Not applicable on PSI Must be 18 or older; not valid in Cuba, Iran, North Korea, Syria, Crimea, or Russia Failing AIF-C01 forfeits the free CLF-C02 voucher Offer may be modified or cancelled by AWS at any time Vouchers are redeemed during exam scheduling on Pe"
+    },
+    "officialsourcesawsamazoncomcertificationawsamazoncomactivateawsamazoncomfreeawsamazoncomtrainingpearsonvuecomusenawshtmlthirdpartysitesclaimingtooffergenericaws": {
+     "first": "2026-09-12",
+     "t": "Official sources: aws.amazon.com/certification, aws.amazon.com/activate, aws.amazon.com/free , aws.amazon.com/training, pearsonvue.com/us/en/aws.html Third-party sites claiming to offer generic “aws promo code free” or “aws 50% discount voucher 2026” codes bey"
+    },
+    "pmicertificationsespeciallypmpandcapmhaveadifferentdiscountstructurethatmainlydependsonmembershipstatusandlocalchapterbenefits": {
+     "first": "2026-09-12",
+     "t": "PMI certifications (especially PMP and CAPM) have a different discount structure that mainly depends on membership status and local chapter benefits."
+    },
+    "practiceexampricingpracticeexamstandardpriceafterdiscountofficialpracticequestionsets290sometimesfreeviapromotionsofficialpracticeexamsfull40020pricenotesprices": {
+     "first": "2026-09-12",
+     "t": "Practice Exam Pricing Practice Exam Standard Price After Discount Official Practice Question Sets $29 $0 (sometimes free via promotions) Official Practice Exams (full) $40 $0–$20 Price notes: Prices are in USD; local currency pricing applies in some regions (m"
+    },
+    "qwhereisthebestplacetofindnewawspromocodes": {
+     "first": "2026-09-12",
+     "t": "Q: Where is the best place to find new AWS promo codes?"
+    },
+    "recommendedpathcostoptimizedstepcertificationexamcoststrategy1awsaipractitioneraifc0110050usecodeaif2cloudvalidtosep302026passtounlockfreeclfc021bawscloudpracti": {
+     "first": "2026-09-12",
+     "t": "Recommended Path (Cost-Optimized) Step Certification Exam Cost Strategy 1 AWS AI Practitioner ( AIF-C01 ) $100 → $50 Use code AIF2CLOUD (valid to Sep 30, 2026); pass to unlock free CLF-C02 1b AWS Cloud Practitioner ( CLF-C02 ) $100 → $0 Free after passing AIF-"
+    },
+    "retakevoucherstypicallyexpirewithin612months": {
+     "first": "2026-09-12",
+     "t": "Retake vouchers typically expire within 6–12 months."
+    },
+    "sourcediscountwhoqualifiesawscertifiedexamretakepolicy50offretakecandidateswhofailanyawsexamawspartnernetworkapn50offanytieremployeesatawspartnercompaniesawsres": {
+     "first": "2026-09-12",
+     "t": "Source Discount Who Qualifies AWS Certified exam retake policy 50% off retake Candidates who fail any AWS exam AWS Partner Network (APN) 50% off any tier Employees at AWS Partner companies AWS re/Start program 50% off Cloud Practitioner Program graduates AWS E"
+    },
+    "therearefivereliablepathstoa50awscertificationdiscountin2026path1activepublicpromocodeaif2cloudusecodeaif2cloudatpearsonvuecheckoutwhenregisteringforaifc01get50": {
+     "first": "2026-09-12",
+     "t": "There are five reliable paths to a 50% aws certification discount in 2026: Path 1: Active public promo code (AIF2CLOUD) Use code AIF2CLOUD at Pearson VUE checkout when registering for AIF-C01 Get 50% off AIF-C01 ($100 → $50) + free CLF-C02 if you pass Valid th"
+    },
+    "theretakevoucherrequiresagenuinefailedattemptattemptingtofailexamsviolatesawspolicyuseapnmembershipforprofessionalspecialtyexamswheresavingsarelargest300150exam": {
+     "first": "2026-09-12",
+     "t": "The retake voucher requires a genuine failed attempt; attempting to fail exams violates AWS policy Use APN membership for Professional/Specialty exams where savings are largest ($300 → $150) Example: Five-Cert Stack Strategy (with AIF2CLOUD) Exam Standard Cost"
+    },
+    "thevoucherisvalidonlyforthesameexamcodeegafailedsaac03vouchercannotbeusedondvac02": {
+     "first": "2026-09-12",
+     "t": "The voucher is valid only for the same exam code (e.g., a failed SAA-C03 voucher cannot be used on DVA-C02)."
+    },
+    "tofindofficialandcurrentlyvaliddiscountcodesalwayschecktrustedsourcessuchaspearsonvuewhereyouscheduleyourawscertificationexam": {
+     "first": "2026-09-12",
+     "t": "To find official and currently valid discount codes, always check trusted sources such as Pearson VUE, where you schedule your AWS certification exam."
+    },
+    "whatawscertificationvouchersanddiscountsareavailablein2026": {
+     "first": "2026-09-12",
+     "t": "What AWS Certification Vouchers and Discounts Are Available in 2026?"
+    },
+    "whatistheaif2cloudpromocode": {
+     "first": "2026-09-12",
+     "t": "What is the AIF2CLOUD promo code?"
+    },
+    "whichawsdiscountsvouchersandsavingsprogramsarecurrentlyactive": {
+     "first": "2026-09-12",
+     "t": "Which AWS Discounts, Vouchers, and Savings Programs Are Currently Active?"
+    },
+    "youautomaticallyreceivea50discountvoucherforaretakeofthesameexamdeliveredviaemailwithin15businessdays": {
+     "first": "2026-09-12",
+     "t": "You automatically receive a 50% discount voucher for a retake of the same exam, delivered via email within 1–5 business days."
+    },
+    "youcanfindthenewawspromocodesfrompearsonvuecomusenawshtmlforactivecampaigncodesawstrainingcertificationnewsletteratawsamazoncomtrainingcheckofficialawstrainingp": {
+     "first": "2026-09-12",
+     "t": "You can find the new AWS promo codes from: pearsonvue.com/us/en/aws.html for active campaign codes; AWS Training & Certification newsletter at aws.amazon.com/training ; Check official AWS Training page (along with AWS communities & discussions) post-event emai"
+    },
+    "youcanstackvouchersacrossdifferentexamsbutnevertwoonthesamebooking": {
+     "first": "2026-09-12",
+     "t": "You can stack vouchers across different exams, but never two on the same booking."
+    }
+   }
+  },
+  "edx-aid": {
+   "hash": "1f301dc2ceef06273b3f69d1294f6291cb7ae58d26efada071bcd3d1c69a1b5d",
+   "last_check": "2026-09-12T16:27:56Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {}
+  },
+  "elementsofai-es": {
+   "hash": "097fa08e1d024acf434e9ed5465913815ec1cf2dffc12cc6de507823169aa32b",
+   "last_check": "2026-09-12T16:28:40Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "elementsofaiintroduccinalaiaelementsofaiintroduccinalaiaesuncursogratuitoenlneadirigidoatodoslosqueestninteresadosenaprenderqueslaialoqueesposibleynoesposibleha": {
+     "first": "2026-09-12",
+     "t": "Elements of AI Introducción a la IA Elements of AI - Introducción a la IA es un curso gratuito en línea dirigido a todos los que están interesados en aprender qué es la IA, lo que es posible (y no es posible) hacer con la IA y cómo afecta a nuestras vidas, y t"
+    },
+    "empezarelcursoelementsofaibuildingaiconstruyendoiaesuncursoonlinegratuitoenelqueaprenderssobrelosalgoritmosrealesquehacenposiblelacreacindemtodosdeia": {
+     "first": "2026-09-12",
+     "t": "Empezar el curso → Elements of AI Building AI Construyendo IA es un curso online gratuito en el que aprenderás sobre los algoritmos reales que hacen posible la creación de métodos de IA."
+    },
+    "nuestroobjetivoesdesmitificarlaiaelementosdelaiaesunaseriedecursosgratuitosenlneacreadosporminnalearnylauniversidaddehelsinki": {
+     "first": "2026-09-12",
+     "t": "Nuestro objetivo es desmitificar la IA Elementos de la IA es una serie de cursos gratuitos en línea creados por MinnaLearn y la Universidad de Helsinki."
+    },
+    "unaintroduccinalainteligenciaartificialenlneaygratisparanoexpertoselementsofaiempezarelcursobuildingaicomunidadonlinepreguntasfrecuenteselementsofaiempezarelcur": {
+     "first": "2026-09-12",
+     "t": "Una introducción a la inteligencia artificial, en línea y gratis, para no expertos Elements of AI Empezar el curso Building AI Comunidad online Preguntas frecuentes Elements of AI Empezar el curso Building AI Comunidad online Preguntas frecuentes België Belgiq"
+    }
+   }
+  },
+  "fortinet": {
+   "hash": "de29ad1a2eef7bad47a3b52a38abae0051ead5dd152e30135a26ec98f882454c",
+   "last_check": "2026-09-12T16:28:19Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {}
+  },
+  "freecodecamp": {
+   "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "last_check": "2026-09-12T16:28:09Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {}
+  },
+  "freecodecamp-es": {
+   "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+   "last_check": "2026-09-12T16:28:39Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {}
+  },
+  "gcp-skillsboost": {
+   "hash": "5d8d8bd09290ef417633551aa777f5127cd6544c47dcb5d1e393526c216315d4",
+   "last_check": "2026-09-12T16:28:27Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "completeaseriesofskillbadgecoursesongoogleskillsearnabadgethenshareyourachievementswithpeersandemployers": {
+     "first": "2026-09-12",
+     "t": "Complete a series of skill badge courses on Google Skills, earn a badge, then share your achievements with peers and employers."
+    },
+    "explorecertificateslevelupwithskillbadgesproveyourpracticaltechnicalskillswithskillbadges": {
+     "first": "2026-09-12",
+     "t": "Explore certificates Level up with skill badges Prove your practical, technical skills with skill badges."
+    },
+    "exploreourskillbadgesandcertificates": {
+     "first": "2026-09-12",
+     "t": "Explore our Skill Badges and Certificates."
+    },
+    "exploreskillbadgesproveyourexpertisewithcertificationsvalidateyourknowledgeandskillswithindustryrecognizedgooglecloudcertifications": {
+     "first": "2026-09-12",
+     "t": "Explore skill badges Prove your expertise with certifications Validate your knowledge and skills with industry-recognized Google Cloud certifications."
+    },
+    "jointhegearprogramandfuelyourcloudjourneywith35monthlycreditsforhandsonlearningingoogleskillsatnocosttoyou": {
+     "first": "2026-09-12",
+     "t": "Join the GEAR program and fuel your cloud journey with 35 monthly credits for hands-on learning in Google Skills, at no cost to you."
+    }
+   }
+  },
+  "github-pack": {
+   "hash": "a7fb5357479aa432db3f709bb5c807c30520941161941797f96a8576366eb63f",
+   "last_check": "2026-09-12T16:28:01Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "enjoy1monthoffreeaccesstofullaccesstoscrimbasprocoursesprojectsandcodingchallengeswhichincludes40courses": {
+     "first": "2026-09-12",
+     "t": "Enjoy 1 month of free access to Full access to Scrimba’s Pro courses, projects, and coding challenges, which includes 40+ courses."
+    },
+    "freeaccesstoazureappservicesazurefunctionsnotificationhubsmysqldatabasefrommysqlinappapplicationinsightsazuredevops": {
+     "first": "2026-09-12",
+     "t": "Free access to Azure App Services, Azure Functions, Notification Hubs, MySQL database from MySQL in-app, Application Insights, Azure DevOps."
+    },
+    "learnbackenddevelopmentdevopsanddataanalysiswith3monthsoffreeaccesstobootdevscompleteinteractivemembership": {
+     "first": "2026-09-12",
+     "t": "Learn Backend Development, DevOps, and Data Analysis with 3 months of free access to Boot.dev’s complete interactive membership."
+    },
+    "offersoffer50inmongodbatlascreditsplusaccesstomongodbcompassandmongodbuniversityincludingfreecertificationvaluedat150": {
+     "first": "2026-09-12",
+     "t": "Offers Offer $50 in MongoDB Atlas Credits, plus access to MongoDB Compass and MongoDB University including free certification valued at $150."
+    },
+    "offersofferdatacamphaspartneredwithgithubeducationtoofferthreemonthsoffreeaccesswhenyousignupforadatacampsubscriptionwithyourgithubstudentaccount": {
+     "first": "2026-09-12",
+     "t": "Offers Offer DataCamp has partnered with GitHub Education to offer three months of free access when you sign up for a DataCamp subscription with your GitHub student account."
+    },
+    "offersofferdiveinto6monthsoffreeaccesstoover70practicalcoursescoveringhottopicslikewebdevelopmentpythonjavaandmachinelearning": {
+     "first": "2026-09-12",
+     "t": "Offers Offer Dive into 6 months of free access to over 70 practical courses, covering hot topics like Web Development, Python, Java, and Machine Learning."
+    },
+    "offersofferfree6monthsaccesstoallcoursesandworkshops": {
+     "first": "2026-09-12",
+     "t": "Offers Offer Free 6-months access to all courses and workshops."
+    },
+    "offersofferfreeaccessto20codinginterviewquestionsonalgoexpertaswellasa10discountonallalgoexpertproducts": {
+     "first": "2026-09-12",
+     "t": "Offers Offer Free access to 20 coding interview questions on AlgoExpert as well as a 10% discount on all AlgoExpert products."
+    },
+    "offersofferfreeaccessto60premiumiconsfromselectedcontributorseverymonthfor1year": {
+     "first": "2026-09-12",
+     "t": "Offers Offer Free access to 60 premium icons from selected contributors every month for 1 year."
+    },
+    "offersofferfreeaccesstoalltermiusproandtermiusteamfeatureswhileyoureastudent": {
+     "first": "2026-09-12",
+     "t": "Offers Offer Free access to all Termius Pro and Termius Team features, while you're a student."
+    },
+    "offersofferfreeaccesstoallvideosandlessonsfor12months": {
+     "first": "2026-09-12",
+     "t": "Offers Offer Free access to all videos and lessons for 12 months."
+    },
+    "offersofferfreeaccesstoappwriteseducationplan2projectswithequivalentresourcelimitsasappwriteproworth40monththroughoutthecourseofyourstudentcareerieaslongasyoure": {
+     "first": "2026-09-12",
+     "t": "Offers Offer Free access to Appwrite's Education plan (2 projects with equivalent resource limits as Appwrite Pro, worth $40/month) throughout the course of your student career (i.e., as long as you remain a member of the GitHub Student Developer Pack) Tags Cl"
+    },
+    "offersofferfreeaccesstouniversalanalyticsandperformancereportsforoneyear": {
+     "first": "2026-09-12",
+     "t": "Offers Offer \"Free access to universal analytics and performance reports for one year."
+    },
+    "offersofferfreearduinocloudfor6monthsanddiscountsonselectedhardware": {
+     "first": "2026-09-12",
+     "t": "Offers Offer Free Arduino Cloud for 6 months and discounts on selected hardware."
+    },
+    "offersofferfreeprolevelaccesstocodespacestouseanywhereinyouraccount": {
+     "first": "2026-09-12",
+     "t": "Offers Offer Free Pro level access to Codespaces to use anywhere in your account."
+    },
+    "offersofferfreeprosubscriptionlicensetoaccessthecommercialcomponentsandtools": {
+     "first": "2026-09-12",
+     "t": "Offers Offer Free Pro subscription license to access the commercial components and tools."
+    },
+    "offersofferget3freemonthsfreeaccesstovismesstarterplan": {
+     "first": "2026-09-12",
+     "t": "Offers Offer Get 3 free months free access to Visme's Starter plan."
+    },
+    "offersofferoneyearofadafruitioanddiscountsonselectedhardware": {
+     "first": "2026-09-12",
+     "t": "Offers Offer One year of Adafruit IO+ and discounts on selected hardware."
+    },
+    "offersofferopensourcebygithubfreeforeveryone": {
+     "first": "2026-09-12",
+     "t": "Offers Offer Open Source by GitHub, free for everyone."
+    },
+    "offersofferstudentscannowgetfreeordiscountedaccesstoourpowerfulproductivityappswithaibuiltin1tbofcloudstorageandandadvancedsecurityforyourdataanddevices": {
+     "first": "2026-09-12",
+     "t": "Offers Offer Students can now get free or discounted access to our powerful productivity apps with AI built in, 1TB of cloud Storage, and and advanced security for your data and devices."
+    },
+    "offersofferthegitkrakenstudentplanfreefor6monthsandthenupto80offthepropriceaslongasyoureastudent": {
+     "first": "2026-09-12",
+     "t": "Offers Offer The GitKraken Student plan: free for 6 months and then up to 80% off the Pro price as long as you’re a student."
+    },
+    "plusstudentsenjoyanawesome30discountonanysubscriptiontheypick": {
+     "first": "2026-09-12",
+     "t": "Plus, students enjoy an awesome 30% discount on any subscription they pick!"
+    },
+    "tagsdomainsvirtualeventsgethelpatnamecheapsupportmicrosoftazureaboutmicrosoftazureaccesstomicrosoftazurecloudservicesandlearningresourcesnocreditcardrequiredoff": {
+     "first": "2026-09-12",
+     "t": "Tags Domains Virtual Events Get help at Namecheap support Microsoft Azure About Microsoft Azure Access to Microsoft Azure cloud services and learning resources – no credit card required Offers Offer Free access to 25+ Microsoft Azure cloud services plus $100 i"
+    },
+    "tagslearngethelpatinterviewcakesupportcodecovaboutcodecovcodecovmakesiteasytoimplementcodecoveragetodevelophealthiercodeoffersofferfreeaccesstocodecovonpublican": {
+     "first": "2026-09-12",
+     "t": "Tags Learn Get help at InterviewCake support Codecov About Codecov Codecov makes it easy to implement code coverage to develop healthier code Offers Offer Free access to Codecov on public and private repositories."
+    },
+    "tagslearngethelpatsymfonycastssupporthoneybadgerabouthoneybadgerthewebdeveloperssecretweaponexceptionuptimeandcronmonitoringthatssoawesomeyoullwishyoursitehadmo": {
+     "first": "2026-09-12",
+     "t": "Tags Learn Get help at SymfonyCasts support Honeybadger About Honeybadger The web developer's secret weapon: exception, uptime, and cron monitoring that's so awesome, you'll wish your site had more errors."
+    },
+    "tagssecurityanalyticsgethelpathoneybadgersupportvaadinaboutvaadinbestopensourcejavaframeworkforbuildingprogressivewebapplications": {
+     "first": "2026-09-12",
+     "t": "Tags Security & analytics Get help at Honeybadger support Vaadin About Vaadin Best open source Java framework for building Progressive Web Applications."
+    }
+   }
+  },
+  "google-activate": {
+   "hash": "98361eb1d086dbc056f58f02df3636fd6fa579e1f774486ad17f124c25cdb9b0",
+   "last_check": "2026-09-12T16:28:36Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {}
+  },
+  "google-developers": {
+   "hash": "75a50bd46917f7ffd2f8c67ae3d874ce10ef4f64cfbf145e08fc6dd9515d927d",
+   "last_check": "2026-09-12T16:28:33Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {}
+  },
+  "helsinki-ai": {
+   "hash": "7aa32ee637d0aaa34e208bf62a3262c038917542efd4ca04f986710099398b62",
+   "last_check": "2026-09-12T16:28:06Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "aicoursespart1introductiontoaianintroductiontoaiisafreeonlinecourseforeveryoneinterestedinlearningwhataiiswhatispossibleandnotpossiblewithaiandhowitaffectsourli": {
+     "first": "2026-09-12",
+     "t": "AI Courses Part 1 Introduction to AI An Introduction to AI is a free online course for everyone interested in learning what AI is, what is possible (and not possible) with AI, and how it affects our lives – with no complicated math or programming required."
+    },
+    "anditsnotjustuptotheengineerswhichiswhyitssogreatthattheelementsofaicourseisfreeforanyonetoattend": {
+     "first": "2026-09-12",
+     "t": "And it’s not just up to the engineers, which is why it’s so great that the Elements of AI course is free for anyone to attend."
+    },
+    "kunalgargphysicistexperimentalhighenergyphysicsiamalsoconvincedthatelearningwithfreeonlineopencoursesandhighqualityuniversitycoursesisverypowerfultolearntoteach": {
+     "first": "2026-09-12",
+     "t": "Kunal Garg , Physicist (experimental high energy physics) → — I am also convinced that e-learning with free online open courses and high-quality university courses is very powerful to learn, to teach, to share, to develop science, competences, knowledge and sk"
+    },
+    "ourgoalistodemystifyaitheelementsofaiisaseriesoffreeonlinecoursescreatedbyminnalearnandtheuniversityofhelsinki": {
+     "first": "2026-09-12",
+     "t": "Our goal is to demystify AI The Elements of AI is a series of free online courses created by MinnaLearn and the University of Helsinki."
+    },
+    "startthecoursepart2buildingaibuildingaiisafreeonlinecoursewhereyoulllearnabouttheactualalgorithmsthatmakecreatingaimethodspossible": {
+     "first": "2026-09-12",
+     "t": "Start the course → Part 2 Building AI Building AI is a free online course where you’ll learn about the actual algorithms that make creating AI methods possible."
+    },
+    "welcometotheelementsofaifreeonlinecourse": {
+     "first": "2026-09-12",
+     "t": "Welcome to the Elements of AI free online course!"
+    }
+   }
+  },
+  "helsinki-fso": {
+   "hash": "91f9d95d1ad10860e6dd130e09af1e41718e839af169f854ce03eb8c08536895",
+   "last_check": "2026-09-12T16:28:08Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "thecoursematerialislicensedundercreativecommonsbyncsa30licensewhichmeansthatyouarefreetouseanddistributethematerialaslongasthenamesoftheoriginalauthorsarenotrem": {
+     "first": "2026-09-12",
+     "t": "The course material is licensed under Creative Commons BY-NC-SA 3.0 license , which means that you are free to use and distribute the material, as long as the names of the original authors are not removed."
+    }
+   }
+  },
+  "hn-vouchers": {
+   "hash": "49faf05dbb4f2f93d2c1ae11c562d3215f39529687d50fcf8d2184704dadc8b0",
+   "last_check": "2026-09-12T16:28:53Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "query22freevoucher22certificationtagsstoryhitsperpage20advancedsyntaxtrueanalyticstagsbackend": {
+     "first": "2026-09-12",
+     "t": "query=%22free+voucher%22+certification&tags=story&hitsPerPage=20&advancedSyntax=true&analyticsTags=backend"
+    }
+   }
+  },
+  "hubspot": {
+   "hash": "cdc992d6a27d9dc7aa37fa1744e4f2a4685278595915e9ec067662b54ca8dd61",
+   "last_check": "2026-09-12T16:28:48Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {}
+  },
+  "ibm-cognitive": {
+   "hash": "72929b2b0fa68b2ef0e820bfce7edc6f7ba879e3a339048e1da2f45af97a4842",
+   "last_check": "2026-09-12T16:28:30Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "learnmoredismissmeasurespaceclassheaderglobalbgwhiteshadowlgstickytop0z30searchallcourseslearningpathsguidedprojectsactivitiessigninregisteropenmainmenulearning": {
+     "first": "2026-09-12",
+     "t": "Learn more → Dismiss measureSpace())\" class=\"header-global bg-white shadow-lg sticky top-0 z-30\"> Search All Courses Learning Paths Guided Projects Activities Sign in Register Open main menu Learning Paths Courses & Projects Badges Search All Courses Learning "
+    }
+   }
+  },
+  "ibm-skillsbuild": {
+   "hash": "3b885a00aaec12feee438181e67f6b1841976ecbfab6c7c1997abe04b3ee0719",
+   "last_check": "2026-09-12T16:28:28Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "whetheryourestartingyourcareerorpivotingtosomethingnewibmskillsbuildoffers100freelearningfromagloballeaderintechnologyandinnovation": {
+     "first": "2026-09-12",
+     "t": "Whether you’re starting your career or pivoting to something new, IBM SkillsBuild offers 100% free learning from a global leader in technology and innovation."
+    }
+   }
+  },
+  "ibm-uopeople": {
+   "last_check": "2026-09-12T16:27:53Z",
+   "last_error": "HTTP 404",
+   "last_status": 404,
+   "url": "https://skillsbuild.org/college-students/college-certificates"
+  },
+  "isc2-1mcc": {
+   "hash": "7406325d8f6c0dc8a7b45b8089e2b12d58eb64bb9da6d598c971466600662611",
+   "last_check": "2026-09-12T16:28:04Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "canistillscheduleandtakemyfreeccexam": {
+     "first": "2026-09-12",
+     "t": "Can I still schedule and take my free CC exam?"
+    },
+    "learnmoreanunprecedentedsuccessinlessthanfouryears1millionpeopleenrolledintheprogramgainingfreeaccesstothecconlineselfpacedcertificationcourseandafreeccexam5700": {
+     "first": "2026-09-12",
+     "t": "Learn More An Unprecedented Success In less than four years: 1 million+ people enrolled in the program, gaining free access to the CC Online Self-Paced certification course and a free CC exam 570,000+ participants took their CC course to learn foundational con"
+    },
+    "nonewfreeexamseatswillbeissuedoncetheprogramhasconcluded": {
+     "first": "2026-09-12",
+     "t": "No new free exam seats will be issued once the program has concluded."
+    },
+    "underexamsfindyourfreeccexamandclickschedule": {
+     "first": "2026-09-12",
+     "t": "Under “ Exams ”, find your free CC exam and click “ Schedule ”."
+    },
+    "whataboutthosewhowerecountingonfreetrainingopportunities": {
+     "first": "2026-09-12",
+     "t": "What about those who were counting on free training opportunities?"
+    }
+   }
+  },
+  "learnitfree": {
+   "hash": "91bce5ce1a22a40e2c3b62c84e3421146261b4d6fffd8b1ee63863eb3be63612",
+   "last_check": "2026-09-12T16:28:58Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "2000freeitcertificationsbadgeslearnitfree2000freecertificationsbadgesgetcertifiedbygoogleibmmicrosoftharvardanthropic20topproviderscompletelyfreein2026nocreditc": {
+     "first": "2026-09-12",
+     "t": "2000+ Free IT Certifications & Badges | Learn IT Free 🏆 2000+ Free Certifications & Badges Get certified by Google, IBM, Microsoft, Harvard, Anthropic & 20+ top providers — Completely FREE in 2026 ✅ No Credit Card 📜 Instant Certificates 🚀 Career Boost 🤖 15 Fre"
+    },
+    "all2000certificationslistedhereare100free": {
+     "first": "2026-09-12",
+     "t": "All 2000+ certifications listed here are 100% free."
+    },
+    "anthropicmakersofclaudeaioffers15freecertificationscoveringaifluencydevelopertoolsapimcpclaudecodesubagentsclaudecoworkagentskillsclouddeploymentsawsbedrockvert": {
+     "first": "2026-09-12",
+     "t": "Anthropic (makers of Claude AI) offers 15 free certifications covering AI fluency, developer tools (API, MCP, Claude Code, Subagents, Claude Cowork, Agent Skills), cloud deployments (AWS Bedrock, Vertex AI), and specialized tracks for students, educators, and "
+    },
+    "featuredanthropicaicertifications15completelyfreecertificationsfromthemakersofclaudeaiallwithverifiablecertificateswatchall15anthropiccertificationsin3minutescl": {
+     "first": "2026-09-12",
+     "t": "🤖 FEATURED: Anthropic AI Certifications 15 completely free certifications from the makers of Claude AI — all with verifiable certificates 📺 Watch: All 15 Anthropic Certifications in 3 Minutes 🤖 Claude 101 Beginner's guide to collaborating with Claude AI."
+    },
+    "getfreecertificateaifluencyforeducatorstransformyourteachingwithai": {
+     "first": "2026-09-12",
+     "t": "Get Free Certificate → 👩‍🏫 AI Fluency for Educators Transform your teaching with AI."
+    },
+    "getfreecertificateaifluencyfornonprofitswithgivingtuesday": {
+     "first": "2026-09-12",
+     "t": "Get Free Certificate → ❤️ AI Fluency for Nonprofits With GivingTuesday."
+    },
+    "getfreecertificateaifluencyforstudentsuseaitoenhancelearningnotcheat": {
+     "first": "2026-09-12",
+     "t": "Get Free Certificate → 🎓 AI Fluency for Students Use AI to enhance learning, not cheat."
+    },
+    "getfreecertificateaifluencyframeworkmasterthe4dsdelegationdescriptiondiscernmentdiligence": {
+     "first": "2026-09-12",
+     "t": "Get Free Certificate → 🧠 AI Fluency Framework Master the 4Ds: Delegation, Description, Discernment, Diligence."
+    },
+    "getfreecertificatealsowatchcs50pythonroadmap0toproin2026allcertificationproviders24trustedprovidersrecognizedbyemployersworldwideanthropicanthropicanthropic15fr": {
+     "first": "2026-09-12",
+     "t": "Get Free Certificate → Also watch: CS50 Python Roadmap (0 to Pro in 2026) → All Certification Providers 24 trusted providers • Recognized by employers worldwide Anthropic '\"> Anthropic Anthropic 15 FREE Certifications 📚 Foundation: Claude 101 • AI Fluency Fram"
+    },
+    "getfreecertificatecs50aiwithpythonbuildaisystemswithmachinelearningneuralnetworksandnlp": {
+     "first": "2026-09-12",
+     "t": "Get Free Certificate → 🤖 CS50 AI with Python Build AI systems with machine learning, neural networks, and NLP."
+    },
+    "getfreecertificatecs50cybersecuritysecureyouraccountsdataandsystems": {
+     "first": "2026-09-12",
+     "t": "Get Free Certificate → 🔐 CS50 Cybersecurity Secure your accounts, data, and systems."
+    },
+    "getfreecertificatecs50forlawyerstopdownapproachtocsforlegalprofessionals": {
+     "first": "2026-09-12",
+     "t": "Get Free Certificate → ⚖️ CS50 for Lawyers Top-down approach to CS for legal professionals."
+    },
+    "getfreecertificatecs50sqlmasterdatabaseswithsql": {
+     "first": "2026-09-12",
+     "t": "Get Free Certificate → 🗄️ CS50 SQL Master databases with SQL."
+    },
+    "getfreecertificatecs50webdevelopmentdjangoreactsql": {
+     "first": "2026-09-12",
+     "t": "Get Free Certificate → 🌐 CS50 Web Development Django, React, SQL."
+    },
+    "getfreecertificateteachingaifluencyforfacultyteachingaifluencytoothers": {
+     "first": "2026-09-12",
+     "t": "Get Free Certificate → 📚 Teaching AI Fluency For faculty teaching AI fluency to others."
+    },
+    "getfreecertificateviewall15anthropiccertificationsfeaturedharvarduniversityworldclasscseducationwithfreeverifiedcertificateswatchwhichcs50courseisrightforyourca": {
+     "first": "2026-09-12",
+     "t": "Get Free Certificate → 🎓 View All 15 Anthropic Certifications → 🌟 FEATURED: Harvard University World-class CS education with FREE verified certificates 📺 Watch: Which CS50 Course is Right for Your Career Path?"
+    },
+    "quicklinkshome750freebooks2000certificationscareertools90daychallengetopprovidersanthropicaicerts15freeharvardcs50certificatesgooglecertificationsibmbadgesmicro": {
+     "first": "2026-09-12",
+     "t": "Quick Links Home 750+ Free Books 2000+ Certifications Career Tools 90-Day Challenge Top Providers Anthropic AI Certs (15 Free) Harvard CS50 Certificates Google Certifications IBM Badges Microsoft Learn Connect With Us Subscribe for weekly tech content & free r"
+    },
+    "startyourcertificationjourneytoday2000freecertificatesnocreditcardanthropicaicertsboostyourcareerin2026findyourcertificatewatchtutorialslitlearnitfreeempowering": {
+     "first": "2026-09-12",
+     "t": "Start Your Certification Journey Today 2000+ free certificates • No credit card • Anthropic AI certs • Boost your career in 2026 🔍 Find Your Certificate 📹 Watch Tutorials LIT Learn IT Free Empowering your tech journey with free resources, books, videos, and ce"
+    }
+   }
+  },
+  "mongodb": {
+   "hash": "bd97b89686d0f9bb14715a0035ac1801a916c2eaf1c5b1bed3eaf82800f4c98f",
+   "last_check": "2026-09-12T16:28:22Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {}
+  },
+  "ms-applied": {
+   "hash": "11693d5cbfe99170868856c7fe4f9ec6f963974a975f782cfcdedcec198f673a",
+   "last_check": "2026-09-12T16:27:51Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {}
+  },
+  "ms-certweek": {
+   "last_check": "2026-09-12T16:27:49Z",
+   "last_error": "HTTP 404",
+   "last_status": 404,
+   "url": "https://certweeks.fastlane.net/amer/az-sec-en"
+  },
+  "ms-events": {
+   "last_check": "2026-09-12T16:27:52Z",
+   "last_error": "HTTP 404",
+   "last_status": 404,
+   "url": "https://learn.microsoft.com/en-us/training/events/"
+  },
+  "ms-learn-es": {
+   "hash": "be21c3e00a002e938db71609ac4de32668ba5007b46310965a74a9ec80d22743",
+   "last_check": "2026-09-12T16:28:37Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "63deprofesionalesrecibieronoesperabanunapromocindeempleodespusdeobtenerunacertificacin": {
+     "first": "2026-09-12",
+     "t": "63% de profesionales recibieron o esperaban una promoción de empleo después de obtener una certificación."
+    },
+    "renovablerenuevelascertificacioneselegiblesanualmentesincostocompletandounabreveevaluacinenlnea": {
+     "first": "2026-09-12",
+     "t": "Renovable: renueve las certificaciones elegibles anualmente sin costo completando una breve evaluación en línea."
+    },
+    "renovacinmantengasuscertificacionesyaptitudesaldasincostoalgunoparaquesiempreseaeladecuadoparaeltrabajo": {
+     "first": "2026-09-12",
+     "t": "Renovación Mantenga sus certificaciones y aptitudes al día sin costo alguno, para que siempre sea el adecuado para el trabajo."
+    }
+   }
+  },
+  "oracle-free": {
+   "hash": "767aeca5eebdf16f0601891f2efda9155f4fa1b58b7de7b990a460e39f03ee62",
+   "last_check": "2026-09-12T16:27:55Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {}
+  },
+  "reddit-aws": {
+   "last_check": "2026-09-12T16:28:54Z",
+   "last_error": "HTTP 403 (bloqueo anti-bot)",
+   "last_status": 403,
+   "url": "https://www.reddit.com/r/AWSCertifications/new.json?limit=25"
+  },
+  "reddit-azure": {
+   "last_check": "2026-09-12T16:28:57Z",
+   "last_error": "HTTP 403 (bloqueo anti-bot)",
+   "last_status": 403,
+   "url": "https://www.reddit.com/r/AzureCertification/new.json?limit=25"
+  },
+  "reddit-comptia": {
+   "last_check": "2026-09-12T16:28:55Z",
+   "last_error": "HTTP 403 (bloqueo anti-bot)",
+   "last_status": 403,
+   "url": "https://www.reddit.com/r/CompTIA/search.json?q=voucher%20OR%20%22discount%20code%22&restrict_sr=1&sort=new&t=month&limit=25"
+  },
+  "santander": {
+   "hash": "846f278b79df693145d032511b39e9504725b2a1afe4cdf76af975c4a8da1a77",
+   "last_check": "2026-09-12T16:28:42Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "comienzaaexplorarcomienzaaexplorarabiertohasta31122026sacapartidoalstorytellingenlaeradelmarketingdigitalcursodemarketingdigitalcontheuniversityofchicagomsinfor": {
+     "first": "2026-09-12",
+     "t": "Comienza a explorar Comienza a explorar Abierto hasta 31/12/2026 Saca partido al storytelling en la era del marketing digital Curso de Marketing Digital con The University of Chicago Más información Más información Abierto hasta el 31/12/2025 La formación que "
+    },
+    "formacinyaprendizajeonlinesantanderopenacademyreproduccinautomticadelcarouselhaymuchoscaminosparacrecerencuentraeltuyoaccedegratisseasclientedesantanderono": {
+     "first": "2026-09-12",
+     "t": "Formación y aprendizaje online | Santander Open Academy Reproducción automática del carousel Hay muchos caminos para crecer, encuentra el tuyo Accede gratis, seas cliente de Santander o no."
+    },
+    "msinformacinmsinformacinaprendecreceyconectaconoportunidadesrealesmsde1000cursoscontenidosybecasparaayudarteaobtenerlaformacinquenecesitasparaaccederamejoresopo": {
+     "first": "2026-09-12",
+     "t": "Más información Más información Aprende, crece y conecta con oportunidades reales Más de 1.000 cursos, contenidos y becas para ayudarte a obtener la formación que necesitas para acceder a mejores oportunidades."
+    },
+    "msinformacinmsinformacinlaformacinquenecesitasparaseguircreciendocursoscontenidosybecassincosteparati": {
+     "first": "2026-09-12",
+     "t": "Más información Más información La formación que necesitas para seguir creciendo Cursos, contenidos y becas, sin coste para ti."
+    }
+   }
+  },
+  "sence-chile": {
+   "hash": "a0e94b5e3d4719adb1929c4ba17b9bb687c2b445c7b8b3322db8db81f971c1a1",
+   "last_check": "2026-09-12T16:28:50Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "senceymicrosoftabrentresnuevoscursosgratuitosparaampliarcompetenciasdigitalesgobiernotransparentesolicituddeinformacinpblicaanuarioestadsticosencepreviousnextso": {
+     "first": "2026-09-12",
+     "t": "Sence y Microsoft abren tres nuevos cursos gratuitos para ampliar competencias digitales Gobierno Transparente Solicitud de Información Pública Anuario Estadístico Sence Previous Next Solicitud Audiencias y Ley Lobby OIRS Regionales Ley de Presupuestos e instr"
+    },
+    "senceymicrosoftabrentresnuevoscursosgratuitosparaampliarcompetenciasdigitalessencepasaralcontenidoprincipalpersonasempresasorganismossobresenceparticipacinciuda": {
+     "first": "2026-09-12",
+     "t": "Sence y Microsoft abren tres nuevos cursos gratuitos para ampliar competencias digitales | SENCE Pasar al contenido principal Personas Empresas Organismos Sobre Sence Participación ciudadana Personas (current) Empresas Organismos Sobre Sence Ingresar ayuda Par"
+    }
+   }
+  },
+  "skillshop": {
+   "hash": "e8843bd94c42cbb5559d71db215f85ef234803378c3717b622eb21a4ca922f0f",
+   "last_check": "2026-09-12T16:28:10Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {}
+  },
+  "telefonica": {
+   "hash": "78323d256b8fdaec1f6e34cdc843a5adc2d7245e42ad955f34c390254ed59cf6",
+   "last_check": "2026-09-12T16:28:46Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "conocenuestrasbecastecnolgicastuvidadigitalprotegidaderechosdigitalesconoceyejercetusderechosdigitalesparanavegardeformasegurayresponsable": {
+     "first": "2026-09-12",
+     "t": "Conoce nuestras becas tecnológicas Tu vida digital, protegida Derechos Digitales Conoce y ejerce tus derechos digitales para navegar de forma segura y responsable."
+    },
+    "fundacintelefnicaespaasaltaralcontenidoprincipalquhacemosquinessomosparticipaimpactoespaaesenquhacemoscomprometidosconeducacinformacinyempleobecascampus42recone": {
+     "first": "2026-09-12",
+     "t": "Fundación Telefónica España Saltar al contenido principal Qué hacemos Quiénes somos Participa Impacto España ES EN Qué hacemos Comprometidos con Educación, Formación y Empleo Becas Campus 42 Reconectados ProFuturo OrientaHub Conciencia digital Voluntariado Tel"
+    },
+    "impulsamostutalentoconocenuestrasbecasyelcampustecnolgico42unodelosmsinnovadoresdelmundoesteveranoabrimosnuevaspiscinasen42": {
+     "first": "2026-09-12",
+     "t": "Impulsamos tu talento Conoce nuestras becas y el campus tecnológico 42, uno de los más innovadores del mundo ¡Este verano abrimos nuevas piscinas en 42!"
+    },
+    "newsletterseleccionarpasbrasilespaamxicovenezuelapasidiomamenquhacemoscomprometidosconeducacinformacinyempleobecascampus42reconectadosprofuturoorientahubconcien": {
+     "first": "2026-09-12",
+     "t": "Newsletter Seleccionar país Brasil España México Venezuela País / Idioma Menú Qué hacemos Comprometidos con Educación, Formación y Empleo Becas Campus 42 Reconectados ProFuturo OrientaHub Conciencia digital Destacado Lanzamos nuestro programa de becas Abrimos "
+    }
+   }
+  },
+  "trailhead": {
+   "hash": "15a176f9148bb58338dd6c99dc2872a533fe2e025f738857a9f831a68cfa36b7",
+   "last_check": "2026-09-12T16:28:34Z",
+   "last_error": null,
+   "last_status": 200,
+   "snippets": {
+    "gamifiedplatformgetrewardedwithpointsandbadgeswhenyoulearnnewskills": {
+     "first": "2026-09-12",
+     "t": "Gamified Platform Get rewarded with points and badges when you learn new skills."
+    },
+    "trailheadthefunwaytolearnskiptomaincontenttrailheadmobilenavtoggledatamobilenavtargetbuttonhomelearndropdownhandlekeydownhiddengrowyoursalesforceexpertisebadges": {
+     "first": "2026-09-12",
+     "t": "Trailhead | The fun way to learn Skip to main content Trailhead mobile-nav#toggle\" data-mobile-nav-target=\"button\"> Home Learn dropdown#handleKeydown\" hidden> Grow your Salesforce expertise Badges Gain new skills and hands-on experience through bite-sized unit"
+    }
+   }
+  }
+ },
+ "version": 1
+}
