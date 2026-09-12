@@ -7,7 +7,7 @@ Dos formatos con **una sola base de código** (la PWA de `web/`):
 | Formato | Estado | Cómo usarlo |
 |---|---|---|
 | **PWA / app web** | ✅ funcionando | Se abre en el navegador y se instala en Android con *“Añadir a pantalla de inicio”* (o en escritorio con el botón **Instalar**). Funciona offline. |
-| **APK Android** | ✅ compilada en GitHub Actions | El workflow **Build Android APK** compila el `.apk` (debug) en cada push, lo sube como artefacto **y** lo deja en `dist/Certf-debug.apk` dentro del repo para descargarlo directo. |
+| **APK Android** | ✅ compilada en GitHub Actions | El workflow **Build Android APK** compila el `.apk` (debug) en cada push, lo sube como artefacto y —cuando el build es de `main`— lo deja en `dist/Certf-debug.apk` dentro del repo para descargarlo directo. |
 
 ## 🔎 Botón “Buscar páginas” (nuevo)
 
@@ -62,7 +62,7 @@ En GitHub (recomendado, no requiere Android Studio):
 
 1. Ve a **Actions → Build Android APK → Run workflow** (o haz cualquier push que toque `web/`, `android/` o `tools/`).
 2. Al terminar tienes la APK en **dos lugares**:
-   - `dist/Certf-debug.apk` **dentro del repo** (rama que disparó el build) → se descarga con `git`, con el botón de *Download raw* de GitHub o desde tu checkout.
+   - `dist/Certf-debug.apk` **dentro del repo** (solo en los builds de `main`, para que las ramas no choquen entre sí por el binario) → se descarga con `git`, con el botón de *Download raw file* de GitHub o desde tu checkout.
    - El artefacto **`certf-debug-apk`** de la ejecución (retención 90 días).
 3. Instala el `.apk` en el celular (habilita “orígenes desconocidos” si te lo pide).
 
