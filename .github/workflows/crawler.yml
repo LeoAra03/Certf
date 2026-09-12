@@ -1,6 +1,7 @@
 name: Rastreador diario de certificaciones
 
-# Busca ofertas y cambios en las fuentes oficiales del catálogo una vez al día
+# Busca ofertas, descuentos, códigos y cambios en 46 fuentes (oficiales, badges,
+# páginas en español y comunidades) una vez al día.
 # (13:37 UTC ≈ 09:37-10:37 en Chile). Publica lo nuevo con commit automático;
 # si una página cambió sin señales claras, abre/actualiza un PR para revisar.
 on:
@@ -25,13 +26,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Rastrear (16 fuentes oficiales)
+      - name: Rastrear (46 fuentes: oficiales, badges, español y comunidades)
         run: python3 tools/crawler.py --report data/last-report.md
 
-      - name: Validar datos y prueba de humo
+      - name: Validar datos y pruebas
         run: |
           python3 tools/build_data.py
           node tools/smoke_test.js
+          node tools/scanner_test.js
 
       - name: Publicar novedades (commit automático)
         id: publicar

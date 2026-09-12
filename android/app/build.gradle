@@ -11,8 +11,8 @@ android {
         applicationId 'cl.certf.app'
         minSdk 24
         targetSdk 34
-        versionCode 1
-        versionName '1.0'
+        versionCode 2
+        versionName '1.1'
     }
 
     buildTypes {
@@ -42,6 +42,7 @@ tasks.register('copyWebAssets', Copy) {
         include 'index.html'
         include 'styles.css'
         include 'app.js'
+        include 'scanner.js'
         include 'data.js'
         include 'novedades.js'
         include 'data.json'

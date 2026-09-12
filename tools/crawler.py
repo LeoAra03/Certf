@@ -43,20 +43,185 @@ STATE_PATH = os.path.join(ROOT, "data", "crawler-state.json")
 NOVEDADES_PATH = os.path.join(ROOT, "web", "novedades.js")
 FIXTURES_DIR = os.path.join(ROOT, "tools", "fixtures")
 
-MAX_ITEMS = 40            # tope de novedades publicadas en la app
+MAX_ITEMS = 60            # tope de novedades publicadas en la app
 PRUNE_DAYS = 45           # las novedades más viejas que esto se descartan
-MAX_NUEVOS_POR_FUENTE = 3
+MAX_NUEVOS_POR_FUENTE = 5
 SNIPPET_MAX = 400         # largo máximo de una oración candidata
 SIG_LEN = 160             # largo de la firma (oración normalizada, truncada)
 
-# Palabras que indican una oferta aprovechable (gratis, voucher, % de beca…)
+# Palabras que indican una oferta aprovechable (gratis, voucher, % de beca, badge…)
 STRONG_RE = re.compile(
-    r"(free|gratis|gratuit[oa]s?|voucher|promo|coupon|c[oó]digo promocional|"
-    r"discount|descuento|scholarship|beca|financial (aid|assistance)|no cost|"
-    r"waiv\w*|100\s?%|50\s?%|75\s?%|80[-–]\d{0,3}\s?%|90\s?%|limited[- ]time|"
-    r"offer period|expires?|deadline|ends? on|ends? \w+ \d)",
+    r"(free|gratis|gratuit[oa]s?|sin costo|sin coste|costo cero|voucher|cup[óo]n|coupon|promo|"
+    r"discount|descuento|scholarship|beca|financial (aid|assistance)|asistencia financiera|"
+    r"no cost|no charge|waiv\w*|\d{2,3}\s?%|half[- ]off|\$0|limited[- ]time|tiempo limitado|"
+    r"offer period|expires?|vence|deadline|fecha l[íi]mite|ends? on|ends? \w+ \d|"
+    r"first \d+ (people|users|redemptions)|badge|insignia|skill badge|micro-credential|"
+    r"credencial digital)",
     re.I,
 )
+
+# --- Clasificadores: responden AL TIRO "¿cuánto descuento es?" -------------
+PCT_RE = re.compile(r"(\d{2,3})\s?%")
+# Contexto de descuento: un % solo cuenta si la frase habla de descuentos.
+PCT_CTX_RE = re.compile(r"(\boff\b|\bdto\b|dscto|descuento|discount|\bsave\b|ahorr|saving|voucher|"
+                        r"cup[óo]n|coupon|promo|beca|scholarship|\bgratis\b|\bfree\b|\baid\b|"
+                        r"reducci[óo]n|half[- ]|\bmenos\b|\bless\b|rebaja)", re.I)
+# Falsos positivos típicos: puntajes, asistencia, tasas de aprobación…
+PCT_NO_RE = re.compile(r"(score|grade|calificaci[óo]n|\bnota\b|accuracy|attendance|"
+                       r"asistencia(?!\s+financiera)|completion|completitud|passing|aprobaci[óo]n|"
+                       r"percentile|interest rate|\bapr\b|markup|success rate|conversion)", re.I)
+FREE_RE = re.compile(
+    r"((completely|entirely|totally|fully|absolutely|now|is|are|was|were|went|remain|stays|100\s?%)\s+free\b|"
+    r"\bfree\s+(of charge|to claim|to take|to enroll|to sit|for students|for everyone|for all)\b|"
+    r"\bfree\b(?=[\s\w\-'.]{0,45}\b(exams?|vouchers?|certifications?|certificates?|courses?|badges?|"
+    r"credentials?|training|retakes?|attempts?|seats?|access|enrollment|registration|download|entry)\b)|"
+    r"\bgratis\b|\bgratuit[oa]s?\b|sin (costo|coste)|costo cero|de forma gratuita|a costo cero|"
+    r"\bwaived\b|full(y)? (funded|scholarship)|beca (completa|total|del 100)|no (cost|charge)|\$0\b|zero cost)", re.I)
+# "feel free" y "free trial" no son una credencial gratis.
+FREE_NEG_RE = re.compile(r"(feel free|free (trial|tier|account|plan|version|sample|preview|webinar|"
+                         r"newsletter|e-?book|community edition|to (sign|join|try|play|browse|read))|"
+                         r"freemium|free shipping)", re.I)
+BECA_RE = re.compile(r"(financial aid|financial assistance|scholarship|beca|asistencia financiera|need[- ]based|subsid\w+)", re.I)
+UNICO_RE = re.compile(
+    r"(single[- ]use|one[- ]time (use|code|voucher)|unique (code|voucher|url)|c[óo]digo [úu]nico|"
+    r"[úu]nico uso|un solo uso|solo un uso|non[- ]transferable|first \d+ (people|users|redemptions|claims)|"
+    r"limitad[oa] a (las )?primeras|\d+ (redemptions|uses) (only|left|remaining)|while supplies last|"
+    r"hasta agotar (stock|cupos)|one per (person|candidate|account))", re.I)
+BADGE_RE = re.compile(
+    r"(badge|insignia|skill badge|micro[- ]?credential|credencial digital|digital credential|"
+    r"completion certificate|certificado de finalizaci[óo]n|diploma|superbadge)", re.I)
+CODIGO_CTX_RE = re.compile(
+    r"(promo(code)?|promo code|voucher code|coupon code|discount code|exam code|"
+    r"c[óo]digo( promocional| de descuento)?|cup[óo]n|code at checkout|use (the )?code|"
+    r"apply (the )?code|c[óo]digo:|code:)", re.I)
+CODE_TOKEN_RE = re.compile(r"\b([A-Z0-9][A-Z0-9][A-Z0-9\-_]{2,22})\b")
+ES_HINT = re.compile(r"(certificaci|gratis|descuento|c[oó]digo|cup[oó]n|beca|examen|curso|plataforma|"
+                     r"postula|reg[ií]strate|vigente|hasta el|informaci[oó]n)", re.I)
+
+CODE_STOP = set("""AWS AZURE GOOGLE MICROSOFT IBM ORACLE CISCO META HARVARD MIT STANFORD SALESFORCE
+FREE GRATIS OFF NEW NUEVO USE USED GET AND THE FOR WITH YOUR OUR CODE CODES PROMO VOUCHER COUPON
+DISCOUNT DESCUENTO CUPON CODIGO CERT CERTIFIED CERTIFICATION EXAM EXAMS LEARN LEARNING SKILLS SKILL
+BADGE BADGES CLOUD DATA AI ML IT API SQL PYTHON JAVA LINUX SECURITY CYBERSECURITY DEVOPS STUDENT
+STUDENTS UNIVERSITY CREDLY HTTP HTTPS WWW COM ORG NET HTML CSS JSON XML SDK GIT GITHUB LINKEDIN CV ATS
+FAQ FAQS USD EUR CLP SEP SEPT OCT NOV DEC JAN FEB MAR APR MAY JUN JUL AUG EN ES ALL ANY BUY NOW SAVE
+SAVINGS TODAY ONLY LIMITED TIME OFFER OFFERS PERCENT DISCOUNTS APPLY REGISTER SIGN UP LOG IN OUT MORE
+MOST BEST TOP FIRST LAST NEXT THIS THAT THESE THOSE NOT YES PLUS PRO PREMIUM BASIC BASE FOUNDATION
+FOUNDATIONS ASSOCIATE PROFESSIONAL SPECIALTY MASTER PRACTITIONER ANALYTICS ANALYST ENGINEER ARCHITECT
+DEVELOPER ADMINISTRATOR MANAGER MARKETING DESIGN PM PMP CAPM NETACAD SKILLSHOP SKILLSBOOST TRAILHEAD
+SKILLSBUILD COGNITIVE CLASS ACADEMY INSTITUTE OPEN COURSES COURSE PROGRAM PROGRAMS EVENT EVENTS WEEK
+WEEKS DAYS DAY MONTH YEAR UTC PST EST CET""".split())
+
+
+def json_a_texto(raw: str) -> str:
+    """JSON (Reddit / Hacker News) -> texto con títulos, cuerpos y enlaces."""
+    claves = re.compile(r"^(selftext|title|body|url|name|comment|story_text|story|text|description|"
+                        r"content|message|link|headline)$", re.I)
+    out: list[str] = []
+    try:
+        data = json.loads(raw)
+    except ValueError:
+        return html_a_texto(raw)
+
+    def walk(o, depth: int, clave: str) -> None:
+        if o is None or depth > 10 or len(out) > 600:
+            return
+        if isinstance(o, str):
+            if claves.match(clave or "") or len(o) > 60:
+                out.append(o)
+            return
+        if isinstance(o, list):
+            for x in o:
+                walk(x, depth + 1, clave)
+            return
+        if isinstance(o, dict):
+            for k, v in o.items():
+                walk(v, depth + 1, k)
+
+    walk(data, 0, "")
+    return re.sub(r"\s+", " ", " . ".join(out)).strip()
+
+
+def texto_de(contenido: str | None, es_json: bool = False) -> str:
+    c = (contenido or "").strip()
+    if es_json or c[:1] in ("{", "["):
+        return json_a_texto(c)
+    if "<" in c:
+        return html_a_texto(c)
+    return texto_de_pagina(c)
+
+
+def extraer_codigos(frase: str) -> list[str]:
+    """Códigos promocionales candidatos (AIF2CLOUD, CLF2FREE, COMPSEC-4417…)."""
+    out: list[str] = []
+    for tok in CODE_TOKEN_RE.findall(frase):
+        if not (5 <= len(tok) <= 24) or tok.upper() in CODE_STOP:
+            continue
+        if tok not in out:
+            out.append(tok)
+        if len(out) >= 4:
+            break
+    if out and not CODIGO_CTX_RE.search(frase):
+        # Sin contexto de "código": solo se aceptan tokens con dígitos y largos.
+        out = [t for t in out if any(ch.isdigit() for ch in t) and len(t) >= 6]
+    return out
+
+
+def clasificar(frase: str, lang_fuente: str | None = None) -> dict:
+    """Devuelve el descuento (100 / 50 / otro), si hay código, si es de único
+    uso, si es un badge y el idioma. Es lo que la app muestra al tiro."""
+    pcts = [int(n) for n in PCT_RE.findall(frase) if 5 <= int(n) <= 100]
+    libre = bool(FREE_RE.search(frase)) and not bool(FREE_NEG_RE.search(frase))
+    beca = bool(BECA_RE.search(frase))
+    max_pct = None
+    if pcts and not PCT_NO_RE.search(frase) and (PCT_CTX_RE.search(frase) or beca):
+        max_pct = max(pcts)   # en becas el % es el monto de la ayuda
+
+    if max_pct == 100:
+        disc, etiqueta = 100, ("BECA 100%" if beca else "100% GRATIS")
+    elif libre and max_pct is None:
+        disc, etiqueta = 100, "100% GRATIS"
+    elif max_pct is not None:
+        disc, etiqueta = max_pct, f"{'BECA ' if beca else ''}{max_pct}% DESCUENTO"
+    elif libre:
+        disc, etiqueta = 100, "100% GRATIS"
+    elif beca:
+        disc, etiqueta = None, "BECA / AYUDA"
+    else:
+        disc, etiqueta = None, ""
+
+    if lang_fuente:
+        lang = lang_fuente
+    else:
+        lang = "ES" if ES_HINT.search(frase) else "EN"
+
+    codes = extraer_codigos(frase)
+    return {
+        "disc": disc,
+        "etiqueta": etiqueta,
+        "beca": beca,
+        "codes": codes,
+        "unico": bool(UNICO_RE.search(frase)),
+        "badge": bool(BADGE_RE.search(frase)),
+        "lang": lang,
+    }
+
+
+OFERTA_RE = re.compile(r"(voucher|cup[óo]n|coupon|beca|scholarship|financial aid|asistencia financiera|"
+                       r"descuento|discount|promo)", re.I)
+
+
+def aporta(frase: str, c: dict) -> bool:
+    """¿La frase trae algo aprovechable (descuento, beca, código, badge)?"""
+    if c["disc"] is not None or c["beca"] or c["codes"] or c["unico"] or c["badge"]:
+        return True
+    return bool(OFERTA_RE.search(frase))
+
+
+def fuerza(it: dict) -> tuple:
+    """Orden de importancia: 100% > otro % > beca > resto; luego códigos."""
+    d = it.get("disc")
+    pri = 0 if d == 100 else (1 if d else (2 if it.get("beca") else 3))
+    return (pri, -len(it.get("codes") or []), -len(it.get("text") or ""))
 
 # Fechas para el informe (no se usan para decidir nada crítico)
 DATE_RES = [
@@ -72,22 +237,57 @@ UA = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) "
 # Fuentes oficiales ya usadas por el catálogo (web/data.js). Añadir aquí.
 # ---------------------------------------------------------------------------
 SOURCES = [
-    {"id": "aws-aif2cloud",     "name": "AWS · Código AIF2CLOUD (Pearson VUE)", "url": "https://www.pearsonvue.com/us/en/aws/aif2cloud.html"},
-    {"id": "aws-student",       "name": "AWS · Voucher estudiante (Builder Center)", "url": "https://builder.aws.com/student-rewards"},
-    {"id": "aws-certification", "name": "AWS · Página de certificaciones", "url": "https://aws.amazon.com/certification/"},
-    {"id": "ms-certweek",       "name": "Microsoft · Certification Week", "url": "https://certweeks.fastlane.net/amer/az-sec-en"},
-    {"id": "ms-applied",        "name": "Microsoft · Applied Skills", "url": "https://learn.microsoft.com/en-us/credentials/applied-skills/"},
-    {"id": "ibm-uopeople",      "name": "IBM SkillsBuild · Certificados con UoPeople", "url": "https://skillsbuild.org/college-students/college-certificates"},
-    {"id": "oracle-free",       "name": "Oracle · Free training & certification", "url": "https://mylearn.oracle.com/ou/story/163512"},
-    {"id": "edx-aid",           "name": "edX · Asistencia financiera", "url": "https://courses.edx.org/financial-assistance/"},
-    {"id": "github-pack",       "name": "GitHub · Student Developer Pack", "url": "https://education.github.com/pack"},
-    {"id": "cisco-netacad",     "name": "Cisco · Networking Academy", "url": "https://www.netacad.com/courses"},
-    {"id": "isc2-1mcc",         "name": "ISC2 · 1MCC (códigos gratuitos)", "url": "https://www.isc2.org/1mcc"},
-    {"id": "helsinki-ai",       "name": "Universidad de Helsinki · Elements of AI", "url": "https://www.elementsofai.com"},
-    {"id": "helsinki-fso",      "name": "Universidad de Helsinki · Full Stack Open", "url": "https://fullstackopen.com/en/"},
-    {"id": "freecodecamp",      "name": "freeCodeCamp · Certificaciones", "url": "https://www.freecodecamp.org/learn"},
-    {"id": "skillshop",         "name": "Google · Skillshop", "url": "https://skillshop.withgoogle.com"},
-    {"id": "coursera-gcyber",   "name": "Coursera · Google Cybersecurity Certificate", "url": "https://www.coursera.org/google-certificates/cybersecurity-certificate"},
+    # --- oficiales (las del catálogo) ---
+    {"id": "aws-aif2cloud",     "name": "AWS · Código AIF2CLOUD (Pearson VUE)", "url": "https://www.pearsonvue.com/us/en/aws/aif2cloud.html", "lang": "EN", "grupo": "oficial"},
+    {"id": "aws-student",       "name": "AWS · Voucher estudiante (Builder Center)", "url": "https://builder.aws.com/student-rewards", "lang": "EN", "grupo": "oficial"},
+    {"id": "aws-certification", "name": "AWS · Página de certificaciones", "url": "https://aws.amazon.com/certification/", "lang": "EN", "grupo": "oficial"},
+    {"id": "ms-certweek",       "name": "Microsoft · Certification Week", "url": "https://certweeks.fastlane.net/amer/az-sec-en", "lang": "EN", "grupo": "oficial"},
+    {"id": "ms-applied",        "name": "Microsoft · Applied Skills", "url": "https://learn.microsoft.com/en-us/credentials/applied-skills/", "lang": "EN", "grupo": "oficial"},
+    {"id": "ms-events",         "name": "Microsoft · Eventos y Cloud Skills Challenges", "url": "https://learn.microsoft.com/en-us/training/events/", "lang": "EN", "grupo": "oficial"},
+    {"id": "ibm-uopeople",      "name": "IBM SkillsBuild · Certificados con UoPeople", "url": "https://skillsbuild.org/college-students/college-certificates", "lang": "EN", "grupo": "oficial"},
+    {"id": "oracle-free",       "name": "Oracle · Free training & certification", "url": "https://mylearn.oracle.com/ou/story/163512", "lang": "EN", "grupo": "oficial"},
+    {"id": "edx-aid",           "name": "edX · Asistencia financiera", "url": "https://courses.edx.org/financial-assistance/", "lang": "EN", "grupo": "oficial"},
+    {"id": "github-pack",       "name": "GitHub · Student Developer Pack", "url": "https://education.github.com/pack", "lang": "EN", "grupo": "oficial"},
+    {"id": "cisco-netacad",     "name": "Cisco · Networking Academy (cursos)", "url": "https://www.netacad.com/courses", "lang": "EN/ES", "grupo": "oficial"},
+    {"id": "isc2-1mcc",         "name": "ISC2 · 1MCC (códigos gratuitos)", "url": "https://www.isc2.org/1mcc", "lang": "EN", "grupo": "oficial"},
+    {"id": "helsinki-ai",       "name": "Universidad de Helsinki · Elements of AI", "url": "https://www.elementsofai.com", "lang": "EN/ES", "grupo": "oficial"},
+    {"id": "helsinki-fso",      "name": "Universidad de Helsinki · Full Stack Open", "url": "https://fullstackopen.com/en/", "lang": "EN", "grupo": "oficial"},
+    {"id": "freecodecamp",      "name": "freeCodeCamp · Certificaciones", "url": "https://www.freecodecamp.org/learn", "lang": "EN", "grupo": "oficial"},
+    {"id": "skillshop",         "name": "Google · Skillshop", "url": "https://skillshop.withgoogle.com", "lang": "MULTI", "grupo": "oficial"},
+    {"id": "coursera-gcyber",   "name": "Coursera · Google Cybersecurity Certificate", "url": "https://www.coursera.org/google-certificates/cybersecurity-certificate", "lang": "ES/EN", "grupo": "oficial"},
+    {"id": "coursera-aid",      "name": "Coursera · Financial Aid (becas 75-100%)", "url": "https://www.coursera.org/financial-aid", "lang": "EN", "grupo": "oficial"},
+    {"id": "comptia-desc",      "name": "CompTIA · Descuentos y vouchers de examen", "url": "https://www.comptia.org/exam-vouchers/discounts", "lang": "EN", "grupo": "oficial"},
+    {"id": "anthropic",         "name": "Anthropic Academy · certificados gratis de IA", "url": "https://anthropic.skilljar.com/", "lang": "EN", "grupo": "oficial"},
+    {"id": "fortinet",          "name": "Fortinet · FCF / FCA (gratis con badge)", "url": "https://training.fortinet.com/", "lang": "EN", "grupo": "oficial"},
+    {"id": "databricks",        "name": "Databricks · Training y Learning Festivals", "url": "https://www.databricks.com/training", "lang": "EN", "grupo": "oficial"},
+    {"id": "mongodb",           "name": "MongoDB University · certificaciones", "url": "https://learn.mongodb.com/", "lang": "EN", "grupo": "oficial"},
+    # --- badges / credenciales digitales ---
+    {"id": "aws-badges",        "name": "AWS · Skill Builder Digital Badges", "url": "https://aws.amazon.com/training/badges/", "lang": "EN", "grupo": "badges"},
+    {"id": "gcp-skillsboost",   "name": "Google Cloud Skills Boost · skill badges", "url": "https://www.cloudskillsboost.google/", "lang": "EN", "grupo": "badges"},
+    {"id": "ibm-skillsbuild",   "name": "IBM SkillsBuild · credenciales Credly", "url": "https://skillsbuild.org/", "lang": "EN", "grupo": "badges"},
+    {"id": "ibm-cognitive",     "name": "IBM Cognitive Class · certificados y badges", "url": "https://cognitiveclass.ai/", "lang": "EN", "grupo": "badges"},
+    {"id": "cisco-skillsforall","name": "Cisco Skills for All · badges", "url": "https://skillsforall.com/", "lang": "ES/EN", "grupo": "badges"},
+    {"id": "google-developers", "name": "Google Developers · badges y rutas", "url": "https://developers.google.com/learn", "lang": "EN", "grupo": "badges"},
+    {"id": "trailhead",         "name": "Salesforce Trailhead · superbadges", "url": "https://trailhead.salesforce.com/", "lang": "EN", "grupo": "badges"},
+    # --- en español ---
+    {"id": "google-activate",   "name": "Google · Garage Digital / Actívate (español)", "url": "https://learndigital.withgoogle.com/", "lang": "ES", "grupo": "es"},
+    {"id": "ms-learn-es",       "name": "Microsoft Learn · credenciales en español", "url": "https://learn.microsoft.com/es-es/credentials/", "lang": "ES", "grupo": "es"},
+    {"id": "freecodecamp-es",   "name": "freeCodeCamp en español", "url": "https://www.freecodecamp.org/espanol/learn", "lang": "ES", "grupo": "es"},
+    {"id": "elementsofai-es",   "name": "Elements of AI en español", "url": "https://www.elementsofai.com/es", "lang": "ES", "grupo": "es"},
+    {"id": "santander",         "name": "Santander Open Academy · becas y cursos gratis", "url": "https://www.santanderopenacademy.com/es", "lang": "ES", "grupo": "es"},
+    {"id": "telefonica",        "name": "Fundación Telefónica · Conecta Empleo", "url": "https://conectaempleo.fundaciontelefonica.com/", "lang": "ES", "grupo": "es"},
+    {"id": "hubspot",           "name": "HubSpot Academy · certificaciones gratis", "url": "https://academy.hubspot.com/certification", "lang": "ES/EN", "grupo": "es"},
+    {"id": "sence-chile",       "name": "SENCE Chile · cursos gratis con certificado", "url": "https://sence.gob.cl/personas/noticias/sence-y-microsoft-abren-tres-nuevos-cursos-gratuitos-para-ampliar-competencias-digitales", "lang": "ES", "grupo": "es"},
+    {"id": "capacitate",        "name": "Capacítate para el empleo (Fundación Slim)", "url": "https://capacitateparaelempleo.org/", "lang": "ES", "grupo": "es"},
+    # --- comunidades: donde se publican códigos de un solo uso ---
+    {"id": "hn-vouchers",       "name": "Hacker News · 'free voucher' (últimas publicaciones)", "url": "https://hn.algolia.com/api/v1/search_by_date?query=%22free%20voucher%22%20certification&tags=story&hitsPerPage=20", "lang": "EN", "grupo": "comunidad", "json": True},
+    {"id": "reddit-aws",        "name": "Reddit r/AWSCertifications (nuevo)", "url": "https://www.reddit.com/r/AWSCertifications/new.json?limit=25", "lang": "EN", "grupo": "comunidad", "json": True},
+    {"id": "reddit-comptia",    "name": "Reddit r/CompTIA · 'voucher code'", "url": "https://www.reddit.com/r/CompTIA/search.json?q=voucher%20OR%20%22discount%20code%22&restrict_sr=1&sort=new&t=month&limit=25", "lang": "EN", "grupo": "comunidad", "json": True},
+    {"id": "reddit-azure",      "name": "Reddit r/AzureCertification (nuevo)", "url": "https://www.reddit.com/r/AzureCertification/new.json?limit=25", "lang": "EN", "grupo": "comunidad", "json": True},
+    # --- agregadores (NO oficiales: confirmar siempre en la fuente) ---
+    {"id": "learnitfree",       "name": "learnitfree.com · listado de certificaciones gratis", "url": "https://learnitfree.com/certifications/", "lang": "EN", "grupo": "agregador"},
+    {"id": "classcentral",      "name": "Class Central · credenciales gratis de Google", "url": "https://www.classcentral.com/report/free-google-certifications/", "lang": "EN", "grupo": "agregador"},
+    {"id": "dumpsgate",         "name": "dumpsgate · códigos AWS (agregador, no oficial)", "url": "https://dumpsgate.com/aws-promo-codes/", "lang": "EN", "grupo": "agregador"},
 ]
 
 
@@ -308,10 +508,12 @@ def procesar_fuente(src: dict, contenido: str | None, error: str | None,
         avisos.append(f"error de acceso ({error})")
         return estado_src, [], avisos
 
-    texto = html_a_texto(contenido or "") if "<" in (contenido or "") else texto_de_pagina(contenido or "")
+    texto = texto_de(contenido, bool(src.get("json")))
     nuevo_hash = hashlib.sha256(texto.encode()).hexdigest()
     nuevo_hash_corto = nuevo_hash[:12]
-    senales = extraer_senales(texto)
+    # Solo se publican frases con una oferta real (descuento, beca, código, badge).
+    senales = [x for x in extraer_senales(texto)
+               if aporta(x["frag"], clasificar(x["frag"], src.get("lang")))]
 
     prev_hash = estado_src.get("hash")
     prev_sigs = estado_src.get("snippets", {})
@@ -331,17 +533,19 @@ def procesar_fuente(src: dict, contenido: str | None, error: str | None,
                 continue
             nuevos.append(s)
     else:
-        # Línea base: memoriza señales y publica hasta 2 fuertes para arrancar.
-        publicadas_base = 0
-        for s in agrupar(senales):
-            if publicadas_base < 2 and not any(parecido(s["sig"], normalizar(v.get("name", "") + " " + v.get("text", ""))[:SIG_LEN], 0.8) for v in items_existentes):
-                nuevos.append(s)
-                publicadas_base += 1
+        # Línea base: memoriza señales y publica hasta 2 fuertes para arrancar,
+        # priorizando las que traen 100% gratis o un código.
+        candidatos = [s for s in agrupar(senales)
+                      if not any(parecido(s["sig"], normalizar(v.get("name", "") + " " + v.get("text", ""))[:SIG_LEN], 0.8) for v in items_existentes)]
+        candidatos.sort(key=lambda s: fuerza(clasificar(s["frag"], src.get("lang"))))
+        nuevos = candidatos[:2]
         avisos.append(f"línea base creada ({len(senales)} señales memorizadas)")
 
     tope = MAX_NUEVOS_POR_FUENTE
     items = []
     for s in nuevos[:tope]:
+        c = clasificar(s["frag"], src.get("lang"))
+        kind = "codigo" if c["codes"] else ("badge" if (c["badge"] and c["disc"] is None) else "oferta")
         items.append({
             "id": id_item(src["id"], s["sig"]),
             "src": src["id"],
@@ -349,10 +553,19 @@ def procesar_fuente(src: dict, contenido: str | None, error: str | None,
             "url": src["url"],
             "text": s["frag"],
             "found": hoy_s,
-            "kind": "oferta",
+            "kind": kind,
             "review": False,
             "sig": s["sig"],
+            "disc": c["disc"],
+            "etiqueta": c["etiqueta"],
+            "beca": c["beca"],
+            "codes": c["codes"],
+            "unico": c["unico"],
+            "badge": c["badge"],
+            "lang": c["lang"],
+            "grupo": src.get("grupo", "oficial"),
         })
+    items.sort(key=fuerza)
 
     # La página cambió pero no se extrajo ninguna señal nueva -> revisión humana.
     if cambio_hash and not nuevos and not baseline:
@@ -455,8 +668,10 @@ def selftest() -> int:
 
         # 3) Cambio con voucher nuevo -> nueva oferta, sin repetir la vieja
         es3, items3, _ = procesar_fuente(fuente_base(), fixture("aws-aif2cloud-changed.html"), None, 200, json.loads(json.dumps(es)), [], False)
-        check("Cambio con señal nueva -> 1 novedad", len(items3) == 1 and items3[0]["kind"] == "oferta", str(len(items3)))
+        check("Cambio con señal nueva -> 1 novedad", len(items3) == 1 and items3[0]["kind"] in ("oferta", "codigo"), str(items3))
         check("Novedad nueva menciona el voucher", "CLF2FREE" in items3[0]["text"], items3[0]["text"][:60])
+        check("Extrae el código de la novedad", "CLF2FREE" in (items3[0].get("codes") or []), str(items3[0].get("codes")))
+        check("Dice al tiro que es 100% gratis", items3[0].get("disc") == 100, str(items3[0].get("etiqueta")))
 
         # 4) Cambio sin señales -> novedad de revisión
         src_sin = {"id": "x-sin", "name": "Fuente sin señales", "url": "https://example.org/x"}
@@ -501,6 +716,70 @@ def selftest() -> int:
         check("Offline end-to-end exitoso", rc == 0)
         check("Offline genera novedades válidas", isinstance(nov["items"], list) and len(nov["items"]) >= 1, str(len(nov.get("items", []))))
         check("Offline memoriza estado de fuentes", len(st_off.get("sources", {})) >= 1)
+
+        # 11) Clasificador: 100% / 50% / otro % / beca
+        check("clasificar detecta 100% gratis", clasificar("Esta certificación es 100% gratis para estudiantes.")["disc"] == 100)
+        check("clasificar detecta 50% dto", clasificar("Use the promo code to get 50% off the exam.")["disc"] == 50)
+        check("clasificar detecta otro %", clasificar("Save 25% on any exam this month.")["disc"] == 25)
+        check("clasificar detecta beca", clasificar("El programa entrega asistencia financiera del 90%.")["beca"] is True)
+        check("clasificar prioriza el mayor %", clasificar("50% off today, or 100% free with a voucher.")["disc"] == 100)
+
+        CASOS = [
+            ("Score at least 80% on the LevelUp assessment.", None),
+            ("Please feel free to contact our support team.", None),
+            ("El curso es 100% online y se hace a tu propio ritmo.", None),
+            ("Earn a 100% off exam voucher when you attend all five days.", 100),
+            ("Use the promo code to get 50% off AWS Certified AI Practitioner.", 50),
+            ("Pass the exam and get a free AWS Certified Cloud Practitioner exam.", 100),
+            ("The certification is free for students.", 100),
+            ("Save 40% for 3 months on the subscription plan.", 40),
+            ("Certificación 100% gratis en español con insignia verificable.", 100),
+            ("Beca de asistencia financiera de hasta 90% del arancel.", 90),
+            ("Start your free trial today and cancel anytime you want.", None),
+            ("Attendance of 90% is required to receive the completion badge.", None),
+            ("Obtén un voucher gratis para el examen de certificación.", 100),
+            ("Get 25% off any exam with this seasonal promo code.", 25),
+            ("La inscripción es sin costo para estudiantes verificados.", 100),
+        ]
+        malos = [f for f, esp in CASOS if clasificar(f)["disc"] != esp]
+        check("Clasificador sin falsos positivos (15 casos)", not malos, str(malos))
+
+        # 12) Códigos (incluso los de un solo uso) y falsos positivos
+        check("Extrae código promocional", "AIF2CLOUD" in extraer_codigos("Use the promo code AIF2CLOUD at checkout."))
+        check("No confunde palabras con códigos", extraer_codigos("The FREE AWS course is available for students.") == [])
+        check("Extrae código con guiones y números", "COMPSEC-4417" in extraer_codigos("Single-use code COMPSEC-4417 gives 100% off."))
+
+        # 13) Página en español con código de único uso
+        src_u = {"id": "x-unico", "name": "Códigos de prueba", "url": "https://example.org/unico", "lang": None, "grupo": "custom"}
+        es_prev2 = {"hash": "0" * 64, "snippets": {}, "last_check": "", "last_status": 200, "last_error": None}
+        _, items_u, _ = procesar_fuente(src_u, fixture("unico-uso.html"), None, 200,
+                                        json.loads(json.dumps(es_prev2)), [], False)
+        check("Página en español: encuentra ofertas", len(items_u) >= 3, str(len(items_u)))
+        check("Detecta el código de único uso", any("AWSFREE-7X92K" in (i.get("codes") or []) for i in items_u),
+              str([i.get("codes") for i in items_u]))
+        check("Marca 'único uso'", any(i.get("unico") for i in items_u))
+        check("Detecta el idioma español", any(i.get("lang") == "ES" for i in items_u), str([i.get("lang") for i in items_u]))
+        check("Ordena primero lo de mayor descuento", items_u[0].get("disc") == 100, str([i.get("disc") for i in items_u]))
+
+        # 14) JSON de comunidad (Reddit / Hacker News)
+        src_r = {"id": "x-reddit", "name": "Reddit de prueba", "url": "https://example.org/r", "lang": "EN",
+                 "grupo": "comunidad", "json": True}
+        _, items_r, _ = procesar_fuente(src_r, fixture("reddit.json"), None, 200,
+                                        json.loads(json.dumps(es_prev2)), [], False)
+        check("Lee el JSON de la comunidad", len(items_r) >= 2, str(len(items_r)))
+        check("Saca el código compartido en Reddit",
+              any(any("COMPSEC" in c for c in (i.get("codes") or [])) for i in items_r),
+              str([i.get("codes") for i in items_r]))
+        check("Saca el 50% del segundo post", any(i.get("disc") == 50 for i in items_r), str([i.get("disc") for i in items_r]))
+
+        # 15) Fuentes del rastreador en español, de badges y de comunidad
+        grupos = {f.get("grupo") for f in SOURCES}
+        check("Hay fuentes en español", "es" in grupos, str(grupos))
+        check("Hay fuentes de badges", "badges" in grupos)
+        check("Hay fuentes de comunidad (códigos)", "comunidad" in grupos)
+        check("Catálogo de fuentes ampliado", len(SOURCES) >= 40, str(len(SOURCES)))
+        check("Todas las fuentes tienen id/nombre/url únicos",
+              len({f["id"] for f in SOURCES}) == len(SOURCES) == len({f["url"] for f in SOURCES}))
 
     print("────────────────────────────────────────")
     if fallos:
