@@ -32,6 +32,10 @@ jobs:
         with:
           python-version: "3.11"
 
+      # el Python de setup-python viene pelado: pyyaml no está incluido
+      - name: Instalar pyyaml
+        run: python3 -m pip install --quiet pyyaml
+
       - name: Los workflows son YAML válido
         run: |
           python3 - <<'PY'
