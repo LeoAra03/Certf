@@ -1,5 +1,5 @@
 /* Service worker: cache-first del app shell para uso offline */
-const CACHE = "certf-v3";
+const CACHE = "certf-v4";
 const ASSETS = [
   "./",
   "./index.html",
