@@ -44,6 +44,7 @@ tasks.register('copyWebAssets', Copy) {
         include 'app.js'
         include 'scanner.js'
         include 'data.js'
+        include 'mejoras.js'
         include 'novedades.js'
         include 'data.json'
         include 'manifest.webmanifest'
