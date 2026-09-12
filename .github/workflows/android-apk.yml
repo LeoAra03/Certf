@@ -7,6 +7,7 @@ on:
       - "android/**"
       - "web/**"
       - "tools/**"
+      - "docs/1000-mejoras.json"
       - ".github/workflows/android-apk.yml"
       # Las novedades del rastreador diario no requieren recompilar la APK:
       # el WebView ya las sirve desde assets en el próximo build real.
@@ -30,6 +31,14 @@ jobs:
           python3 tools/build_data.py
           if ! git diff --quiet -- web/data.json; then
             echo "::error::web/data.json estaba desactualizado; se regeneró. Haz commit del archivo generado."
+            exit 1
+          fi
+
+      - name: Validar backlog (1000-mejoras.json -> mejoras.js)
+        run: |
+          python3 tools/build_mj.py
+          if ! git diff --quiet -- web/mejoras.js; then
+            echo "::error::web/mejoras.js estaba desactualizado; se regeneró. Haz commit del archivo generado."
             exit 1
           fi
 

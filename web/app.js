@@ -10,6 +10,11 @@
   var STORE_KEY = "certf.mias.v1";
   var PREFS_KEY = "certf.prefs.v1";
   var NOV_PREFS_KEY = "certf.novprefs.v1";
+  var MJ_KEY = "certf.mj.v1";      // mejoras del backlog marcadas como hechas (solo local)
+  var AI_KEY = "certf.ai.v1";      // endpoint/modelo/clave de la IA opcional (solo local)
+
+  var MJ = window.__CERTF_MEJORAS__ || null;
+  var mjState = load(MJ_KEY, { hechas: {} });
 
   /* ---------- utilidades ---------- */
   function $(sel) { return document.querySelector(sel); }
@@ -302,6 +307,117 @@
       '<div class="kpi"><b>' + DATA.deadlines.length + "</b><span>fechas críticas</span></div>" +
       '<div class="kpi"><b>' + DATA.certs.filter(function (c) { return c.disc === 100; }).length + "</b><span>hasta 100% gratis</span></div>";
     renderSiguiente();
+  }
+
+  /* ---------- AUTO-MEJORA: la app con su propio backlog ---------- */
+  function mjPendiente(m) { return !mjState.hechas[m.id]; }
+  function mjOrden(a, b) {
+    var pv = { P0: 0, P1: 1, P2: 2 };
+    var pa = pv.hasOwnProperty(a.p) ? pv[a.p] : 3;
+    var pb = pv.hasOwnProperty(b.p) ? pv[b.p] : 3;
+    return pa - pb || b.i - a.i || a.id - b.id;
+  }
+  function mjSiguientes(n) {
+    if (!MJ || !Array.isArray(MJ.mejoras)) return [];
+    return MJ.mejoras.filter(mjPendiente).sort(mjOrden).slice(0, n);
+  }
+  function promptMejora(m) {
+    return "Tienes el repo Certf (LeoAra03/Certf): PWA en web/ (HTML+CSS+JS vanilla, sin dependencias) y app Android en android/ que sirve la misma web/.\n" +
+      "Implementa la mejora #" + m.id + " de docs/1000-mejoras.json (sección " + m.seccion + ", prioridad " + m.p + ", esfuerzo " + m.e + ", impacto " + m.i + "/5):\n" +
+      "«" + m.t + "»\n" +
+      "Requisitos duros del proyecto:\n" +
+      "- 0 emojis en cualquier parte (UI, textos, commits).\n" +
+      "- Mobile-first: la interfaz debe verse útil en celular; textos en español.\n" +
+      "- Cero descuentos fantasmas: cualquier porcentaje debe seguir con fuente y evidencia verificable.\n" +
+      "- Si tocas web/data.js, regenera web/data.json con tools/build_data.py y web/mejoras.js con tools/build_mj.py.\n" +
+      "- Actualiza tools/smoke_test.js (y tools/scanner_test.js si aplica) y deja toda la batería en verde (node tools/smoke_test.js y node tools/scanner_test.js).\n" +
+      "- Commitea en la rama actual citando la id (ej: 'Mejora #" + m.id + ": ...'). El push recompila solo la APK vía GitHub Actions.\n" +
+      "Al terminar, responde en máximo 5 líneas: qué cambiaste, cómo se ve en el celular y cómo verificarlo.";
+  }
+  function cardSugerencia(m) {
+    var hecha = !!mjState.hechas[m.id];
+    var html = '<article class="card mj-card' + (hecha ? " mj-hecha" : "") + '" data-mj="' + m.id + '">';
+    html += '<div class="card-top"><div><b class="mj-titulo">Mejora #' + m.id + "</b><div class=\"inst\">" + esc(m.seccion) + "</div></div>" +
+      '<span class="peso ' + (m.p === "P0" ? "alta" : m.p === "P1" ? "media" : "") + '">[' + esc(m.p) + "] · " + esc(m.e) + " · impacto " + m.i + "/5</span></div>";
+    html += '<p class="note">' + esc(m.t) + "</p>";
+    html += '<div class="row">';
+    html += '<button class="btn btn-small" data-mj-copiar="' + m.id + '">Copiar prompt para el asistente</button>';
+    html += '<button class="btn btn-ghost btn-small" data-mj-hecha="' + m.id + '">' + (hecha ? "Deshacer (volver al backlog)" : "Marcar como hecha") + "</button>";
+    html += "</div></article>";
+    return html;
+  }
+  function renderMejoras() {
+    var res = $("#resumen-mj"), cont = $("#lista-sug");
+    if (!res || !cont) return;
+    if (!MJ || !Array.isArray(MJ.mejoras)) {
+      res.innerHTML = "";
+      cont.innerHTML = '<p class="empty">El backlog no se cargó (falta web/mejoras.js).</p>';
+      return;
+    }
+    var total = MJ.mejoras.length;
+    var hechas = MJ.mejoras.filter(function (m) { return mjState.hechas[m.id]; }).length;
+    var p0 = MJ.mejoras.filter(function (m) { return m.p === "P0" && mjPendiente(m); }).length;
+    var p1 = MJ.mejoras.filter(function (m) { return m.p === "P1" && mjPendiente(m); }).length;
+    res.innerHTML =
+      '<div class="kpi"><b>' + total + "</b><span>mejoras en el backlog</span></div>" +
+      '<div class="kpi"><b style="color:var(--ok)">' + hechas + "</b><span>hechas</span></div>" +
+      '<div class="kpi"><b style="color:var(--ok)">' + p0 + "</b><span>P0 pendientes</span></div>" +
+      '<div class="kpi"><b style="color:var(--acc)">' + p1 + "</b><span>P1 pendientes</span></div>" +
+      '<div class="kpi"><b>' + Math.round((hechas / Math.max(total, 1)) * 100) + "%</b><span>progreso</span></div>";
+    var badge = $("#badge-mj");
+    if (badge) { badge.textContent = String(p0); badge.classList.toggle("hidden", p0 === 0); }
+    cont.innerHTML = mjSiguientes(3).map(cardSugerencia).join("") || '<p class="empty">Backlog completo: todo el plan está implementado.</p>';
+  }
+  function copiarPrompt(m) {
+    var texto = promptMejora(m);
+    copiar(texto);
+    avisar("Prompt de la mejora #" + m.id + " copiado", "Pégalo en Arena, ChatGPT, Claude o Cursor. Incluye todos los requisitos duros del proyecto.");
+  }
+  function aiConfig() {
+    return load(AI_KEY, { endpoint: "", model: "", key: "" });
+  }
+  function guardarMejorasIA() {
+    var cfg = aiConfig();
+    var ep = ($("#ai-endpoint") || {}).value, mo = ($("#ai-model") || {}).value, ke = ($("#ai-key") || {}).value;
+    if (ep !== undefined) cfg.endpoint = String(ep || "").trim();
+    if (mo !== undefined) cfg.model = String(mo || "").trim();
+    if (ke !== undefined) cfg.key = String(ke || "").trim();
+    save(AI_KEY, cfg);
+  }
+  function generarMejorasIA() {
+    var out = $("#ai-out");
+    if (!out) return;
+    guardarMejorasIA();
+    var cfg = aiConfig();
+    if (!cfg.key) { out.classList.remove("hidden"); out.textContent = "Falta la clave API: guárdala arriba (se queda solo en este teléfono) o usa 'Copiar prompt' y pega el texto en cualquier asistente."; return; }
+    var endpoint = (cfg.endpoint || "https://api.openai.com/v1/chat/completions").replace(/\/+$/, "");
+    if (endpoint.indexOf("/chat/completions") === -1) endpoint += "/chat/completions";
+    var model = cfg.model || "gpt-4o-mini";
+    var top = mjSiguientes(10).map(function (m) { return "#" + m.id + " [" + m.p + "] " + m.t; }).join("\n");
+    var ids = Object.keys(mis);
+    var contexto = "App Certf (PWA + Android, vanilla JS): ayuda a un usuario particular a conseguir certificaciones y badges 100% gratis o verificadamente con descuento, con peso real en el CV, mobile-first, 0 emojis y cero descuentos fantasmas.\n" +
+      "Estado local del usuario: " + ids.length + " credenciales seguidas, " +
+      ids.filter(function (id) { return (mis[id] || {}).estado === "Obtenida"; }).length + " obtenidas.\n" +
+      "Backlog pendiente (siguientes 10):\n" + (top || "ninguno") + "\n\n" +
+      "Propón las 3 mejoras que mejor mueven el objetivo (acceso gratis, peso en el CV, utilidad en celular). Para cada una da: id sugerida dentro de las pendientes, que se agrega en qué archivo, y los pasos concretos de implementación en el repo. Máximo 200 palabras. Sin emojis.";
+    out.classList.remove("hidden");
+    out.textContent = "Pidiendo sugerencias a " + model + "…";
+    fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + cfg.key },
+      body: JSON.stringify({ model: model, messages: [
+        { role: "system", content: "Eres el copiloto de auto-mejora de la app Certf. Responde en español, directo y accionable, sin emojis." },
+        { role: "user", content: contexto }
+      ] })
+    }).then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    }).then(function (j) {
+      var txt = j && j.choices && j.choices[0] && j.choices[0].message ? j.choices[0].message.content : "Respuesta inesperada del modelo.";
+      out.textContent = String(txt).trim();
+    }).catch(function (e) {
+      out.textContent = "No se pudo obtener la respuesta: " + ((e && e.message) || e) + ". Revisa endpoint, modelo y clave. También puedes usar 'Copiar prompt' y pegar el texto en cualquier asistente.";
+    });
   }
 
   /* ---------- alertas ---------- */
@@ -801,7 +917,7 @@ function certPorId(id) {
     ].map(function (x) { return "<li>" + x + "</li>"; }).join("");
   }
 
-  function renderAll() { renderCatalogo(); renderRuta(); renderMias(); renderAlertas(); renderNovedades(); renderGuias(); renderSiguiente(); }
+  function renderAll() { renderCatalogo(); renderRuta(); renderMias(); renderAlertas(); renderNovedades(); renderGuias(); renderMejoras(); renderSiguiente(); }
 
   /* ---------- notificaciones ---------- */
   function pedirPermiso() {
@@ -877,6 +993,49 @@ function certPorId(id) {
         mostrarVista(b.dataset.sig);
       });
     }
+
+    /* Auto-mejora: copiar prompt y marcar mejoras como hechas (solo local) */
+    var ls = $("#lista-sug");
+    if (ls && ls.addEventListener) {
+      ls.addEventListener("click", function (e) {
+        var cop = e.target.closest ? e.target.closest("[data-mj-copiar]") : null;
+        if (cop) {
+          var idc = Number(cop.dataset.mjCopiar);
+          if (MJ) {
+            for (var i = 0; i < MJ.mejoras.length; i++) if (MJ.mejoras[i].id === idc) { copiarPrompt(MJ.mejoras[i]); break; }
+          }
+          return;
+        }
+        var he = e.target.closest ? e.target.closest("[data-mj-hecha]") : null;
+        if (!he) return;
+        var idh = Number(he.dataset.mjHecha);
+        if (mjState.hechas[idh]) delete mjState.hechas[idh];
+        else mjState.hechas[idh] = new Date().toISOString();
+        save(MJ_KEY, mjState);
+        renderMejoras();
+      });
+    }
+
+    /* IA opcional (clave local, petición directa del teléfono al endpoint) */
+    var cfg0 = aiConfig();
+    var aiEp = $("#ai-endpoint"), aiMo = $("#ai-model"), aiKe = $("#ai-key");
+    if (aiEp) {
+      aiEp.value = cfg0.endpoint || "https://api.openai.com/v1/chat/completions";
+      aiEp.placeholder = "https://api.openai.com/v1/chat/completions";
+    }
+    if (aiMo) aiMo.value = cfg0.model || "gpt-4o-mini";
+    if (aiKe) aiKe.value = cfg0.key || "";
+    [aiEp, aiMo, aiKe].forEach(function (el) { if (el && el.addEventListener) el.addEventListener("change", guardarMejorasIA); });
+    var bAi = $("#btn-ai");
+    if (bAi) bAi.addEventListener("click", generarMejorasIA);
+    var bAiBorrar = $("#btn-ai-borrar");
+    if (bAiBorrar) bAiBorrar.addEventListener("click", function () {
+      save(AI_KEY, { endpoint: (aiEp && aiEp.value) || "", model: (aiMo && aiMo.value) || "", key: "" });
+      if (aiKe) aiKe.value = "";
+      var out = $("#ai-out");
+      if (out) { out.classList.add("hidden"); out.textContent = ""; }
+      avisar("Clave borrada", "Se eliminó la clave API de este teléfono.");
+    });
 
     /* Tu objetivo: ajusta la barra Siguiente acción (guardado local) */
     var selPuesto = $("#obj-puesto"), selHoras = $("#obj-horas"), selNivel = $("#obj-nivel");

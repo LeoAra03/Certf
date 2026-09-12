@@ -70,6 +70,7 @@ sandbox.globalThis = sandbox;
 
 const ctx = vm.createContext(sandbox);
 vm.runInContext(read("web/data.js"), ctx);
+vm.runInContext(read("web/mejoras.js"), ctx);
 
 /* Último guardado en vivo (simula una búsqueda previa): sirve para verificar
    que la lista se restaura y que la categorización queda ORDENADA por urgencia. */
@@ -80,6 +81,9 @@ const hallazgo = (id, extra) => Object.assign({
   kind: "oferta", review: false, disc: null, etiqueta: "", beca: false, codes: [], unico: false,
   badge: false, lang: "EN", grupo: "oficial", live: true, nuevo: true
 }, extra);
+/* Mejora #1 ya hecha: la primera sugerencia debe ser la #2 (todas P0, impacto 5). */
+storage["certf.mj.v1"] = JSON.stringify({ hechas: { 1: "2026-09-12T12:00:00.000Z" } });
+
 storage["certf.scan.v2"] = JSON.stringify({
   checked: ahora,
   items: [
@@ -156,8 +160,25 @@ const idsHtml = new Set([...html.matchAll(/id="([^"]+)"/g)].map((m) => m[1]));
 const idsUsados = new Set([...read("web/app.js").matchAll(/\$\("#([A-Za-z0-9_-]+)"\)/g)].map((m) => m[1]));
 const faltan = [...idsUsados].filter((i) => !idsHtml.has(i));
 check("Todos los elementos que usa app.js existen", faltan.length === 0, "faltan: " + faltan.join(", "));
-check("Todos los scripts están en el HTML", ["data.js", "novedades.js", "scanner.js", "app.js"]
+check("Todos los scripts están en el HTML", ["data.js", "mejoras.js", "novedades.js", "scanner.js", "app.js"]
   .every((f) => html.includes('src="' + f + '"')));
+
+/* ---------- AUTO-MEJORA: backlog embebido, progreso y prompts ---------- */
+check("Backlog embebido cargado (1000 mejoras)", sandbox.window.__CERTF_MEJORAS__ &&
+  sandbox.window.__CERTF_MEJORAS__.total === 1000 && sandbox.window.__CERTF_MEJORAS__.mejoras.length === 1000,
+  sandbox.window.__CERTF_MEJORAS__ ? sandbox.window.__CERTF_MEJORAS__.total : "ausente");
+const mjResumen = (els["#resumen-mj"] || {}).innerHTML || "";
+check("Progreso del backlog renderizado (1000, 1 hecha, P0 pendientes)",
+  mjResumen.includes("1000") && mjResumen.includes(">1<") && mjResumen.includes("P0 pendientes"), mjResumen.slice(0, 120));
+const sug = (els["#lista-sug"] || {}).innerHTML || "";
+check("Siguientes sugerencias: #2, #3 y #4 (la #1 ya está hecha)",
+  sug.includes("Mejora #2") && sug.includes("Mejora #3") && sug.includes("Mejora #4") && !sug.includes("Mejora #1<"));
+check("Cada sugerencia trae botón 'Copiar prompt'", (sug.match(/data-mj-copiar=/g) || []).length === 3,
+  (sug.match(/data-mj-copiar=/g) || []).length + "/3");
+check("Badge de la pestaña Auto-mejora con P0 pendientes",
+  ((els["#badge-mj"] || {}).textContent || "") === "24", (els["#badge-mj"] || {}).textContent);
+check("Panel IA opcional con aviso de privacidad local",
+  html.includes('id="ai-key"') && html.includes('id="btn-ai"') && html.includes("solo en este teléfono"));
 
 check("scanner.js va en el service worker y en la APK",
   read("web/sw.js").includes("scanner.js") && read("android/app/build.gradle").includes("scanner.js"));
@@ -268,7 +289,7 @@ check("Estado del rastreador informado", ((els["#nov-estado"] || {}).innerHTML |
 
 /* ---------- cero emojis en la interfaz ---------- */
 const EMOJI_RE = /[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{2190}-\u{21FF}\u{1F1E6}-\u{1F1FF}\uFE0F\u200D\u20E3]/u;
-const archivosWeb = ["web/index.html", "web/app.js", "web/data.js", "web/data.json", "web/scanner.js", "web/styles.css", "web/novedades.js", "web/sw.js"];
+const archivosWeb = ["web/index.html", "web/app.js", "web/data.js", "web/data.json", "web/scanner.js", "web/styles.css", "web/novedades.js", "web/sw.js", "web/mejoras.js"];
 const conEmoji = archivosWeb.filter((f) => EMOJI_RE.test(read(f)));
 check("Sin emojis en la interfaz web", conEmoji.length === 0, "con emojis: " + conEmoji.join(", "));
 

@@ -36,6 +36,7 @@
   <button class="tab" data-view="mias">Mis certificaciones <span id="badge-mias" class="badge hidden">0</span></button>
   <button class="tab" data-view="alertas">Alertas <span id="badge-alertas" class="badge hidden">0</span></button>
   <button class="tab" data-view="novedades">Buscar páginas <span id="badge-nov" class="badge hidden">0</span></button>
+  <button class="tab" data-view="mejoras">Auto-mejora <span id="badge-mj" class="badge hidden">0</span></button>
   <button class="tab" data-view="guias">Guías</button>
 </nav>
 <div id="siguiente" class="siguiente"></div>
@@ -231,6 +232,38 @@
   </div>
 </section>
 
+<!-- AUTO-MEJORA (backlog de la propia app) -->
+<section id="view-mejoras" class="view hidden">
+  <div class="panel">
+    <h2>La app se mejora sola (tú pones el rumbo)</h2>
+    <p class="muted">Certf trae dentro su propio backlog de 1000 mejoras priorizadas. Aquí ves el progreso (guardado solo en este teléfono), las siguientes 3 sugerencias y un botón que arma el prompt listo para pegarlo en cualquier asistente (Arena, ChatGPT, Claude, Cursor): el asistente implementa la mejora, sube el cambio y esta misma APK se recompila sola con GitHub Actions. No necesitas computadora ni depender de un solo servicio.</p>
+    <div class="resumen" id="resumen-mj"></div>
+  </div>
+  <h3 class="sec-h">Siguientes sugerencias</h3>
+  <p class="sec-note">Ordenadas por prioridad (P0 primero), impacto y número. Marca cada una como hecha al confirmar que ya está en la APK.</p>
+  <div id="lista-sug" class="lista"></div>
+  <div class="panel">
+    <h2>Preguntarle a la IA (opcional, sin servidores)</h2>
+    <p class="muted small">Si quieres que la app proponga mejoras sola: pega tu propia clave API (cualquier API compatible con OpenAI, campo /chat/completions). La clave se guarda <b>solo en este teléfono</b> y la petición sale directa de tu equipo a ese endpoint: no pasa por ningún servidor de Certf y se puede borrar en cualquier momento.</p>
+    <div class="obj-fila">
+      <label>Endpoint
+        <input id="ai-endpoint" type="text" placeholder="https://api.openai.com/v1/chat/completions" autocomplete="off" />
+      </label>
+      <label>Modelo
+        <input id="ai-model" type="text" placeholder="gpt-4o-mini" autocomplete="off" />
+      </label>
+      <label>Clave API (privada, local)
+        <input id="ai-key" type="password" placeholder="sk-…" autocomplete="off" />
+      </label>
+    </div>
+    <div class="row">
+      <button id="btn-ai" class="btn">Proponer mejoras según mi estado</button>
+      <button id="btn-ai-borrar" class="btn btn-ghost">Borrar clave guardada</button>
+    </div>
+    <div id="ai-out" class="ai-out hidden"></div>
+  </div>
+</section>
+
 <!-- GUÍAS -->
 <section id="view-guias" class="view hidden">
   <div class="panel">
@@ -257,6 +290,7 @@
 </footer>
 
 <script src="data.js"></script>
+<script src="mejoras.js"></script>
 <script src="novedades.js"></script>
 <script src="scanner.js"></script>
 <script src="app.js"></script>
