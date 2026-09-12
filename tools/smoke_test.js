@@ -235,6 +235,34 @@ check("Los leaks se marcan como fuente no oficial",
 check("En el navegador avisa por qué alguna página puede no responder",
   !(els["#aviso-cors"] || { classList: { contains: () => true } }).classList.contains("hidden"),
   "el aviso debe verse fuera de la APK");
+
+/* ---------- paquete P0: peso CV, tipo de examen, siguiente acción, gratis directo ---------- */
+check("Toda credencial tiene tipo de examen (test)", data.certs.every((c) => c.examen && c.examen.length > 3));
+check("Toda credencial tiene razon verificable de su peso en el CV", data.certs.every((c) => c.peso_n && c.peso_n.length > 10));
+check("Las tarjetas muestran el tipo de examen", (lista.match(/Examen: /g) || []).length === data.certs.length,
+  (lista.match(/Examen: /g) || []).length + "/" + data.certs.length);
+check("Las tarjetas muestran por que pesan en el CV", (lista.match(/Por qué pesa en el CV:/g) || []).length === data.certs.length,
+  (lista.match(/Por qué pesa en el CV:/g) || []).length + "/" + data.certs.length);
+check("Las tarjetas 100% gratis dicen 'Postular ahora'", lista.includes("Postular ahora"));
+check("Las becas dicen 'Postular a la beca'", lista.includes("Postular a la beca"));
+check("Filtro de peso en el CV presente", html.includes('id="filtro-peso"') && html.includes("Peso alto (8-10)"));
+const sig = (els["#siguiente"] || {}).innerHTML || "";
+check("Barra 'Siguiente acción' renderizada con boton", sig.includes("Siguiente acción") && sig.includes("sig-btn"));
+check("Siguiente acción por defecto apunta a la gratis de mayor peso (CLF-C02, CV 10/10)",
+  sig.includes("AWS Certified Cloud Practitioner") && sig.includes("CV 10/10") && sig.includes("Postular ahora"), sig.slice(0, 160));
+check("Panel 'Tu objetivo' presente (puesto, horas, experiencia)",
+  html.includes('id="objetivo"') && html.includes('id="obj-puesto"') && html.includes('id="obj-horas"') && html.includes('id="obj-nivel"'));
+check("Puestos objetivo alimentados desde las rutas",
+  ((els["#obj-puesto"] || {}).innerHTML || "").includes("Analista de seguridad junior") &&
+  ((els["#obj-puesto"] || {}).innerHTML || "").includes("Soporte / Cloud junior"));
+check("Guía 'Como postular a las 100% gratis' renderizada",
+  ((els["#guias-gratis-lista"] || {}).innerHTML || "").includes("Apply Now") &&
+  ((els["#guias-gratis-lista"] || {}).innerHTML || "").includes("MISMO email"));
+check("Mis certificaciones muestra puntos CV obtenidos", ((els["#resumen"] || {}).innerHTML || "").includes("puntos CV obtenidos"));
+check("La ruta muestra peso y tipo de examen por paso", (ruta.match(/CV \d+\/10 · Examen:/g) || []).length === pasosRuta,
+  (ruta.match(/CV \d+\/10 · Examen:/g) || []).length + "/" + pasosRuta);
+check("La barra Siguiente acción queda pegada a las pestañas (sticky)",
+  read("web/styles.css").includes(".tabs-wrap") && read("web/styles.css").includes(".siguiente"));
 check("Estado del rastreador informado", ((els["#nov-estado"] || {}).innerHTML || "").includes("Última revisión automática"),
   (els["#nov-estado"] || {}).innerHTML);
 

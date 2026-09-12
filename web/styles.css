@@ -29,11 +29,21 @@ a{color:var(--acc)}
 .topbar-actions{display:flex;gap:8px}
 .updated{padding:10px 16px 0;margin:0;font-size:12px;color:var(--muted)}
 
-.tabs{
-  position:sticky;top:66px;z-index:19;display:flex;gap:6px;overflow-x:auto;padding:10px 12px;
-  background:rgba(11,18,32,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
-  scrollbar-width:none;
+.tabs-wrap{
+  position:sticky;top:66px;z-index:19;
+  background:rgba(11,18,32,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
 }
+.tabs{
+  display:flex;gap:6px;overflow-x:auto;padding:10px 12px 6px;scrollbar-width:none;
+}
+/* Barra "Siguiente acción": siempre visible sobre las pestañas, en todas las vistas */
+.siguiente{display:flex;gap:10px;align-items:center;padding:8px 12px 10px}
+.sig-label{flex:0 0 auto;font-size:10.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:var(--ok)}
+.sig-texto{
+  flex:1 1 auto;font-size:13.5px;font-weight:600;line-height:1.35;min-width:0;
+  overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;
+}
+.sig-btn{flex:0 0 auto;padding:9px 13px;font-size:13.5px}
 .tabs::-webkit-scrollbar{display:none}
 .tab{
   flex:0 0 auto;background:var(--card);color:var(--muted);border:1px solid var(--line);
@@ -73,6 +83,9 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--acc);outline-off
   flex:0 0 auto;background:var(--card2);border:1px solid var(--line);border-radius:10px;
   padding:4px 8px;font-size:12px;color:var(--muted);font-weight:700;
 }
+.peso.alta{background:rgba(61,220,151,.16);color:var(--ok);border-color:rgba(61,220,151,.5)}
+.peso.media{background:rgba(79,140,255,.14);color:var(--acc);border-color:rgba(79,140,255,.45)}
+.peso-razon{border-top:1px dashed var(--line);padding-top:7px;margin-top:8px}
 .tipo{
   display:inline-block;border-radius:999px;padding:3px 10px;font-size:11.5px;font-weight:700;margin-right:6px;
 }
@@ -208,11 +221,19 @@ footer{text-align:center;padding:0 16px}
   .resumen-scan{grid-template-columns:repeat(8,1fr)}
 }
 
+/* ---------- panel "Tu objetivo" ---------- */
+.obj-fila{display:grid;grid-template-columns:1fr;gap:9px;margin-top:9px}
+.obj-fila label{display:flex;flex-direction:column;gap:4px;font-size:12.5px;color:var(--muted)}
+@media (min-width:720px){ .obj-fila{grid-template-columns:repeat(3,1fr)} }
+
 /* ---------- celulares chicos: la cabecera no se rompe ---------- */
 @media (max-width:600px){
   .topbar{position:static;flex-wrap:wrap}
   .topbar-actions{width:100%;justify-content:flex-start;flex-wrap:wrap}
-  .tabs{top:0}
+  .tabs-wrap{top:0}
+  .siguiente{padding:7px 10px 9px}
+  .sig-texto{font-size:12.5px}
+  .card .row .btn{flex:1 1 130px;text-align:center}
   .btn-buscar{flex:1 1 auto}
   .resumen-scan{grid-template-columns:repeat(3,1fr)}
   .fuente-det{display:none}

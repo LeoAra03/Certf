@@ -84,7 +84,8 @@
   var ESTADOS = ["Pendiente", "En curso", "Obtenida"];
 
   var mis = load(STORE_KEY, {});
-  var prefs = load(PREFS_KEY, { tipo: "all", cat: "all", sort: "peso", desc: "all", formato: "all", idioma: "all" });
+  var prefs = load(PREFS_KEY, { tipo: "all", cat: "all", sort: "peso", desc: "all", formato: "all", idioma: "all", peso: "all", objetivo: { puesto: "", horas: "", nivel: "" } });
+  if (!prefs.objetivo) prefs.objetivo = {};
   var novPrefs = load(NOV_PREFS_KEY, { filtro: "all" });
   var query = "";
   var scanActivo = false;
@@ -120,6 +121,56 @@
     if (filtro === "en") return l.indexOf("ingl") !== -1 || l.indexOf("multilenguaje") !== -1 || l.indexOf("idiomas") !== -1;
     return true;
   }
+  function clasePeso(p) {
+    p = Number(p) || 0;
+    if (p >= 8) return "alta";
+    if (p >= 6) return "media";
+    return "";
+  }
+  function etiquetaPrimaria(c) {
+    if (c.disc === 100 && c.t !== "beca") return "Postular ahora";
+    if (c.t === "beca") return "Postular a la beca";
+    if (c.t === "estudiante") return "Postular (estudiante)";
+    return "Ver oferta";
+  }
+
+  /* ---------- Siguiente acción: lo más útil para el objetivo, hoy ---------- */
+  function siguienteAccion() {
+    var enCurso = DATA.certs.filter(function (c) { return mis[c.id] && mis[c.id].estado === "En curso" && mis[c.id].fecha; })
+      .sort(function (a, b) { return (parseDate(mis[a.id].fecha) || new Date(9e15)) - (parseDate(mis[b.id].fecha) || new Date(9e15)); });
+    if (enCurso.length) {
+      var e = enCurso[0];
+      var n = diasRestantes(mis[e.id].fecha);
+      return { kind: "mias", texto: "Sigue: " + e.n + " · " + textoDias(n) + " · CV " + e.p + "/10", btn: "Ver mis certificaciones" };
+    }
+    var pendientes = DATA.certs.filter(function (c) { return mis[c.id] && mis[c.id].estado !== "Obtenida"; })
+      .sort(function (a, b) { return String((mis[a.id] || {}).added || "").localeCompare(String((mis[b.id] || {}).added || "")); });
+    if (pendientes.length) {
+      var p = pendientes[0];
+      return { kind: "cert", cert: p, texto: "Toca el botón para postular: " + p.n + " · CV " + p.p + "/10 · " + etiquetaDescuento(p), btn: etiquetaPrimaria(p), url: p.url };
+    }
+    var gratis = DATA.certs.filter(function (c) { return c.disc === 100 && c.t !== "beca"; })
+      .sort(function (a, b) { return b.p - a.p || a.n.localeCompare(b.n, "es"); });
+    if (gratis.length) {
+      var g = gratis[0];
+      return { kind: "cert", cert: g, texto: "Empieza hoy, 100% gratis (mayor peso en el CV): " + g.n + " · CV " + g.p + "/10", btn: "Postular ahora", url: g.url };
+    }
+    return { kind: "catalogo", texto: "Explora el catálogo ordenado por peso en el CV.", btn: "Ver catálogo" };
+  }
+  function renderSiguiente() {
+    var el = $("#siguiente");
+    if (!el) return;
+    var a = siguienteAccion();
+    var obj = prefs.objetivo || {};
+    var extra = "";
+    if (obj.horas === "0") extra = " · Esta semana tienes 0 h: agenda al menos un bloque";
+    else if (obj.puesto) extra = " · Puesto: " + obj.puesto;
+    var html = '<span class="sig-label">Siguiente acción</span><span class="sig-texto">' + esc(a.texto) + esc(extra) + "</span>";
+    if (a.kind === "cert") html += '<a class="btn sig-btn" target="_blank" rel="noopener" href="' + esc(a.url) + '">' + esc(a.btn) + "</a>";
+    else if (a.kind === "mias") html += '<button class="btn sig-btn" data-sig="mias">' + esc(a.btn) + "</button>";
+    else html += '<button class="btn sig-btn" data-sig="catalogo">' + esc(a.btn) + "</button>";
+    el.innerHTML = html;
+  }
 
   /* ---------- catálogo ---------- */
   function certsFiltrados() {
@@ -130,8 +181,9 @@
       if (!cumpleDesc(c, prefs.desc || "all")) return false;
       if ((prefs.formato || "all") !== "all" && (c.kind || "cert") !== prefs.formato) return false;
       if (!cumpleIdioma(c, prefs.idioma || "all")) return false;
+      if ((prefs.peso || "all") !== "all" && (c.p || 0) < Number(prefs.peso)) return false;
       if (!q) return true;
-      var hay = [c.n, c.i, c.c, c.note, c.cond, c.lang, c.kind].join(" ").toLowerCase();
+      var hay = [c.n, c.i, c.c, c.note, c.cond, c.lang, c.kind, c.examen, c.peso_n].join(" ").toLowerCase();
       return hay.indexOf(q) !== -1;
     });
     out.sort(function (a, b) {
@@ -165,19 +217,20 @@
     var html = "";
     html += '<article class="card" data-id="' + esc(c.id) + '">';
     html += '<div class="card-top"><div><h3>' + esc(c.n) + '</h3><div class="inst">' + esc(c.i) + "</div></div>";
-    html += '<span class="peso" title="Peso estimado en el CV">CV ' + c.p + "/10</span></div>";
+    html += '<span class="peso ' + clasePeso(c.p) + '" title="Peso estimado en el CV: ' + esc(c.peso_n || "ver razon abajo") + '">CV ' + c.p + "/10</span></div>";
     if (dsc) {
       html += '<p class="desc-line"><span class="desc ' + claseDescuento(c) + '">' + esc(dsc) + "</span>" +
         '<span class="tipo ' + ((c.kind === "badge") ? "t-badge" : "t-cert") + '">' + (c.kind === "badge" ? "Badge" : "Certificación") + "</span></p>";
     }
     html += '<p class="cond"><span class="tipo t-' + esc(c.t) + '">' + esc(TIPO_LABEL[c.t] || c.t) + "</span>" + esc(c.cond) + "</p>";
     html += '<p class="note">' + esc(c.note) + "</p>";
-    html += '<p class="meta">Idioma: <b>' + esc(c.lang) + "</b> · Área: <b>" + esc(c.c) + "</b> · Verificación: <b>" + esc(c.verify) + "</b></p>";
+    html += '<p class="meta">Idioma: <b>' + esc(c.lang) + "</b> · Área: <b>" + esc(c.c) + "</b> · Examen: <b>" + esc(c.examen || "a confirmar") + "</b> · Verificación: <b>" + esc(c.verify) + "</b></p>";
+    if (c.peso_n) html += '<p class="meta peso-razon"><b>Por qué pesa en el CV:</b> ' + esc(c.peso_n) + "</p>";
     if (dl) {
       html += '<p class="meta">Fecha crítica: <b class="' + claseDias(dias) + '">' + esc(dl.title) + " — " + textoDias(dias) + "</b> (" + fmtFecha(dl.date) + ")</p>";
     }
     html += '<div class="row">';
-    html += '<a class="btn" target="_blank" rel="noopener" href="' + esc(c.url) + '">Abrir enlace</a>';
+    html += '<a class="btn" target="_blank" rel="noopener" href="' + esc(c.url) + '">' + esc(etiquetaPrimaria(c)) + "</a>";
     html += '<button class="btn btn-ghost" data-act="seguir">' + (siguiendo ? "Siguiendo" : "Seguir") + "</button>";
     if (siguiendo) html += '<button class="btn btn-ghost" data-act="ver-mia">Ver en mis certificaciones</button>';
     html += "</div></article>";
@@ -234,18 +287,21 @@
     badge.textContent = ids.length;
     badge.classList.toggle("hidden", ids.length === 0);
 
-    var o = 0, e = 0, p = 0;
+    var o = 0, e = 0, p = 0, pts = 0;
     ids.forEach(function (id) {
       var s = (mis[id] || {}).estado || "Pendiente";
-      if (s === "Obtenida") o++; else if (s === "En curso") e++; else p++;
+      if (s === "Obtenida") { o++; var c = certPorId(id); if (c) pts += c.p || 0; }
+      else if (s === "En curso") e++; else p++;
     });
     $("#resumen").innerHTML =
       '<div class="kpi"><b>' + ids.length + "</b><span>seguidas</span></div>" +
       '<div class="kpi"><b style="color:var(--warn)">' + e + "</b><span>en curso</span></div>" +
       '<div class="kpi"><b style="color:var(--ok)">' + o + "</b><span>obtenidas</span></div>" +
+      '<div class="kpi"><b style="color:var(--ok)">' + pts + "</b><span>puntos CV obtenidos</span></div>" +
       '<div class="kpi"><b>' + p + "</b><span>pendientes</span></div>" +
       '<div class="kpi"><b>' + DATA.deadlines.length + "</b><span>fechas críticas</span></div>" +
       '<div class="kpi"><b>' + DATA.certs.filter(function (c) { return c.disc === 100; }).length + "</b><span>hasta 100% gratis</span></div>";
+    renderSiguiente();
   }
 
   /* ---------- alertas ---------- */
@@ -355,7 +411,7 @@ function certPorId(id) {
         var siguiendo = !!mis[id];
         html += '<li class="fase-item"><div class="fase-top"><b>' + esc(c.n) +
           '</b> <span class="desc ' + claseDescuento(c) + '">' + esc(etiquetaDescuento(c) || "Verificable") + "</span></div>" +
-          '<p class="meta small">' + esc(c.i) + " · " + esc(c.lang) + " · Verificación: " + esc(c.verify) + "</p>" +
+          '<p class="meta small">CV ' + c.p + '/10 · Examen: ' + esc(c.examen || "a confirmar") + " · " + esc(c.i) + " · " + esc(c.lang) + " · Verificación: " + esc(c.verify) + "</p>" +
           '<div class="row"><a class="btn btn-small" target="_blank" rel="noopener" href="' + esc(c.url) + '">Abrir enlace</a>' +
           '<button class="btn btn-ghost btn-small" data-ruta-seguir="' + esc(id) + '">' + (siguiendo ? "Siguiendo" : "Seguir") + "</button></div></li>";
       });
@@ -721,6 +777,7 @@ function certPorId(id) {
   }
 
   function renderGuias() {
+    $("#guias-gratis-lista").innerHTML = (DATA.tips_gratis || []).map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("");
     $("#guias-lista").innerHTML = DATA.tips.map(function (t) { return "<li>" + esc(t) + "</li>"; }).join("");
     $("#descartes").innerHTML = [
       "<b>ISC2 Certified in Cybersecurity (CC):</b> el programa gratuito cerró el 20-may-2026; hoy cuesta US$199.",
@@ -744,7 +801,7 @@ function certPorId(id) {
     ].map(function (x) { return "<li>" + x + "</li>"; }).join("");
   }
 
-  function renderAll() { renderCatalogo(); renderRuta(); renderMias(); renderAlertas(); renderNovedades(); renderGuias(); }
+  function renderAll() { renderCatalogo(); renderRuta(); renderMias(); renderAlertas(); renderNovedades(); renderGuias(); renderSiguiente(); }
 
   /* ---------- notificaciones ---------- */
   function pedirPermiso() {
@@ -809,6 +866,37 @@ function certPorId(id) {
     chips("#filtro-desc", "desc", prefs.desc || "all", function (v) { prefs.desc = v; save(PREFS_KEY, prefs); renderCatalogo(); });
     chips("#filtro-formato", "formato", prefs.formato || "all", function (v) { prefs.formato = v; save(PREFS_KEY, prefs); renderCatalogo(); });
     chips("#filtro-lang", "lang", prefs.idioma || "all", function (v) { prefs.idioma = v; save(PREFS_KEY, prefs); renderCatalogo(); });
+    chips("#filtro-peso", "peso", prefs.peso || "all", function (v) { prefs.peso = v; save(PREFS_KEY, prefs); renderCatalogo(); });
+
+    /* Siguiente acción: el botón ejecuta la acción (postular, ver mis certs o catálogo) */
+    var sig = $("#siguiente");
+    if (sig && sig.addEventListener) {
+      sig.addEventListener("click", function (e) {
+        var b = e.target.closest ? e.target.closest("[data-sig]") : null;
+        if (!b) return;
+        mostrarVista(b.dataset.sig);
+      });
+    }
+
+    /* Tu objetivo: ajusta la barra Siguiente acción (guardado local) */
+    var selPuesto = $("#obj-puesto"), selHoras = $("#obj-horas"), selNivel = $("#obj-nivel");
+    if (selPuesto) {
+      var opts = '<option value="">Elegir…</option>' + (DATA.rutas || []).map(function (r) {
+        return '<option value="' + esc(r.area) + '">' + esc(r.papel) + "</option>";
+      }).join("");
+      selPuesto.innerHTML = opts;
+      [selPuesto, selHoras, selNivel].forEach(function (sel, i) {
+        if (!sel) return;
+        var clave = ["puesto", "horas", "nivel"][i];
+        sel.value = (prefs.objetivo || {})[clave] || "";
+        sel.addEventListener("change", function () {
+          prefs.objetivo = prefs.objetivo || {};
+          prefs.objetivo[clave] = sel.value;
+          save(PREFS_KEY, prefs);
+          renderSiguiente();
+        });
+      });
+    }
     chips("#filtro-nov", "nov", novPrefs.filtro || "all", function (v) { novPrefs.filtro = v; save(NOV_PREFS_KEY, novPrefs); renderNovedades(); });
 
     $("#lista").addEventListener("click", function (e) {

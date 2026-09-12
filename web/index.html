@@ -29,6 +29,7 @@
 
 <p class="updated">Datos verificados al <strong id="updated"></strong> · <span id="counts"></span><span id="counts-desc"></span><span id="last-check"></span></p>
 
+<div class="tabs-wrap">
 <nav class="tabs" role="tablist">
   <button class="tab active" data-view="catalogo">Catálogo</button>
   <button class="tab" data-view="ruta">Ruta 0 a PRO</button>
@@ -37,6 +38,8 @@
   <button class="tab" data-view="novedades">Buscar páginas <span id="badge-nov" class="badge hidden">0</span></button>
   <button class="tab" data-view="guias">Guías</button>
 </nav>
+<div id="siguiente" class="siguiente"></div>
+</div>
 
 <!-- CATÁLOGO -->
 <main id="view-catalogo" class="view">
@@ -65,6 +68,11 @@
       <button class="chip" data-cat="Desarrollo">Desarrollo</button>
       <button class="chip" data-cat="Gestión">Gestión</button>
       <button class="chip" data-cat="Marketing">Marketing</button>
+    </div>
+    <div class="chips" id="filtro-peso">
+      <button class="chip active" data-peso="all">Todo peso en el CV</button>
+      <button class="chip" data-peso="8">Peso alto (8-10)</button>
+      <button class="chip" data-peso="10">Peso máximo (10)</button>
     </div>
     <div class="chips" id="filtro-formato">
       <button class="chip active" data-formato="all">Certificaciones y badges</button>
@@ -95,6 +103,33 @@
     <h2>Ruta 0 a PRO: de cero experiencia a perfil profesional</h2>
     <p class="muted">Elige un área. Cada fase trae <b>varias opciones para elegir</b> (no una sola): cursos 100% gratis, badges, becas y descuentos, todos con enlace y con la forma de verificar la credencial. Marca las que tomes con <em>“Seguir”</em> y te avisamos de las fechas límite. Las fases se encadenan: cada una usa lo que dio la anterior.</p>
     <div class="chips" id="filtro-area"></div>
+  </div>
+  <div class="panel" id="objetivo">
+    <h2>Tu objetivo (ajusta la barra “Siguiente acción”)</h2>
+    <p class="muted small">Guardado solo en este teléfono. Según tu puesto y tus horas, la app te dice qué hacer ahora priorizando lo gratis con más peso en el CV.</p>
+    <div class="obj-fila">
+      <label>Puesto objetivo
+        <select id="obj-puesto"></select>
+      </label>
+      <label>Horas reales por semana
+        <select id="obj-horas">
+          <option value="">Elegir…</option>
+          <option value="0">0 (esta semana no)</option>
+          <option value="1-5">1 a 5 horas</option>
+          <option value="6-10">6 a 10 horas</option>
+          <option value="11-20">11 a 20 horas</option>
+          <option value="20+">Más de 20 horas</option>
+        </select>
+      </label>
+      <label>Experiencia actual
+        <select id="obj-nivel">
+          <option value="">Elegir…</option>
+          <option value="cero">Cero (parto de cero)</option>
+          <option value="personal">Personal (proyectos, sin trabajo en el área)</option>
+          <option value="profesional">Profesional (ya trabajo en el área)</option>
+        </select>
+      </label>
+    </div>
   </div>
   <div id="lista-ruta" class="lista"></div>
 </section>
@@ -198,6 +233,10 @@
 
 <!-- GUÍAS -->
 <section id="view-guias" class="view hidden">
+  <div class="panel">
+    <h2>Cómo postular a las 100% gratis (paso a paso)</h2>
+    <ol class="steps" id="guias-gratis-lista"></ol>
+  </div>
   <div class="panel">
     <h2>Cómo conseguir la beca (paso a paso)</h2>
     <ol class="steps" id="guias-lista"></ol>
