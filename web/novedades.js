@@ -1,8 +1,71 @@
 /* Certf — ARCHIVO GENERADO por tools/crawler.py (no editar a mano).
    La app lo lee para la pestaña Novedades y el sello de última revisión. */
 window.__CERTF_NOVEDADES__ = {
- "checked": "2026-09-12T16:29:05Z",
+ "checked": "2026-09-13T17:03:35Z",
  "items": [
+  {
+   "found": "2026-09-13",
+   "id": "fddce35bca",
+   "kind": "cambio",
+   "name": "Class Central · credenciales gratis de Google",
+   "review": true,
+   "sig": "cambio-81226be68a29",
+   "src": "classcentral",
+   "text": "La página cambió, pero no se detectó una oferta nueva legible. Revisa el enlace.",
+   "url": "https://www.classcentral.com/report/free-google-certifications/"
+  },
+  {
+   "found": "2026-09-13",
+   "id": "c1c920f4c0",
+   "kind": "cambio",
+   "name": "dumpsgate · códigos AWS (agregador, no oficial)",
+   "review": true,
+   "sig": "cambio-e3b0c44298fc",
+   "src": "dumpsgate",
+   "text": "La página cambió, pero no se detectó una oferta nueva legible. Revisa el enlace.",
+   "url": "https://dumpsgate.com/aws-promo-codes/"
+  },
+  {
+   "found": "2026-09-13",
+   "id": "76997a135e",
+   "kind": "cambio",
+   "name": "AWS · Código AIF2CLOUD (Pearson VUE)",
+   "review": true,
+   "sig": "cambio-b1ec0debbcb8",
+   "src": "aws-aif2cloud",
+   "text": "La página cambió, pero no se detectó una oferta nueva legible. Revisa el enlace.",
+   "url": "https://www.pearsonvue.com/us/en/aws/aif2cloud.html"
+  },
+  {
+   "found": "2026-09-13",
+   "id": "719190c5ed",
+   "kind": "cambio",
+   "name": "Coursera · Google Cybersecurity Certificate",
+   "review": true,
+   "sig": "cambio-0ba8c79b4c4f",
+   "src": "coursera-gcyber",
+   "text": "La página cambió, pero no se detectó una oferta nueva legible. Revisa el enlace.",
+   "url": "https://www.coursera.org/google-certificates/cybersecurity-certificate"
+  },
+  {
+   "badge": true,
+   "beca": false,
+   "codes": [],
+   "disc": null,
+   "etiqueta": "",
+   "found": "2026-09-13",
+   "grupo": "oficial",
+   "id": "56f8c7692e",
+   "kind": "badge",
+   "lang": "EN",
+   "name": "GitHub · Student Developer Pack",
+   "review": false,
+   "sig": "tagsdevelopertoolsinfrastructureapisgethelpatpoeditorsupporthoneybadgerabouthoneybadgerthewebdeveloperssecretweaponexceptionuptimeandcronmonitoringthatssoawesom",
+   "src": "github-pack",
+   "text": "Tags Developer tools Infrastructure & APIs Get help at POEditor support Honeybadger About Honeybadger The web developer's secret weapon: exception, uptime, and cron monitoring that's so awesome, you'll wish your site had more errors.",
+   "unico": false,
+   "url": "https://education.github.com/pack"
+  },
   {
    "badge": false,
    "beca": false,
