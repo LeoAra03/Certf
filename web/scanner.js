@@ -67,7 +67,13 @@
     { id: "gcp-skillsboost", name: "Google Cloud Skills Boost · skill badges", url: "https://www.cloudskillsboost.google/", lang: "EN", grupo: "badges" },
     { id: "ibm-skillsbuild", name: "IBM SkillsBuild · credenciales Credly", url: "https://skillsbuild.org/learning-catalog", lang: "EN", grupo: "badges" },
     { id: "ibm-cognitive", name: "IBM Cognitive Class · certificados y badges", url: "https://cognitiveclass.ai/", lang: "EN", grupo: "badges" },
-    { id: "cisco-skillsforall", name: "Cisco Skills for All · badges", url: "https://skillsforall.com/", lang: "ES/EN", grupo: "badges" },
+    { id: "cisco-skillsforall", name: "Cisco Skills for All · badges (ahora en NetAcad)", url: "https://www.netacad.com/catalogs/learn", lang: "ES/EN", grupo: "badges" },
+    { id: "tryhackme", name: "TryHackMe · rutas gratis con certificado", url: "https://tryhackme.com/", lang: "EN", grupo: "oficial" },
+    { id: "efset", name: "EF SET · prueba de inglés con certificado gratis", url: "https://www.efset.org/", lang: "EN", grupo: "oficial" },
+    { id: "meta-blueprint", name: "Meta Blueprint · cursos y examenes $0 (Credly)", url: "https://www.meta.com/business/learning/", lang: "EN", grupo: "oficial" },
+    { id: "ai-essentials-google", name: "Coursera · Google AI Essentials (beca)", url: "https://www.coursera.org/specializations/ai-essentials-google", lang: "ES", grupo: "es" },
+    { id: "netacad-ccst", name: "Cisco NetAcad · ruta CCST Cybersecurity (gratis)", url: "https://www.netacad.com/cybersecurity", lang: "ES", grupo: "es" },
+
     { id: "google-developers", name: "Google Developers · badges y rutas", url: "https://developers.google.com/learn", lang: "EN", grupo: "badges" },
     { id: "trailhead", name: "Salesforce Trailhead · superbadges", url: "https://trailhead.salesforce.com/", lang: "EN", grupo: "badges" },
 

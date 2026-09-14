@@ -14,7 +14,7 @@
 */
 
 window.__CERTF__ = {
-  "updated": "2026-09-12",
+  "updated": "2026-09-14",
 
   // Fechas críticas / vencimientos de vouchers y promociones
   "deadlines": [
@@ -272,9 +272,9 @@ window.__CERTF__ = {
 
     { "id": "cisco-skillsforall", "n": "Cisco Skills for All (badges en español)", "i": "Cisco", "p": 6, "c": "Desarrollo", "t": "gratis", "disc": 100, "kind": "badge",
       "examen": "Opción múltiple", "peso_n": "La vía más rápida a badges Cisco en español, sin inscripción universitaria.",
-      "cond": "100% gratis, sin inscripción universitaria: badges por curso (IA, Python, ciberseguridad, networking)", "url": "https://skillsforall.com/",
+      "cond": "100% gratis, sin inscripción universitaria: badges por curso (IA, Python, ciberseguridad, networking)", "url": "https://www.netacad.com/catalogs/learn",
       "lang": "Español / Inglés", "verify": "Badge digital Cisco (compartible en LinkedIn)",
-      "note": "La vía más rápida a badges Cisco en español: no necesitas que tu institución esté adscrita a NetAcad. Cuenta para la ruta CCST/CCNA." },
+      "note": "La vía más rápida a badges Cisco en español: no necesitas que tu institución esté adscrita a NetAcad. Skills for All hoy vive dentro de NetAcad (el enlace antiguo de skillsforall.com redirige ahi). Cuenta para la ruta CCST/CCNA." },
 
     { "id": "ibm-cognitive", "n": "IBM Cognitive Class (600+ cursos con badge/certificado)", "i": "IBM", "p": 5, "c": "Datos", "t": "gratis", "disc": 100, "kind": "badge",
       "examen": "Opción múltiple", "peso_n": "Marca IBM gratis con evidencia verificable mientras se procesa una beca.",
@@ -359,6 +359,37 @@ window.__CERTF__ = {
       "cond": "100% gratis (NO es una certificación oficial)", "url": "https://trailhead.salesforce.com",
       "lang": "Inglés", "verify": "Perfil de Trailhead",
       "note": "Las certificaciones Salesforce cuestan US$75+; la gratuidad de AI terminó el 31-dic-2025." }
+,
+    { "id": "tryhackme", "n": "TryHackMe (rutas gratis: Cyber Security 101, Pre Security)", "i": "TryHackMe", "p": 6, "c": "Seguridad", "t": "gratis", "disc": 100, "kind": "cert",
+      "examen": "Labs guiados (hands-on)", "peso_n": "Practica real en laboratorios de ciberseguridad; el certificado de ruta muestra ejecucion, no teoria.",
+      "cond": "100% gratis: crea la cuenta y enrégate en una ruta gratuita (por ejemplo Pre Security); certificado de completitud por ruta", "url": "https://tryhackme.com/",
+      "lang": "Inglés", "verify": "Perfil TryHackMe + certificado de ruta",
+      "note": "Más de 1000 labs guiados que se ejecutan en el navegador (sin instalar nada). Elige rutas marcadas 'free' (las easy suelen ser 100% gratuitas) y termina para obtener el certificado de ruta, compartible en LinkedIn. Ideal para mostrar practica real a un reclutador de seguridad." },
+
+    { "id": "efset", "n": "EF SET: prueba de inglés con certificado gratis (CEFR)", "i": "EF (Education First)", "p": 6, "c": "Idiomas", "t": "gratis", "disc": 100, "kind": "cert",
+      "examen": "Prueba estandarizada online (90 min con 4 skills, o 50 min con 2 skills)", "peso_n": "Certificado oficial de nivel de inglés alineado a CEFR (A1-C2), valido 2 anos, con boton para anadirlo a LinkedIn.",
+      "cond": "100% gratis: rinde la prueba online y descarga el certificado con URL publica", "url": "https://www.efset.org/ef-set-50/",
+      "lang": "Inglés (test)", "verify": "Certificado EF SET (URL publica)",
+      "note": "Para perfiles chilenos que apuntan a remoto: el nivel de inglés certificado abre vacantes mejor pagadas. La version de 50 min certifica reading + listening; la de 90 min agrega writing y speaking." },
+
+    { "id": "meta-blueprint", "n": "Meta Blueprint: 8 certificaciones oficiales a costo $0 (Facebook/Instagram Ads)", "i": "Meta", "p": 6, "c": "Marketing", "t": "gratis", "disc": 100, "kind": "cert",
+      "examen": "Opcion multiple (examen proctored a costo $0)", "peso_n": "Certificacion oficial de Meta con badge Credly: 8 examenes de $0 (ads, media buying, marketing science, community).",
+      "cond": "100% gratis: biblioteca de cursos + guias de estudio + examenes profesionales a costo $0 (solo necesitas cuenta de Facebook o Instagram)", "url": "https://www.meta.com/business/learning/",
+      "lang": "Inglés / Español (cursos)", "verify": "Credly (badge Meta Blueprint)",
+      "note": "Una de las pocas certificaciones oficiales de una gran marca con examen realmente gratis. Valida 2 anos. La pagina trae la biblioteca de cursos gratis y el guia de estudio de cada examen." },
+
+    { "id": "ai-essentials-google", "n": "Google AI Essentials Specialization (5 cursos)", "i": "Google", "p": 6, "c": "IA", "t": "beca", "disc": 100, "kind": "cert",
+      "examen": "Opcion multiple + proyectos por curso", "peso_n": "La especializacion de IA de Google (5 cursos): la marca Google en IA pesa mas que un curso generico de prompts.",
+      "cond": "Beca Financial Aid 75–100% (aplica en la pagina de cada curso de la especializacion)", "url": "https://www.coursera.org/specializations/ai-essentials-google",
+      "lang": "Inglés / Español", "verify": "Certificado Coursera (Google)",
+      "note": "Introduccion a IA, herramientas de IA, prompting y uso responsable en 5 cursos cortos. La especializacion es de pago; la via gratis es la beca por curso (75-100%)." },
+
+    { "id": "ccst-cyber", "n": "Cisco CCST Cybersecurity (curso + examen a costo $0)", "i": "Cisco Networking Academy (Skills for All)", "p": 8, "c": "Seguridad", "t": "gratis", "disc": 100, "kind": "cert",
+      "examen": "Labs + opcion multiple (examen online a costo $0)", "peso_n": "Certificacion oficial Cisco con examen a $0 real, disenada para el primer empleo de seguridad (Junior Cybersecurity Analyst, 0-1 anos).",
+      "cond": "100% gratis: curso guiado + examen CCST (Cisco Certified Support Technician) en Skills for All dentro de NetAcad", "url": "https://www.netacad.com/cybersecurity",
+      "lang": "Inglés / Español (segun curso)", "verify": "Certificado Cisco CCST (Skills for All)",
+      "note": "Cisco la indica como la certificacion deseada para Junior Cybersecurity Analyst. Entra por la ruta oficial de ciberseguridad, completa el curso y rinde el examen online sin costo. El badge se comparte en LinkedIn." },
+
   ],
 
 
@@ -378,7 +409,7 @@ window.__CERTF__ = {
           "ids": ["aws-aif", "aws-clf", "oracle-foundations", "g-it"] },
         { "n": 3, "titulo": "Encadena descuentos y credenciales", "plazo": "2-4 meses",
           "objetivo": "50% en el siguiente examen, badges Cisco y competencias de empleabilidad en español.",
-          "ids": ["aws-exam-benefit", "cisco-skillsforall", "santander-open"] },
+          "ids": ["aws-exam-benefit", "cisco-skillsforall", "santander-open", "efset"] },
         { "n": 4, "titulo": "Examen de rol con voucher 100%", "plazo": "cuando haya evento",
           "objetivo": "Examen de rol (AZ-305, SC-500, etc.) a costo cero en eventos oficiales. Vigila las fechas abajo.",
           "ids": ["ms-certweek", "aws-exam-benefit"], "fechas": ["ms-ignite", "reinvent"] }
@@ -389,7 +420,7 @@ window.__CERTF__ = {
       "fases": [
         { "n": 1, "titulo": "Fundamentos de ciberseguridad", "plazo": "4-8 semanas",
           "objetivo": "Ruta oficial Cisco con 7 labs y la única certificación de seguridad con examen a US$0 real (Fortinet FCF).",
-          "ids": ["cisco-junior-cyber", "fortinet-fcf", "ibm-cognitive"] },
+          "ids": ["cisco-junior-cyber", "ccst-cyber", "fortinet-fcf", "tryhackme", "ibm-cognitive"] },
         { "n": 2, "titulo": "Certificación con marca (beca)", "plazo": "3-5 meses",
           "objetivo": "Google Cybersecurity está alineado con CompTIA Security+; IBM prepara el examen con herramientas reales (SIEM, pentesting).",
           "ids": ["g-cyber", "ibm-cyber-coursera", "cisco-skillsforall"] },
@@ -409,7 +440,7 @@ window.__CERTF__ = {
           "ids": ["helsinki-ai", "anthropic-academy", "ibm-cognitive"] },
         { "n": 2, "titulo": "Certificado profesional de IA (beca)", "plazo": "3-5 meses",
           "objetivo": "El programa de IA de Google (nuevo 2026), contenido oficial de Microsoft gratis en Chile, o la base clásica de Machine Learning de Stanford.",
-          "ids": ["g-ai", "sence-microsoft", "stanford-ml"] },
+          "ids": ["g-ai", "ai-essentials-google", "sence-microsoft", "stanford-ml"] },
         { "n": 3, "titulo": "Certificación de proveedor de IA", "plazo": "2-3 meses",
           "objetivo": "AWS AI Practitioner al 50% (y con ella el Cloud Practitioner gratis) + credenciales cortas IBM para sumar marca.",
           "ids": ["aws-aif", "ibm-short"] },
@@ -457,7 +488,7 @@ window.__CERTF__ = {
       "fases": [
         { "n": 1, "titulo": "Fundamentos de marketing digital", "plazo": "4-8 semanas",
           "objetivo": "HubSpot (los reclutadores lo reconocen por nombre), Fundamentals de Google en español y Skillshop (Ads, GA4, YouTube).",
-          "ids": ["hubspot", "digital-garage", "skillshop"] },
+          "ids": ["hubspot", "meta-blueprint", "digital-garage", "skillshop"] },
         { "n": 2, "titulo": "Certificados profesionales (beca)", "plazo": "3-5 meses",
           "objetivo": "Google Digital Marketing & E-commerce, Google UX Design (terminas con portafolio en Figma) y cursos de empleabilidad de Santander.",
           "ids": ["g-mkt", "g-ux", "santander-open"] },
