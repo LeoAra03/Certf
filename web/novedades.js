@@ -1,8 +1,41 @@
 /* Certf — ARCHIVO GENERADO por tools/crawler.py (no editar a mano).
    La app lo lee para la pestaña Novedades y el sello de última revisión. */
 window.__CERTF_NOVEDADES__ = {
- "checked": "2026-09-13T17:03:35Z",
+ "checked": "2026-09-14T18:51:44Z",
  "items": [
+  {
+   "found": "2026-09-14",
+   "id": "b451531a97",
+   "kind": "cambio",
+   "name": "Fundación Telefónica · Conecta Empleo",
+   "review": true,
+   "sig": "cambio-8e01b915da7b",
+   "src": "telefonica",
+   "text": "La página cambió, pero no se detectó una oferta nueva legible. Revisa el enlace.",
+   "url": "https://conectaempleo.fundaciontelefonica.com/"
+  },
+  {
+   "found": "2026-09-14",
+   "id": "9cdd1573e5",
+   "kind": "cambio",
+   "name": "GitHub · Student Developer Pack",
+   "review": true,
+   "sig": "cambio-fb9eed43c70f",
+   "src": "github-pack",
+   "text": "La página cambió, pero no se detectó una oferta nueva legible. Revisa el enlace.",
+   "url": "https://education.github.com/pack"
+  },
+  {
+   "found": "2026-09-14",
+   "id": "88935362c0",
+   "kind": "cambio",
+   "name": "Anthropic Academy · certificados gratis de IA",
+   "review": true,
+   "sig": "cambio-aa1b62b62316",
+   "src": "anthropic",
+   "text": "La página cambió, pero no se detectó una oferta nueva legible. Revisa el enlace.",
+   "url": "https://anthropic.skilljar.com/"
+  },
   {
    "found": "2026-09-13",
    "id": "fddce35bca",
