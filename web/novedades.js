@@ -1,8 +1,46 @@
 /* Certf — ARCHIVO GENERADO por tools/crawler.py (no editar a mano).
    La app lo lee para la pestaña Novedades y el sello de última revisión. */
 window.__CERTF_NOVEDADES__ = {
- "checked": "2026-09-14T18:51:44Z",
+ "checked": "2026-09-15T17:45:56Z",
  "items": [
+  {
+   "badge": false,
+   "beca": false,
+   "codes": [],
+   "disc": 100,
+   "etiqueta": "100% GRATIS",
+   "found": "2026-09-15",
+   "grupo": "oficial",
+   "id": "f23709b8a3",
+   "kind": "oferta",
+   "lang": "EN",
+   "name": "GitHub · Student Developer Pack",
+   "review": false,
+   "sig": "offersoffer6monthaccesstowebsitefirewallmalwarescannertagssecurityanalyticsgethelpatastrasecuritysupportcodecovaboutcodecovcodecovmakesiteasytoimplementcodecove",
+   "src": "github-pack",
+   "text": "Offers Offer 6 month access to website firewall & malware scanner Tags Security & analytics Get help at AstraSecurity support Codecov About Codecov Codecov makes it easy to implement code coverage to develop healthier code Offers Offer Free access to Codecov on public and private repositories.",
+   "unico": false,
+   "url": "https://education.github.com/pack"
+  },
+  {
+   "badge": true,
+   "beca": false,
+   "codes": [],
+   "disc": null,
+   "etiqueta": "",
+   "found": "2026-09-15",
+   "grupo": "oficial",
+   "id": "b608597558",
+   "kind": "badge",
+   "lang": "EN",
+   "name": "GitHub · Student Developer Pack",
+   "review": false,
+   "sig": "tagssecurityanalyticsgethelpathoneybadgersupportdevcycleaboutdevcycledevcycleisafeatureflagmanagementplatformbuiltfordevelopers",
+   "src": "github-pack",
+   "text": "Tags Security & analytics Get help at Honeybadger support DevCycle About DevCycle DevCycle is a Feature Flag Management platform built for developers.",
+   "unico": false,
+   "url": "https://education.github.com/pack"
+  },
   {
    "found": "2026-09-14",
    "id": "b451531a97",
