@@ -1,9 +1,9 @@
 {
- "last_run": "2026-09-15T17:45:56Z",
+ "last_run": "2026-09-16T17:44:00Z",
  "sources": {
   "anthropic": {
    "hash": "aa1b62b62316839f0774e22409e2cfda4e6836771e3bc99db100bbad230bf277",
-   "last_check": "2026-09-15T17:45:09Z",
+   "last_check": "2026-09-16T17:43:08Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -15,7 +15,7 @@
   },
   "aws-aif2cloud": {
    "hash": "b1ec0debbcb8a011efacacfe5e238f7227721d6d122f3f73c460b59fcb497476",
-   "last_check": "2026-09-15T17:44:37Z",
+   "last_check": "2026-09-16T17:42:35Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -119,7 +119,7 @@
   },
   "aws-badges": {
    "hash": "4375371f7f9d9b466ab7917c3d41418191c07012d51540b12821eb05b90d145b",
-   "last_check": "2026-09-15T17:45:15Z",
+   "last_check": "2026-09-16T17:43:14Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -239,7 +239,7 @@
   },
   "aws-certification": {
    "hash": "153fd37ee505713eb701eec9c4311d98866910513fd66a4fcb7596eaa4b608d6",
-   "last_check": "2026-09-15T17:44:40Z",
+   "last_check": "2026-09-16T17:42:38Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -271,35 +271,35 @@
   },
   "aws-student": {
    "hash": "54afa79a4b27d7657455be5dfb12c3c6dccb1580b6ab07a0ccdcc4aa9d558fb1",
-   "last_check": "2026-09-15T17:44:39Z",
+   "last_check": "2026-09-16T17:42:37Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {}
   },
   "capacitate": {
    "hash": "99396fe1af983630ba9ce6cc5b51bcc9b7be74830b23ca5b652f809f489b60a4",
-   "last_check": "2026-09-15T17:45:45Z",
+   "last_check": "2026-09-16T17:43:48Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {}
   },
   "cisco-netacad": {
    "hash": "7bffa016d3131847f92ecfbed90eadafa009582d6e52fe5d7e1a5ab5896fdeeb",
-   "last_check": "2026-09-15T17:44:54Z",
+   "last_check": "2026-09-16T17:42:53Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {}
   },
   "cisco-skillsforall": {
    "hash": "690f1fdd112b887bc04c7cb8537ab30a8b20019977e64965c9f0848a421bbaf7",
-   "last_check": "2026-09-15T17:45:23Z",
+   "last_check": "2026-09-16T17:43:22Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {}
   },
   "classcentral": {
-   "hash": "cebf826c5c68976210d090db6e8e75cf784b0aa5d64924932df12592abe33105",
-   "last_check": "2026-09-15T17:45:54Z",
+   "hash": "81226be68a299ac76966ff88fbfbac76afb9e6b629c90915b56cca552e5d3d38",
+   "last_check": "2026-09-16T17:43:57Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -498,20 +498,20 @@
    }
   },
   "comptia-desc": {
-   "last_check": "2026-09-15T17:45:07Z",
+   "last_check": "2026-09-16T17:43:06Z",
    "last_error": "HTTP 404",
    "last_status": 404,
    "url": "https://www.comptia.org/exam-vouchers/discounts"
   },
   "coursera-aid": {
-   "last_check": "2026-09-15T17:45:06Z",
+   "last_check": "2026-09-16T17:43:04Z",
    "last_error": "HTTP 404",
    "last_status": 404,
    "url": "https://www.coursera.org/financial-aid"
   },
   "coursera-gcyber": {
-   "hash": "54ff59ccf419a4bbc15592cc96e08920632208283ad49e6f1b9f279f59ea4511",
-   "last_check": "2026-09-15T17:45:04Z",
+   "hash": "a665622b06771f0b74605608a837820b9f87a811c1a855c029247b807a9a0091",
+   "last_check": "2026-09-16T17:43:03Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -551,7 +551,7 @@
   },
   "databricks": {
    "hash": "65d573fb20e4beacd864ada117d7d7b08c8b924457d709a41d8161662efc35e3",
-   "last_check": "2026-09-15T17:45:12Z",
+   "last_check": "2026-09-16T17:43:11Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -610,10 +610,10 @@
    }
   },
   "dumpsgate": {
-   "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-   "last_check": "2026-09-15T17:45:56Z",
+   "hash": "8dec1c847945ed45a479c9915d96b6295842fa919e5c233619bc96ef4a27ee0e",
+   "last_check": "2026-09-16T17:44:00Z",
    "last_error": null,
-   "last_status": 202,
+   "last_status": 200,
    "snippets": {
     "200standardkeydeadlinesaifc01mustbetakenandpassedbyseptember3020261159pmlocalctforonlineclfc02freeexammustbecompletedbynovember302026restrictionsonepercustomera": {
      "first": "2026-09-12",
@@ -903,14 +903,14 @@
   },
   "edx-aid": {
    "hash": "1f301dc2ceef06273b3f69d1294f6291cb7ae58d26efada071bcd3d1c69a1b5d",
-   "last_check": "2026-09-15T17:44:49Z",
+   "last_check": "2026-09-16T17:42:48Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {}
   },
   "elementsofai-es": {
    "hash": "097fa08e1d024acf434e9ed5465913815ec1cf2dffc12cc6de507823169aa32b",
-   "last_check": "2026-09-15T17:45:32Z",
+   "last_check": "2026-09-16T17:43:32Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -934,28 +934,28 @@
   },
   "fortinet": {
    "hash": "de29ad1a2eef7bad47a3b52a38abae0051ead5dd152e30135a26ec98f882454c",
-   "last_check": "2026-09-15T17:45:11Z",
+   "last_check": "2026-09-16T17:43:09Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {}
   },
   "freecodecamp": {
    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-   "last_check": "2026-09-15T17:45:01Z",
+   "last_check": "2026-09-16T17:43:00Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {}
   },
   "freecodecamp-es": {
    "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-   "last_check": "2026-09-15T17:45:30Z",
+   "last_check": "2026-09-16T17:43:30Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {}
   },
   "gcp-skillsboost": {
    "hash": "5d8d8bd09290ef417633551aa777f5127cd6544c47dcb5d1e393526c216315d4",
-   "last_check": "2026-09-15T17:45:18Z",
+   "last_check": "2026-09-16T17:43:17Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -982,8 +982,8 @@
    }
   },
   "github-pack": {
-   "hash": "e610bedf84d13aa61f5ce07d659a32bc2310c17fb2217915d60ef7d741e5feaa",
-   "last_check": "2026-09-15T17:44:53Z",
+   "hash": "97a48a0ca5adcae51e44de31d6136611ce0234e7bf0cec16fbef40385d475e9e",
+   "last_check": "2026-09-16T17:42:52Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -1103,6 +1103,10 @@
      "first": "2026-09-12",
      "t": "Tags Domains Virtual Events Get help at Namecheap support Microsoft Azure About Microsoft Azure Access to Microsoft Azure cloud services and learning resources – no credit card required Offers Offer Free access to 25+ Microsoft Azure cloud services plus $100 i"
     },
+    "tagsinfrastructureapisgethelpatblockchairsupporthoneybadgerabouthoneybadgerthewebdeveloperssecretweaponexceptionuptimeandcronmonitoringthatssoawesomeyoullwishyo": {
+     "first": "2026-09-16",
+     "t": "Tags Infrastructure & APIs Get help at Blockchair support Honeybadger About Honeybadger The web developer's secret weapon: exception, uptime, and cron monitoring that's so awesome, you'll wish your site had more errors."
+    },
     "tagsinfrastructureapisgethelpatcartosupportcodecovaboutcodecovcodecovmakesiteasytoimplementcodecoveragetodevelophealthiercodeoffersofferfreeaccesstocodecovonpub": {
      "first": "2026-09-14",
      "t": "Tags Infrastructure & APIs Get help at CARTO support Codecov About Codecov Codecov makes it easy to implement code coverage to develop healthier code Offers Offer Free access to Codecov on public and private repositories."
@@ -1114,6 +1118,10 @@
     "tagslearngethelpatsymfonycastssupporthoneybadgerabouthoneybadgerthewebdeveloperssecretweaponexceptionuptimeandcronmonitoringthatssoawesomeyoullwishyoursitehadmo": {
      "first": "2026-09-12",
      "t": "Tags Learn Get help at SymfonyCasts support Honeybadger About Honeybadger The web developer's secret weapon: exception, uptime, and cron monitoring that's so awesome, you'll wish your site had more errors."
+    },
+    "tagssecurityanalyticsgethelpathoneybadgersupportdeepscanaboutdeepscandeepscanisaplatformforbuildingbetterandmorereliablejavascriptapps": {
+     "first": "2026-09-16",
+     "t": "Tags Security & analytics Get help at Honeybadger support DeepScan About DeepScan DeepScan is a platform for building better and more reliable JavaScript apps."
     },
     "tagssecurityanalyticsgethelpathoneybadgersupportdevcycleaboutdevcycledevcycleisafeatureflagmanagementplatformbuiltfordevelopers": {
      "first": "2026-09-15",
@@ -1127,21 +1135,21 @@
   },
   "google-activate": {
    "hash": "98361eb1d086dbc056f58f02df3636fd6fa579e1f774486ad17f124c25cdb9b0",
-   "last_check": "2026-09-15T17:45:28Z",
+   "last_check": "2026-09-16T17:43:27Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {}
   },
   "google-developers": {
    "hash": "75a50bd46917f7ffd2f8c67ae3d874ce10ef4f64cfbf145e08fc6dd9515d927d",
-   "last_check": "2026-09-15T17:45:24Z",
+   "last_check": "2026-09-16T17:43:24Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {}
   },
   "helsinki-ai": {
    "hash": "7aa32ee637d0aaa34e208bf62a3262c038917542efd4ca04f986710099398b62",
-   "last_check": "2026-09-15T17:44:58Z",
+   "last_check": "2026-09-16T17:42:57Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -1173,7 +1181,7 @@
   },
   "helsinki-fso": {
    "hash": "91f9d95d1ad10860e6dd130e09af1e41718e839af169f854ce03eb8c08536895",
-   "last_check": "2026-09-15T17:44:59Z",
+   "last_check": "2026-09-16T17:42:58Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -1185,7 +1193,7 @@
   },
   "hn-vouchers": {
    "hash": "49faf05dbb4f2f93d2c1ae11c562d3215f39529687d50fcf8d2184704dadc8b0",
-   "last_check": "2026-09-15T17:45:46Z",
+   "last_check": "2026-09-16T17:43:49Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -1197,14 +1205,14 @@
   },
   "hubspot": {
    "hash": "cdc992d6a27d9dc7aa37fa1744e4f2a4685278595915e9ec067662b54ca8dd61",
-   "last_check": "2026-09-15T17:45:40Z",
+   "last_check": "2026-09-16T17:43:40Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {}
   },
   "ibm-cognitive": {
    "hash": "72929b2b0fa68b2ef0e820bfce7edc6f7ba879e3a339048e1da2f45af97a4842",
-   "last_check": "2026-09-15T17:45:21Z",
+   "last_check": "2026-09-16T17:43:21Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -1216,7 +1224,7 @@
   },
   "ibm-skillsbuild": {
    "hash": "3b885a00aaec12feee438181e67f6b1841976ecbfab6c7c1997abe04b3ee0719",
-   "last_check": "2026-09-15T17:45:19Z",
+   "last_check": "2026-09-16T17:43:19Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -1227,14 +1235,14 @@
    }
   },
   "ibm-uopeople": {
-   "last_check": "2026-09-15T17:44:46Z",
+   "last_check": "2026-09-16T17:42:44Z",
    "last_error": "HTTP 404",
    "last_status": 404,
    "url": "https://skillsbuild.org/college-students/college-certificates"
   },
   "isc2-1mcc": {
    "hash": "7406325d8f6c0dc8a7b45b8089e2b12d58eb64bb9da6d598c971466600662611",
-   "last_check": "2026-09-15T17:44:56Z",
+   "last_check": "2026-09-16T17:42:55Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -1262,7 +1270,7 @@
   },
   "learnitfree": {
    "hash": "91bce5ce1a22a40e2c3b62c84e3421146261b4d6fffd8b1ee63863eb3be63612",
-   "last_check": "2026-09-15T17:45:52Z",
+   "last_check": "2026-09-16T17:43:55Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -1342,33 +1350,33 @@
   },
   "mongodb": {
    "hash": "bd97b89686d0f9bb14715a0035ac1801a916c2eaf1c5b1bed3eaf82800f4c98f",
-   "last_check": "2026-09-15T17:45:14Z",
+   "last_check": "2026-09-16T17:43:13Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {}
   },
   "ms-applied": {
    "hash": "11693d5cbfe99170868856c7fe4f9ec6f963974a975f782cfcdedcec198f673a",
-   "last_check": "2026-09-15T17:44:43Z",
+   "last_check": "2026-09-16T17:42:41Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {}
   },
   "ms-certweek": {
-   "last_check": "2026-09-15T17:44:42Z",
+   "last_check": "2026-09-16T17:42:40Z",
    "last_error": "HTTP 404",
    "last_status": 404,
    "url": "https://certweeks.fastlane.net/amer/az-sec-en"
   },
   "ms-events": {
-   "last_check": "2026-09-15T17:44:45Z",
+   "last_check": "2026-09-16T17:42:43Z",
    "last_error": "HTTP 404",
    "last_status": 404,
    "url": "https://learn.microsoft.com/en-us/training/events/"
   },
   "ms-learn-es": {
    "hash": "be21c3e00a002e938db71609ac4de32668ba5007b46310965a74a9ec80d22743",
-   "last_check": "2026-09-15T17:45:29Z",
+   "last_check": "2026-09-16T17:43:29Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -1388,32 +1396,32 @@
   },
   "oracle-free": {
    "hash": "767aeca5eebdf16f0601891f2efda9155f4fa1b58b7de7b990a460e39f03ee62",
-   "last_check": "2026-09-15T17:44:47Z",
+   "last_check": "2026-09-16T17:42:46Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {}
   },
   "reddit-aws": {
-   "last_check": "2026-09-15T17:45:48Z",
+   "last_check": "2026-09-16T17:43:51Z",
    "last_error": "HTTP 403 (bloqueo anti-bot)",
    "last_status": 403,
    "url": "https://www.reddit.com/r/AWSCertifications/new.json?limit=25"
   },
   "reddit-azure": {
-   "last_check": "2026-09-15T17:45:50Z",
+   "last_check": "2026-09-16T17:43:53Z",
    "last_error": "HTTP 403 (bloqueo anti-bot)",
    "last_status": 403,
    "url": "https://www.reddit.com/r/AzureCertification/new.json?limit=25"
   },
   "reddit-comptia": {
-   "last_check": "2026-09-15T17:45:49Z",
+   "last_check": "2026-09-16T17:43:52Z",
    "last_error": "HTTP 403 (bloqueo anti-bot)",
    "last_status": 403,
    "url": "https://www.reddit.com/r/CompTIA/search.json?q=voucher%20OR%20%22discount%20code%22&restrict_sr=1&sort=new&t=month&limit=25"
   },
   "santander": {
    "hash": "846f278b79df693145d032511b39e9504725b2a1afe4cdf76af975c4a8da1a77",
-   "last_check": "2026-09-15T17:45:34Z",
+   "last_check": "2026-09-16T17:43:34Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -1437,7 +1445,7 @@
   },
   "sence-chile": {
    "hash": "a0e94b5e3d4719adb1929c4ba17b9bb687c2b445c7b8b3322db8db81f971c1a1",
-   "last_check": "2026-09-15T17:45:43Z",
+   "last_check": "2026-09-16T17:43:43Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -1453,14 +1461,14 @@
   },
   "skillshop": {
    "hash": "e8843bd94c42cbb5559d71db215f85ef234803378c3717b622eb21a4ca922f0f",
-   "last_check": "2026-09-15T17:45:02Z",
+   "last_check": "2026-09-16T17:43:01Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {}
   },
   "telefonica": {
-   "hash": "8e01b915da7bdd2b7a7a7290c6f44f5dc3500bcaf5e37bc2eef6142847df1457",
-   "last_check": "2026-09-15T17:45:38Z",
+   "hash": "1ec89d821e58f0ea5cf7006cc5c422ca29747c2f00ab5ebfc713657b9e884e0c",
+   "last_check": "2026-09-16T17:43:38Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
@@ -1487,14 +1495,26 @@
    }
   },
   "trailhead": {
-   "hash": "15a176f9148bb58338dd6c99dc2872a533fe2e025f738857a9f831a68cfa36b7",
-   "last_check": "2026-09-15T17:45:26Z",
+   "hash": "9e46c4e67047a9344e69f98b65461702602de906a28eae0ca09edd35a440007a",
+   "last_check": "2026-09-16T17:43:26Z",
    "last_error": null,
    "last_status": 200,
    "snippets": {
+    "buildsalesforceandaiskillslearnforfreewithhandsontrainingontrailhead": {
+     "first": "2026-09-16",
+     "t": "Build Salesforce and AI Skills Learn for free with hands-on training on Trailhead."
+    },
+    "credentialsthatproveyourexpertiseearnbadgesbuildaiexpertiseandpreparefor60officialsalesforcecertificationsthatvalidateyourskillsandhelpyoustandoutinthesalesforc": {
+     "first": "2026-09-16",
+     "t": "Credentials that prove your expertise Earn badges, build AI expertise, and prepare for 60+ official Salesforce certifications that validate your skills and help you stand out in the Salesforce ecosystem."
+    },
     "gamifiedplatformgetrewardedwithpointsandbadgeswhenyoulearnnewskills": {
      "first": "2026-09-12",
      "t": "Gamified Platform Get rewarded with points and badges when you learn new skills."
+    },
+    "realworldpractice100freegethandsonexperienceinrealsalesforceenvironmentsasyousolvebusinessscenariosautomateworkflowsbuildaiagentsandextendsalesforceintothetools": {
+     "first": "2026-09-16",
+     "t": "Real-world practice, 100% free Get hands-on experience in real Salesforce environments as you solve business scenarios, automate workflows, build AI agents, and extend Salesforce into the tools where people work."
     },
     "trailheadthefunwaytolearnskiptomaincontenttrailheadmobilenavtoggledatamobilenavtargetbuttonhomelearndropdownhandlekeydownhiddengrowyoursalesforceexpertisebadges": {
      "first": "2026-09-12",
