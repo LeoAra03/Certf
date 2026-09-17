@@ -1,7 +1,7 @@
 /* Certf — ARCHIVO GENERADO por tools/crawler.py (no editar a mano).
    La app lo lee para la pestaña Novedades y el sello de última revisión. */
 window.__CERTF_NOVEDADES__ = {
- "checked": "2026-09-16T17:44:00Z",
+ "checked": "2026-09-17T17:45:08Z",
  "items": [
   {
    "badge": false,
