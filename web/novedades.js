@@ -1,8 +1,38 @@
 /* Certf — ARCHIVO GENERADO por tools/crawler.py (no editar a mano).
    La app lo lee para la pestaña Novedades y el sello de última revisión. */
 window.__CERTF_NOVEDADES__ = {
- "checked": "2026-09-17T17:45:08Z",
+ "checked": "2026-09-18T17:11:33Z",
  "items": [
+  {
+   "found": "2026-09-18",
+   "id": "4b0042fdd6",
+   "kind": "cambio",
+   "name": "IBM SkillsBuild · credenciales Credly",
+   "review": true,
+   "sig": "cambio-71b7fd1a4eda",
+   "src": "ibm-skillsbuild",
+   "text": "La página cambió, pero no se detectó una oferta nueva legible. Revisa el enlace.",
+   "url": "https://skillsbuild.org/"
+  },
+  {
+   "badge": true,
+   "beca": false,
+   "codes": [],
+   "disc": null,
+   "etiqueta": "",
+   "found": "2026-09-18",
+   "grupo": "oficial",
+   "id": "0a9a21605e",
+   "kind": "badge",
+   "lang": "EN",
+   "name": "GitHub · Student Developer Pack",
+   "review": false,
+   "sig": "tagssecurityanalyticsgethelpathoneybadgersupportpopsqlaboutpopsqlmoderncollaborativesqleditorforyourteamwritequeriesvisualizedataandshareyourresults",
+   "src": "github-pack",
+   "text": "Tags Security & analytics Get help at Honeybadger support PopSQL About PopSQL Modern, collaborative SQL editor for your team — write queries, visualize data, and share your results.",
+   "unico": false,
+   "url": "https://education.github.com/pack"
+  },
   {
    "badge": false,
    "beca": false,
