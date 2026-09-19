@@ -1,8 +1,46 @@
 /* Certf — ARCHIVO GENERADO por tools/crawler.py (no editar a mano).
    La app lo lee para la pestaña Novedades y el sello de última revisión. */
 window.__CERTF_NOVEDADES__ = {
- "checked": "2026-09-18T17:11:33Z",
+ "checked": "2026-09-19T16:46:56Z",
  "items": [
+  {
+   "badge": false,
+   "beca": false,
+   "codes": [],
+   "disc": 100,
+   "etiqueta": "100% GRATIS",
+   "found": "2026-09-19",
+   "grupo": "agregador",
+   "id": "370b16343a",
+   "kind": "oferta",
+   "lang": "EN",
+   "name": "Class Central · credenciales gratis de Google",
+   "review": false,
+   "sig": "600freegooglecertificationstrendingmostcommonprojectmanagementharvardflutterpopularsubjectsengineering18815coursesartificialintelligence29215coursesgenerativeai",
+   "src": "classcentral",
+   "text": "600 Free Google Certifications Trending Most common project management harvard flutter Popular subjects Engineering 18,815 courses Artificial Intelligence 29,215 courses Generative AI 12,740 courses Popular courses AP® Microeconomics Massachusetts Institute of Technology Marketing Innovative Products and Services University of Maryland, College Park Gamification University of Pennsylvania Class Ce",
+   "unico": false,
+   "url": "https://www.classcentral.com/report/free-google-certifications/"
+  },
+  {
+   "badge": true,
+   "beca": false,
+   "codes": [],
+   "disc": null,
+   "etiqueta": "",
+   "found": "2026-09-19",
+   "grupo": "oficial",
+   "id": "186f8d6487",
+   "kind": "badge",
+   "lang": "EN",
+   "name": "GitHub · Student Developer Pack",
+   "review": false,
+   "sig": "tagssecurityanalyticsgethelpathoneybadgersupportpoeditoraboutpoeditorpoeditorisahighlyscalablelocalizationmanagementplatformforteams",
+   "src": "github-pack",
+   "text": "Tags Security & analytics Get help at Honeybadger support POEditor About POEditor POEditor is a highly scalable localization management platform for teams.",
+   "unico": false,
+   "url": "https://education.github.com/pack"
+  },
   {
    "found": "2026-09-18",
    "id": "4b0042fdd6",
