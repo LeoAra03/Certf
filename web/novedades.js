@@ -1,8 +1,19 @@
 /* Certf — ARCHIVO GENERADO por tools/crawler.py (no editar a mano).
    La app lo lee para la pestaña Novedades y el sello de última revisión. */
 window.__CERTF_NOVEDADES__ = {
- "checked": "2026-09-21T18:54:42Z",
+ "checked": "2026-09-23T17:57:53Z",
  "items": [
+  {
+   "found": "2026-09-23",
+   "id": "66fb71f0d7",
+   "kind": "cambio",
+   "name": "Salesforce Trailhead · superbadges",
+   "review": true,
+   "sig": "cambio-4ccf22f5d7d1",
+   "src": "trailhead",
+   "text": "La página cambió, pero no se detectó una oferta nueva legible. Revisa el enlace.",
+   "url": "https://trailhead.salesforce.com/"
+  },
   {
    "badge": false,
    "beca": false,
@@ -1063,17 +1074,6 @@ window.__CERTF_NOVEDADES__ = {
    "sig": "usethepromocodetoget50offawscertifiedaipractitioner",
    "src": "aws-aif2cloud",
    "text": "Use the promo code to get 50% off AWS Certified AI Practitioner.",
-   "url": "https://www.pearsonvue.com/us/en/aws/aif2cloud.html"
-  },
-  {
-   "found": "2026-09-11",
-   "id": "633f2ed34d",
-   "kind": "oferta",
-   "name": "AWS · Código AIF2CLOUD (Pearson VUE)",
-   "review": false,
-   "sig": "passtheawscertifiedaipractitionerexambyseptember30andyoullqualifyforafreeawscertifiedcloudpractitionerexamanytimebeforenovember302026",
-   "src": "aws-aif2cloud",
-   "text": "Pass the AWS Certified AI Practitioner exam by September 30, and you'll qualify for a free AWS Certified Cloud Practitioner exam any time before November 30, 2026.",
    "url": "https://www.pearsonvue.com/us/en/aws/aif2cloud.html"
   }
  ]
